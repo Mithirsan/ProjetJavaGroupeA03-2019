@@ -1,4 +1,4 @@
-package modele;
+package model;
 
 public enum Round {
 	FIRST_ROUND ,
