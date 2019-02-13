@@ -7,6 +7,7 @@ public class Question {
 	private Round round;
 	private String statement;
 	private Map <String,Boolean> choices;
+	private final int NB_CHOICES_MAX=4;
 	
 	public Question(String author, Round round, String statement, Map<String, Boolean> choices) {
 		super();
@@ -14,6 +15,28 @@ public class Question {
 		this.setRound(round);
 		this.setStatement(statement);
 		this.setChoices(choices);
+	}
+	
+	public Question(String author, Round round, String statement) {
+		super();
+		this.setAuthor(author);
+		this.setRound(round);
+		this.setStatement(statement);
+	}
+
+	public boolean addChoices(String rep,Boolean value) {
+		if(choices.size()>NB_CHOICES_MAX) {
+			return false;
+		}
+		if(value==true) {
+		if(choices.containsValue(true)) {
+		}
+		return false;
+		}
+		else {
+			choices.put(rep, value);
+			return true;
+		}
 	}
 
 	public String getAuthor() {
@@ -44,8 +67,22 @@ public class Question {
 		return choices;
 	}
 
-	public void setChoices(Map<String, Boolean> choices) {
-		this.choices = choices;
+	public boolean setChoices(Map <String,Boolean> choices) {
+		int nbTrue = 0, nbChoice = 0;
+		for(Map.Entry<String, Boolean> entry : choices.entrySet()) {
+			Boolean v = entry.getValue();
+			nbChoice ++;
+			if (v == true)
+				nbTrue ++;
+		}
+		if (nbChoice > NB_CHOICES_MAX)
+			return false;
+		
+		if (nbTrue == 1) {
+			this.choices = choices;
+			return true;
+		}
+		return false;
 	}
 
 	@Override
