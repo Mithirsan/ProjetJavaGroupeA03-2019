@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Deck {
 	private static Deck instance;
 	private List<Question> questions;

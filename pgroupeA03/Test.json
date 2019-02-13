@@ -1,0 +1,18 @@
+{
+"questions": [
+{
+"author": "Roger",
+"round": "FIRST_ROUND",
+"statement": "What does MIC stand for ?",
+"choices": {
+"Microsoft Innovation Coordination": false,
+"Microsoft Innovation Center": true,
+"Microsoft Innovation Cooperation": false,
+"Microsoft Innovation Collapse": false
+}
+}
+]
+}
+		
+
+
