@@ -20,12 +20,17 @@ public class Deck {
 		this.questions=questions;
 	}
 	//Delete
-	public void deleteDeck(){
-		this.questions=null;
+	public boolean deleteAllDeck(List<Question> x){
+		return questions.removeAll(x);
 	}
-	
+	public boolean deleteSingleQuestion(Question x) {
+		return questions.remove(x);
+	}
+	//ToString
 	public String toString() {
 		return "Deck : [" + questions + "]";
-	}	 
+	}
+	
+	
 	
 }
