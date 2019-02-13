@@ -1,5 +1,12 @@
 package model;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
+import util.Serializable;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +63,30 @@ public class Deck {
 	}
 	
 	public String toString() {
-		return "Deck : [" + questions + "]";
-	}	
+		return "Deck : " + questions;
+	}
+
+	public static String toJSon() {
+		Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+		return gson.toJson(getInstance());
+	}
+	
+	public static Deck fromJSon(String json) {
+		Gson gson = new GsonBuilder().disableHtmlEscaping().create();
+		return gson.fromJson(json, Deck.class);
+	}
+	
+	public void downloadData(File file) throws FileNotFoundException, IOException {
+		Deck fileDeck = fromJSon(Serializable.readDeck(file.getAbsolutePath()));
+		for(Question x : fileDeck.getQuestions()) {
+			getInstance().addQuestion(x);
+		}
+	}
+	public void loadDeck(File file) throws FileNotFoundException, IOException {
+		Deck fileDeck = fromJSon(Serializable.readDeck(file.getAbsolutePath()));
+		getInstance().questions.clear();
+		for(Question x : fileDeck.getQuestions()) {
+			getInstance().addQuestion(x);
+		}
+	}
 }
