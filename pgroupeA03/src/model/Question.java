@@ -67,7 +67,7 @@ public class Question {
 
 	@Override
 	public String toString() {
-		return "author=" + author + ", round=" + round + ",\n " + statement + ":\n " + choices;
+		return "author=" + author + ", round=" + round + ",\n " + statement + ":\n " + choices + "\n\n";
 	}
 	
 	
