@@ -1,6 +1,9 @@
 package model;
 
+
+import java.util.HashMap;
 import java.util.Map;
+
 
 public class Question {
 	private String author;
@@ -22,6 +25,7 @@ public class Question {
 		this.setAuthor(author);
 		this.setRound(round);
 		this.setStatement(statement);
+		choices = new HashMap<String, Boolean>();
 	}
 
 	public boolean addChoices(String rep,Boolean value) {
@@ -29,9 +33,13 @@ public class Question {
 			return false;
 		}
 		if(value==true) {
-		if(choices.containsValue(true)) {
-		}
-		return false;
+			if(choices.containsValue(true)) {
+				return false;
+			}
+			else {
+				choices.put(rep, value);
+				return true;
+			}	
 		}
 		else {
 			choices.put(rep, value);
@@ -86,6 +94,14 @@ public class Question {
 	}
 
 	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((statement == null) ? 0 : statement.hashCode());
+		return result;
+	}
+
+	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -106,6 +122,7 @@ public class Question {
 	public String toString() {
 		return "author=" + author + ", round=" + round + ",\n " + statement + ":\n " + choices + "\n\n";
 	}
+	
 	
 	
 	
