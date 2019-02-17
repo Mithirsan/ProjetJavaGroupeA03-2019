@@ -25,18 +25,18 @@ public class Main {
 		while(input!=5) {
 				if(input==1) {
 					try {
-						System.out.println("please , enter a name for the file with .json");
+						System.out.println("please , enter a name for the file");
 						String str = sc.next();
-						Deck.getInstance().loadDeck(new File(str));
+						Deck.getInstance().loadDeck(new File(str+".json"));
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
 				}
 				else if (input ==2) {
 					try {
-						System.out.println("please , enter a name for the file with .json");
+						System.out.println("please , enter a name for the file");
 						String str = sc.next();
-						Serializable.writeDeck(str);
+						Serializable.writeDeck(str+".json");
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
@@ -45,9 +45,11 @@ public class Main {
 				System.out.println(Deck.getInstance());
 				}
 				else if (input==4) {
-					System.out.println("please enter your name");
+					System.out.println("please enter your first name");
 					String strAuthor = sc.next();
-					System.out.println("please select the round"+"\n"+"1 : FIRST_ROUND"+"\n"+ 
+					System.out.println("please enter your last name");
+					strAuthor += " "+sc.next();
+					System.out.println("\n"+"please select the round"+"\n"+"1 : FIRST_ROUND"+"\n"+ 
 							"2 : SECOND_ROUND"+"\n" + 
 							"3 : LAST_ROUND");
 					int tmp= sc.nextInt();
@@ -70,7 +72,7 @@ public class Main {
 						break;
 					}
 					System.out.println("please enter the statement");
-					String strStatement = sc.next();
+					String strStatement = sc.next();	
 					Question question = new Question(strAuthor,tmprd,strStatement);
 					while(question.getChoices().size()<4) {					
 						for(int i=1;i<5;i++) {
