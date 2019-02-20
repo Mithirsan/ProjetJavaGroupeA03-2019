@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import exception.AlreadyFourChoicesException;
+import exception.AlreadyTrueChoice;
 
 
 public class Question {
@@ -19,7 +20,15 @@ public class Question {
 		this.setAuthor(author);
 		this.setRound(round);
 		this.setStatement(statement);
-		this.setChoices(choices);
+		try {
+			this.setChoices(choices);
+		} catch (AlreadyTrueChoice e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (AlreadyFourChoicesException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public Question(String author, Round round, String statement) {
@@ -30,13 +39,13 @@ public class Question {
 		choices = new HashMap<String, Boolean>();
 	}
 
-	public boolean addChoices(String rep,Boolean value) throws AlreadyFourChoicesException{
+	public boolean addChoices(String rep,Boolean value) throws AlreadyFourChoicesException, AlreadyTrueChoice{
 		if(choices.size()>NB_CHOICES_MAX) {
-			throw new AlreadyFourChoicesException();
+			throw new AlreadyFourChoicesException((byte) 0);
 		}
 		if(value==true) {
 			if(choices.containsValue(true)) {
-				return false;
+				throw new AlreadyTrueChoice((byte) 0);
 			}
 			else {
 				choices.put(rep, value);
@@ -77,7 +86,7 @@ public class Question {
 		return choices;
 	}
 
-	public boolean setChoices(Map <String,Boolean> choices) {
+	public boolean setChoices(Map <String,Boolean> choices) throws AlreadyTrueChoice, AlreadyFourChoicesException{
 		int nbTrue = 0, nbChoice = 0;
 		for(Map.Entry<String, Boolean> entry : choices.entrySet()) {
 			Boolean v = entry.getValue();
@@ -86,13 +95,13 @@ public class Question {
 				nbTrue ++;
 		}
 		if (nbChoice > NB_CHOICES_MAX)
-			return false;
+			throw new AlreadyFourChoicesException((byte) 1);
 		
 		if (nbTrue == 1) {
 			this.choices = choices;
 			return true;
 		}
-		return false;
+		throw new AlreadyTrueChoice((byte) 1);
 	}
 
 	@Override
