@@ -12,6 +12,7 @@ public class MenuBorderPane extends BorderPane{
 	public MenuBorderPane() {
 		setTop(getLblTitle());
 		setCenter(getMenuVBox());
+		
 	}
 	
 	
