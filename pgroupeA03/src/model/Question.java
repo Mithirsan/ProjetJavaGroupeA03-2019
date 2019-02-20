@@ -4,6 +4,8 @@ package model;
 import java.util.HashMap;
 import java.util.Map;
 
+import exception.alreadyFourChoicesException;
+
 
 public class Question {
 	private String author;
@@ -28,9 +30,9 @@ public class Question {
 		choices = new HashMap<String, Boolean>();
 	}
 
-	public boolean addChoices(String rep,Boolean value) {
+	public boolean addChoices(String rep,Boolean value) throws alreadyFourChoicesException{
 		if(choices.size()>NB_CHOICES_MAX) {
-			return false;
+			throw new alreadyFourChoicesException();
 		}
 		if(value==true) {
 			if(choices.containsValue(true)) {
@@ -122,9 +124,4 @@ public class Question {
 	public String toString() {
 		return "author=" + author + ", round=" + round + ",\n " + statement + ":\n " + choices + "\n\n";
 	}
-	
-	
-	
-	
-	
 }
