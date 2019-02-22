@@ -2,22 +2,19 @@ package view;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 
-public class GamePlayStatementAndChoicesGridPane extends GridPane {
+public class GamePlayStatementAndChoicesVBox extends VBox {
 	
 	private Label lblStatement;
 	
-	private GamePlayChoicesTilePane choices = new GamePlayChoicesTilePane();
+	private GamePlayChoicesGridPane choices = new GamePlayChoicesGridPane();
 	
-	public GamePlayStatementAndChoicesGridPane() {
+	public GamePlayStatementAndChoicesVBox() {
 		this.setPadding(new Insets(5));
 		
-		this.add(getLblStatement(), 0, 0);
-		
-		this.add(choices, 0, 1);
+		this.getChildren().addAll(getLblStatement(), choices);
 		
 		this.setAlignment(Pos.CENTER);
 	}

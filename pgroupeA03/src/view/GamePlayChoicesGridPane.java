@@ -1,23 +1,26 @@
 package view;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.TilePane;
+import javafx.scene.layout.GridPane;
 
-public class GamePlayChoicesTilePane extends TilePane {
+public class GamePlayChoicesGridPane extends GridPane {
 
 	private Button btnAnswerA;
 	private Button btnAnswerB;
 	private Button btnAnswerC;
 	private Button btnAnswerD;
 	
-	public GamePlayChoicesTilePane() {
+	public GamePlayChoicesGridPane() {
 		this.setPadding(new Insets(5));
-		this.setVgap(5);
-		this.setHgap(5);
-		this.setPrefColumns(2);
 		
-		this.getChildren().addAll(getBtnAnswerA(), getBtnAnswerB(), getBtnAnswerC(), getBtnAnswerD());
+		this.add(getBtnAnswerA(), 0, 0, 1, 4);
+		this.add(getBtnAnswerB(), 0, 4, 1, 4);
+		this.add(getBtnAnswerC(), 1, 0, 1, 4);
+		this.add(getBtnAnswerD(), 1, 4, 1, 4);
+		
+		this.setAlignment(Pos.CENTER);
 	}
 	
 	public Button getBtnAnswerA() {

@@ -5,7 +5,7 @@ import javafx.stage.Stage;
 import view.GamePlayBorderPane;
 import view.GamePlayLevelsVBox;
 import view.GamePlayOptionAndJokersVBox;
-import view.GamePlayStatementAndChoicesGridPane;
+import view.GamePlayStatementAndChoicesVBox;
 import view.GamePlayTimerHBox;
 import view.MenuBorderPane;
 import javafx.scene.Scene;
