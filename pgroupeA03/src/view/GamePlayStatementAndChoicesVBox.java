@@ -22,6 +22,7 @@ public class GamePlayStatementAndChoicesVBox extends VBox {
 	public Label getLblStatement() {
 		if(lblStatement == null) {
 			lblStatement = new Label("Question ?");
+			lblStatement.getStyleClass().add("lblStatement");
 		}
 		return lblStatement;
 	}

@@ -36,6 +36,10 @@ public class GamePlayTimerHBox extends HBox {
 		return lblCountDown;
 	}
 	
+	public int getSeconds() {
+		return seconds;
+	}
+
 	public void startTimer() {
 		timer = new Timeline();
 		timer.setCycleCount(Timeline.INDEFINITE);
@@ -56,6 +60,12 @@ public class GamePlayTimerHBox extends HBox {
 		});
 		timer.getKeyFrames().add(frame);
 		timer.playFromStart();
+	}
+	
+	public void freezeTimer(int secTmp) {
+		this.stopTimer();
+		getLblCountDown().setText(secTmp + " seconds remaining");
+		
 	}
 	
 	public void stopTimer() {

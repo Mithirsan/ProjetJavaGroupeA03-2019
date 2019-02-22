@@ -24,6 +24,7 @@ public class GameplayPoolStatusHBox extends HBox{
 	public Button getBtnLeaveWithPool() {
 		if (btnLeaveWithPool == null) {
 			btnLeaveWithPool = new Button("Leave with the actual pool");
+			btnLeaveWithPool.getStyleClass().add("btnLeaveWPool");
 		}
 		return btnLeaveWithPool;
 	}
@@ -31,6 +32,7 @@ public class GameplayPoolStatusHBox extends HBox{
 	public Label getLblViewPool() {
 		if(lblViewPool == null) {
 			lblViewPool = new Label("none");
+			lblViewPool.getStyleClass().add("lblViewPool");
 		}
 		return lblViewPool;
 	}
