@@ -13,21 +13,21 @@ import javafx.scene.layout.BorderPane;
 
 
 public class Main extends Application {
-	private FinalViewStackPane menuBorderPane;
-	public FinalViewStackPane getMenuBorderPane() {
-		if(menuBorderPane == null) {
-			menuBorderPane = new FinalViewStackPane();
+	private FinalViewStackPane finalViewStackPane;
+	public FinalViewStackPane getFinalViewStackPane() {
+		if(finalViewStackPane == null) {
+			finalViewStackPane = new FinalViewStackPane();
 		}
-		return menuBorderPane;
+		return finalViewStackPane;
 	}
 	
-	//private GamePlayBorderPane gameplay = new GamePlayBorderPane();
+	
 	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			BorderPane root = new BorderPane();
-			Scene scene = new Scene(getMenuBorderPane(), 800, 550);
+			Scene scene = new Scene(getFinalViewStackPane() , 800, 550);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
