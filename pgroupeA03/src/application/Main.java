@@ -7,27 +7,27 @@ import view.GamePlayLevelsVBox;
 import view.GamePlayOptionAndJokersVBox;
 import view.GamePlayStatementAndChoicesVBox;
 import view.GamePlayTimerHBox;
-import view.MenuBorderPane;
+import view.FinalViewStackPane;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 
 
 public class Main extends Application {
-	private MenuBorderPane menuBorderPane;
-	public MenuBorderPane getMenuBorderPane() {
+	private FinalViewStackPane menuBorderPane;
+	public FinalViewStackPane getMenuBorderPane() {
 		if(menuBorderPane == null) {
-			menuBorderPane = new MenuBorderPane();
+			menuBorderPane = new FinalViewStackPane();
 		}
 		return menuBorderPane;
 	}
 	
-	private GamePlayBorderPane gameplay = new GamePlayBorderPane();
+	//private GamePlayBorderPane gameplay = new GamePlayBorderPane();
 	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
 			BorderPane root = new BorderPane();
-			Scene scene = new Scene(gameplay, 800, 550);
+			Scene scene = new Scene(getMenuBorderPane(), 800, 550);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
