@@ -61,13 +61,6 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 		if(btnJokerTimeFreezer == null) {
 			btnJokerTimeFreezer = new Button("T F");
 			btnJokerTimeFreezer.getStyleClass().add("btnJoker");
-			
-			btnJokerTimeFreezer.setOnAction(new EventHandler<ActionEvent>() {
-				@Override
-				public void handle(ActionEvent arg0) {
-					//TODO Effect 
-				}
-			});
 		}
 		return btnJokerTimeFreezer;
 	}

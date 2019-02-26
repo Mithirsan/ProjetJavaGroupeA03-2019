@@ -66,10 +66,12 @@ public class GamePlayTimerHBox extends HBox {
 		this.stopTimer();
 		getLblCountDown().setText(secTmp + " seconds remaining");
 		
+		
 	}
 	
 	public void stopTimer() {
 		timer.stop();
 		seconds = START_TIME;
 	}
+	
 }
