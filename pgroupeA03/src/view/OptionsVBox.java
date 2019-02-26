@@ -40,7 +40,7 @@ public class OptionsVBox extends VBox{
 	}
 	public Button getBtnDisplayManagement() {
 		if(btnDisplayManagement==null) {
-			btnDisplayManagement= new Button("Volume Management");
+			btnDisplayManagement= new Button("Display Management");
 			btnDisplayManagement.setPrefWidth(prefWidth);
 		}
 		return btnDisplayManagement;
