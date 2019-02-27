@@ -92,8 +92,11 @@ public class LoginAdminAnchorPane extends AnchorPane {
 		public Button getBtnRetour() {
 			if(btnRetour==null) {
 				btnRetour=new Button("Retour");
-				return btnRetour;
-		}
+				btnRetour.setOnAction(e->{
+					((FinalViewStackPane) getParent()).getLoginAdminAnchorPane().setVisible(false);
+					((FinalViewStackPane) getParent()).getMenuBorderPane().setVisible(true);
+				});;
+			}
 		return btnRetour;
 		}
 	}

@@ -6,10 +6,11 @@ public class FinalViewStackPane extends StackPane{
 	private MenuBorderPane menuBorderPane;
 	private GamePlayBorderPane gamePlayBorderPane;
 	private LoginAdminAnchorPane loginAdminAnchorPane;
+	private OptionsBorderPane optionBorderPane;
 	
 
 	public FinalViewStackPane() {
-		getChildren().addAll(getMenuBorderPane(),getGamePlayBorderPane(),getLoginAdminAnchorPane());
+		getChildren().addAll(getMenuBorderPane(),getGamePlayBorderPane(),getLoginAdminAnchorPane(),getOptionBorderPane());
 		
 	}
 
@@ -35,6 +36,14 @@ public class FinalViewStackPane extends StackPane{
 			loginAdminAnchorPane.setVisible(false);
 		}
 		return loginAdminAnchorPane;
+	}
+
+	public OptionsBorderPane getOptionBorderPane() {
+		if(optionBorderPane==null) {
+			optionBorderPane = new OptionsBorderPane();
+			optionBorderPane.setVisible(false);
+		}
+		return optionBorderPane;
 	}
 
 	

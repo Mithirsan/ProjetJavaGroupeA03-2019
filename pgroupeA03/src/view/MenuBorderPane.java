@@ -29,8 +29,10 @@ public class MenuBorderPane extends BorderPane{
 	public Button getAdminButton() {
 		if(adminButton==null) {
 			adminButton = new Button("Admin");
-			
-		
+			adminButton.setOnAction(e->{
+				((FinalViewStackPane) getParent()).getMenuBorderPane().setVisible(false);
+				((FinalViewStackPane) getParent()).getLoginAdminAnchorPane().setVisible(true);
+			});
 		}
 		return adminButton;
 	}

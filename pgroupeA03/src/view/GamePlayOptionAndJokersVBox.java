@@ -36,6 +36,10 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 			btnOption = new Button("Options");
 			btnOption.getStyleClass().add("btnOption");
 			this.setSpacing(5);
+			btnOption.setOnAction(e->{
+				((FinalViewStackPane) getParent().getParent()).getOptionBorderPane().setVisible(true);
+				getParent().setVisible(false);
+			});
 			
 		}
 		return btnOption;
