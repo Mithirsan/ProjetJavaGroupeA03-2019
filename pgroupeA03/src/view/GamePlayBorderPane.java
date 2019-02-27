@@ -23,8 +23,6 @@ public class GamePlayBorderPane extends BorderPane {
 		getOptionAndJokers().getBtnJokerTimeFreezer().setOnAction(e->{
 			getTimer().freezeTimer(getTimer().getSeconds());
 		});
-		
-		
 	}
 	
 	public GamePlayStatementAndChoicesVBox getStatementAndChoices() {
