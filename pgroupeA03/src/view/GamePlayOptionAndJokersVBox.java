@@ -61,9 +61,15 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 		if(btnJokerTimeFreezer == null) {
 			btnJokerTimeFreezer = new Button("T F");
 			btnJokerTimeFreezer.getStyleClass().add("btnJoker");
-		}
+			
+			btnJokerTimeFreezer.setOnAction(e->{
+					((GamePlayBorderPane) getParent()).getTimer().freezeTimer(((GamePlayBorderPane) getParent()).getTimer().getSeconds());
+				});
+			}
 		return btnJokerTimeFreezer;
 	}
+		
+
 
 	public Button getBtnJokerAnotherChance() {
 		if(btnJokerAnotherChance == null) {

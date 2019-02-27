@@ -40,4 +40,6 @@ public class FinalViewStackPane extends StackPane{
 	public void setGamePlayBorderPane(GamePlayBorderPane gamePlayBorderPane) {
 		this.gamePlayBorderPane = gamePlayBorderPane;
 	}
+	
+	
 }

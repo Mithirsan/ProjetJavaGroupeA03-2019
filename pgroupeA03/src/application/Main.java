@@ -29,14 +29,7 @@ public class Main extends Application {
 		}
 		return finalViewStackPane;
 	}
-
-	public OptionsBorderPane getOptionsBorderPane() {
-		if(optionsBorderPane == null) {
-			optionsBorderPane = new OptionsBorderPane();
-		}
-		return optionsBorderPane;
-	}
-
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {

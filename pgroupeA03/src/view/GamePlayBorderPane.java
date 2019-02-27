@@ -16,15 +16,9 @@ public class GamePlayBorderPane extends BorderPane {
 		setCenter(getPoolStatus());
 		setRight(getLevels());
 		setBottom(getStatementAndChoices());
-		freeze();
 	}
 	
-	public void freeze() {
-		getOptionAndJokers().getBtnJokerTimeFreezer().setOnAction(e->{
-			getTimer().freezeTimer(getTimer().getSeconds());
-		});
-	}
-	
+
 	public GamePlayStatementAndChoicesVBox getStatementAndChoices() {
 		if(statementAndChoices==null) {
 			statementAndChoices = new GamePlayStatementAndChoicesVBox ();
