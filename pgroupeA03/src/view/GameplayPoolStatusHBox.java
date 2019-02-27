@@ -24,7 +24,7 @@ public class GameplayPoolStatusHBox extends HBox{
 	public Button getBtnLeaveWithPool() {
 		if (btnLeaveWithPool == null) {
 			btnLeaveWithPool = new Button("Leave with the actual pool");
-			btnLeaveWithPool.getStyleClass().add("btnLeaveWPool");
+//			btnLeaveWithPool.getStyleClass().add("btnLeaveWPool");
 		}
 		return btnLeaveWithPool;
 	}

@@ -28,7 +28,7 @@ public class GamePlayChoicesGridPane extends GridPane {
 	public Button getBtnAnswerA() {
 		if (btnAnswerA == null) {
 			btnAnswerA = new Button("A: ");
-			btnAnswerA.getStyleClass().add("btnAnswer");
+//			btnAnswerA.getStyleClass().add("btnAnswer");
 		}
 		return btnAnswerA;
 	}
@@ -36,7 +36,7 @@ public class GamePlayChoicesGridPane extends GridPane {
 	public Button getBtnAnswerB() {
 		if(btnAnswerB == null) {
 			btnAnswerB = new Button("B: ");
-			btnAnswerB.getStyleClass().add("btnAnswer");
+//			btnAnswerB.getStyleClass().add("btnAnswer");
 		}
 		return btnAnswerB;
 	}
@@ -44,7 +44,7 @@ public class GamePlayChoicesGridPane extends GridPane {
 	public Button getBtnAnswerC() {
 		if(btnAnswerC == null) {
 			btnAnswerC = new Button("C: ");
-			btnAnswerC.getStyleClass().add("btnAnswer");
+//			btnAnswerC.getStyleClass().add("btnAnswer");
 		}
 		return btnAnswerC;
 	}
@@ -52,7 +52,7 @@ public class GamePlayChoicesGridPane extends GridPane {
 	public Button getBtnAnswerD() {
 		if(btnAnswerD == null) {
 			btnAnswerD = new Button("D: ");
-			btnAnswerD.getStyleClass().add("btnAnswer");
+//			btnAnswerD.getStyleClass().add("btnAnswer");
 		}
 		return btnAnswerD;
 	}

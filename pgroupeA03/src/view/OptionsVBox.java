@@ -3,7 +3,6 @@ package view;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
-import sun.misc.Perf.GetPerfAction;
 
 public class OptionsVBox extends VBox{
 	private Button btnContinue;
