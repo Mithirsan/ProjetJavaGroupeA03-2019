@@ -11,7 +11,7 @@ import view.GamePlayLevelsVBox;
 import view.GamePlayOptionAndJokersVBox;
 import view.GamePlayStatementAndChoicesVBox;
 import view.GamePlayTimerHBox;
-import view.LoginAdminAnchor;
+import view.LoginAdminAnchorPane;
 import view.FinalViewStackPane;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -34,7 +34,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			BorderPane root = new BorderPane();
-			LoginAdminAnchor laa= new LoginAdminAnchor();
+			LoginAdminAnchorPane laa= new LoginAdminAnchorPane();
 			Scene scene = new Scene(getFinalViewStackPane(),400,400);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);

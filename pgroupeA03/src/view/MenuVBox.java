@@ -22,6 +22,10 @@ public class MenuVBox extends VBox{
 		if(btnPlay==null) {
 			btnPlay=new Button("Play");
 			btnPlay.setPrefWidth(prefWidth);
+			btnPlay.setOnAction(e->{
+				getParent().setVisible(false);
+				((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().setVisible(true);
+			});
 		}
 		return btnPlay;
 	}

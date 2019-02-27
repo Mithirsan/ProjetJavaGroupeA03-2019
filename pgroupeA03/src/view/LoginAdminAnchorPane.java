@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
-public class LoginAdminAnchor extends AnchorPane {
+public class LoginAdminAnchorPane extends AnchorPane {
 	
 		
 		private Label lblLogin;
@@ -25,7 +25,7 @@ public class LoginAdminAnchor extends AnchorPane {
 		private Button btnRetour;
 		private PasswordField pwdPassword;
 		
-		public LoginAdminAnchor () {
+		public LoginAdminAnchorPane () {
 			this.setPadding(new Insets(10));
 			this.getChildren().addAll(getLblLogin(),
 									getTxtLogin(),

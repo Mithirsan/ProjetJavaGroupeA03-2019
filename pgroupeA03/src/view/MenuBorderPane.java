@@ -29,6 +29,7 @@ public class MenuBorderPane extends BorderPane{
 	public Button getAdminButton() {
 		if(adminButton==null) {
 			adminButton = new Button("Admin");
+			
 		
 		}
 		return adminButton;
