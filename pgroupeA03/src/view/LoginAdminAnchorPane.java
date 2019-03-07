@@ -1,19 +1,22 @@
 package view;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.HPos;
+
 import javafx.geometry.Insets;
-import javafx.scene.Node;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
+import javafx.stage.Popup;
+
+
 
 public class LoginAdminAnchorPane extends AnchorPane {
 	
+		private AdminBorderPane adminBorderPane;
+		
+		private String login = "admin", password = "helha";
 		
 		private Label lblLogin;
 		private Label lblPassword;
@@ -26,7 +29,7 @@ public class LoginAdminAnchorPane extends AnchorPane {
 		private PasswordField pwdPassword;
 		
 		public LoginAdminAnchorPane () {
-			this.setPadding(new Insets(10));
+			this.setPadding(new Insets(5));
 			this.getChildren().addAll(getLblLogin(),
 									getTxtLogin(),
 									getLblPassword(),
@@ -55,9 +58,23 @@ public class LoginAdminAnchorPane extends AnchorPane {
 		setRightAnchor(getBtnRetour(),150.);
 		}
 
-			public Button getBtnValider() {
+		public Button getBtnValider() {
 			if(btnValider==null) {
 				btnValider=new Button("Valider");
+				btnValider.setOnAction(e->{
+					Popup errorPopup = new Popup();
+					final Label lblError = new Label("Error to proceed please check your password or login");
+					if((getTxtLogin().getText().equals(login))&&(getTxtPassword().getText().equals(password))) {
+						getAdminBorderPane().setVisible(true);
+						this.setVisible(false);
+						errorPopup.hide();
+					}	
+					else {	
+						errorPopup.getContent().add(lblError);
+						errorPopup.show(getScene().getWindow()); ;
+						
+					}
+				});
 				return btnValider;
 		}
 		return btnValider;
@@ -99,4 +116,14 @@ public class LoginAdminAnchorPane extends AnchorPane {
 			}
 		return btnRetour;
 		}
+
+		public AdminBorderPane getAdminBorderPane() {
+			if(adminBorderPane==null) {
+				adminBorderPane = new AdminBorderPane();
+				adminBorderPane.setVisible(false);
+			}
+			return adminBorderPane;
+		}
+		
+		
 	}
