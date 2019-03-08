@@ -14,7 +14,6 @@ import javafx.stage.Popup;
 
 public class LoginAdminAnchorPane extends AnchorPane {
 	
-		private AdminBorderPane adminBorderPane;
 		
 		private String login = "admin", password = "helha";
 		
@@ -65,9 +64,10 @@ public class LoginAdminAnchorPane extends AnchorPane {
 					Popup errorPopup = new Popup();
 					final Label lblError = new Label("Error to proceed please check your password or login");
 					if((getTxtLogin().getText().equals(login))&&(getTxtPassword().getText().equals(password))) {
-						getAdminBorderPane().setVisible(true);
-						this.setVisible(false);
 						errorPopup.hide();
+						((FinalViewStackPane) getParent()).getAdminBorderPane().setVisible(true);
+						((FinalViewStackPane) getParent()).getLoginAdminAnchorPane().setVisible(false);
+				
 					}	
 					else {	
 						errorPopup.getContent().add(lblError);
@@ -106,6 +106,7 @@ public class LoginAdminAnchorPane extends AnchorPane {
 			}
 			return pwdPassword;
 		}
+		
 		public Button getBtnRetour() {
 			if(btnRetour==null) {
 				btnRetour=new Button("Retour");
@@ -117,13 +118,7 @@ public class LoginAdminAnchorPane extends AnchorPane {
 		return btnRetour;
 		}
 
-		public AdminBorderPane getAdminBorderPane() {
-			if(adminBorderPane==null) {
-				adminBorderPane = new AdminBorderPane();
-				adminBorderPane.setVisible(false);
-			}
-			return adminBorderPane;
-		}
+		
 		
 		
 	}
