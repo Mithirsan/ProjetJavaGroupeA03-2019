@@ -60,19 +60,17 @@ public class LoginAdminAnchorPane extends AnchorPane {
 		public Button getBtnValider() {
 			if(btnValider==null) {
 				btnValider=new Button("Valider");
+				Popup errorPopup = new Popup();
 				btnValider.setOnAction(e->{
-					Popup errorPopup = new Popup();
+					errorPopup.hide();
 					final Label lblError = new Label("Error to proceed please check your password or login");
 					if((getTxtLogin().getText().equals(login))&&(getTxtPassword().getText().equals(password))) {
-						errorPopup.hide();
 						((FinalViewStackPane) getParent()).getAdminBorderPane().setVisible(true);
 						((FinalViewStackPane) getParent()).getLoginAdminAnchorPane().setVisible(false);
-				
 					}	
 					else {	
 						errorPopup.getContent().add(lblError);
-						errorPopup.show(getScene().getWindow()); ;
-						
+						errorPopup.show(getScene().getWindow()); ;			
 					}
 				});
 				return btnValider;
