@@ -10,6 +10,11 @@ public class AdminBorderPane extends BorderPane {
 	
 	private MenuBar menuBar;
 	private Menu menuQuit;
+	private Menu menuFile;
+	private MenuItem menuILoad;
+	private MenuItem menuISave;
+	private MenuItem menuISaveAs;
+	
 
 	public AdminBorderPane() {
 		setTop(getMenuBar());
@@ -20,7 +25,7 @@ public class AdminBorderPane extends BorderPane {
 	public MenuBar getMenuBar() {
 		if(menuBar==null) {
 			menuBar= new MenuBar();
-			menuBar.getMenus().add(getMenuQuit());
+			menuBar.getMenus().addAll(getMenuQuit(),getMenuFile());
 		}
 		return menuBar;
 	}
@@ -38,5 +43,34 @@ public class AdminBorderPane extends BorderPane {
 			
 		}
 		return menuQuit;
+	}
+
+	public Menu getMenuFile() {
+		if(menuFile==null) {
+			menuFile = new Menu("File");
+			menuFile.getItems().addAll(getMenuILoad(),getMenuISave(),getMenuISaveAs());
+		}
+		return menuFile;
+	}
+
+	public MenuItem getMenuILoad() {
+		if(menuILoad==null) {
+			menuILoad=new MenuItem("Load");
+		}
+		return menuILoad;
+	}
+
+	public MenuItem getMenuISave() {
+		if(menuISave==null) {
+			menuISave= new MenuItem("Save");
+		}
+		return menuISave;
+	}
+
+	public MenuItem getMenuISaveAs() {
+		if(menuISaveAs==null) {
+			menuISaveAs= new MenuItem("Save as ...");
+		}
+		return menuISaveAs;
 	}	
 }
