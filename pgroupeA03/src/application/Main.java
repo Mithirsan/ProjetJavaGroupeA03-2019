@@ -50,16 +50,16 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			BorderPane root = new BorderPane();
-			LoginAdminAnchor laa= new LoginAdminAnchor();
-			Scene scene = new Scene(getMenuBorderPane(),400,400);
-			Scene scene1 = new Scene(getOptionsBorderPane(),400,400);
-			Scene scene2 = new Scene (laa,303,200);
-			scene2.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene2);
+			//LoginAdminAnchor laa= new LoginAdminAnchor();
+			//Scene scene = new Scene(getMenuBorderPane(),400,400);
+			//Scene scene1 = new Scene(getOptionsBorderPane(),400,400);
+			//Scene scene2 = new Scene (laa,303,200);
+			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			//primaryStage.setScene(scene);
 
-			//Scene scene11 = new Scene(getFinalViewStackPane() , 800, 550);
-			//scene11.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			//primaryStage.setScene(scene11);
+			Scene scene = new Scene(getFinalViewStackPane() , 800, 550);
+			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			primaryStage.setScene(scene);
 
 			primaryStage.show();
 		} catch(Exception e) {
