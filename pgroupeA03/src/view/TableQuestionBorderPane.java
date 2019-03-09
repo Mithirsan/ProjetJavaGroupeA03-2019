@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -108,6 +107,9 @@ public class TableQuestionBorderPane extends BorderPane {
 	public TableColumn<Question, Map<String, Boolean>> getColChoices() {
 		if (colChoices == null) {
 			colChoices = new TableColumn<>("choices");
+			TableColumn colAnswer = new TableColumn<>("Answer"); 
+			TableColumn colValue = new TableColumn<>("Value"); 
+			colChoices.getColumns().addAll(colAnswer,colValue);	
 		}
 		return colChoices;
 	}
