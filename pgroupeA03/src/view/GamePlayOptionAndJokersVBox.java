@@ -34,8 +34,12 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 	public Button getBtnOption() {
 		if (btnOption == null) {
 			btnOption = new Button("Options");
-			btnOption.getStyleClass().add("btnOption");
+//			btnOption.getStyleClass().add("btnOption");
 			this.setSpacing(5);
+			btnOption.setOnAction(e->{
+				((FinalViewStackPane) getParent().getParent()).getOptionBorderPane().setVisible(true);
+				getParent().setVisible(false);
+			});
 			
 		}
 		return btnOption;
@@ -44,7 +48,7 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 	public Button getBtnJokerAudienceOpinion() {
 		if(btnJokerAudienceOpinion == null) {
 			btnJokerAudienceOpinion = new Button("A O");
-			btnJokerAudienceOpinion.getStyleClass().add("btnJoker");
+//			btnJokerAudienceOpinion.getStyleClass().add("btnJoker");
 		}
 		return btnJokerAudienceOpinion;
 	}
@@ -52,7 +56,7 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 	public Button getBtnJokerFiftyFifty() {
 		if(btnJokerFiftyFifty == null) {
 			btnJokerFiftyFifty = new Button("F F");
-			btnJokerFiftyFifty.getStyleClass().add("btnJoker");
+//			btnJokerFiftyFifty.getStyleClass().add("btnJoker");
 		}
 		return btnJokerFiftyFifty;
 	}
@@ -60,15 +64,21 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 	public Button getBtnJokerTimeFreezer() {
 		if(btnJokerTimeFreezer == null) {
 			btnJokerTimeFreezer = new Button("T F");
-			btnJokerTimeFreezer.getStyleClass().add("btnJoker");
-		}
+//			btnJokerTimeFreezer.getStyleClass().add("btnJoker");
+			
+			btnJokerTimeFreezer.setOnAction(e->{
+					((GamePlayBorderPane) getParent()).getTimer().freezeTimer(((GamePlayBorderPane) getParent()).getTimer().getSeconds());
+				});
+			}
 		return btnJokerTimeFreezer;
 	}
+		
+
 
 	public Button getBtnJokerAnotherChance() {
 		if(btnJokerAnotherChance == null) {
 			btnJokerAnotherChance = new Button("A C");
-			btnJokerAnotherChance.getStyleClass().add("btnJoker");
+//			btnJokerAnotherChance.getStyleClass().add("btnJoker");
 		}
 		return btnJokerAnotherChance;
 	}
@@ -76,7 +86,7 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 	public Separator getSeparator() {
 		if(separator == null) {
 			separator = new Separator();
-			separator.getStyleClass().add("sep");
+//			separator.getStyleClass().add("sep");
 		}
 		return separator;
 	}

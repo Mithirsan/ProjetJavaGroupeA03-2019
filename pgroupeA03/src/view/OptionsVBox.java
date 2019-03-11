@@ -22,12 +22,16 @@ public class OptionsVBox extends VBox{
 		if(btnContinue==null) {
 			btnContinue=new Button("Continue");
 			btnContinue.setPrefWidth(prefWidth);
+			btnContinue.setOnAction(e->{
+				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().setVisible(true);
+				((FinalViewStackPane) getParent() .getParent()).getOptionBorderPane().setVisible(false);
+				
+			});
 		}
 		return btnContinue;
 	}
-	public void setBtnContinue(Button btnContinue) {
-		this.btnContinue = btnContinue;
-	}
+
+	
 	public Button getBtnVolumeManagement() {
 		if(btnVolumeManagement==null) {
 			btnVolumeManagement=new Button("Volume Management");
@@ -35,9 +39,7 @@ public class OptionsVBox extends VBox{
 		}
 		return btnVolumeManagement;
 	}
-	public void setBtnVolumeManagement(Button btnVolumeManagement) {
-		this.btnVolumeManagement = btnVolumeManagement;
-	}
+
 	public Button getBtnDisplayManagement() {
 		if(btnDisplayManagement==null) {
 			btnDisplayManagement= new Button("Display Management");
@@ -45,21 +47,16 @@ public class OptionsVBox extends VBox{
 		}
 		return btnDisplayManagement;
 	}
-	public void setBtnOption(Button btnDisplayManagement) {
-		this.btnDisplayManagement = btnDisplayManagement;
-	}
+	
 	public Button getBtnQuit() {
 		if(btnQuit==null) {
 			btnQuit= new Button("Quit");
 			btnQuit.setPrefWidth(prefWidth);
 			btnQuit.setOnAction(e->{
-				System.exit(0);
+				((FinalViewStackPane) getParent() .getParent()).getOptionBorderPane().setVisible(false);
+				((FinalViewStackPane) getParent() .getParent()).getMenuBorderPane().setVisible(true);
 			});
 		}
 		return btnQuit;
-	}
-	public void setBtnQuit(Button btnQuit) {
-		this.btnQuit = btnQuit;
-	}
-	
+	}	
 }

@@ -11,13 +11,14 @@ public class OptionsBorderPane extends BorderPane {
 	
 	public OptionsBorderPane() {
 		setTop(getLblTitle());
+		setAlignment(getLblTitle(), Pos.CENTER);
 		setCenter(getOptionsVBox());
 	}
 	
 	
 	public Label getLblTitle() {
 		if(lblTitle==null) {
-			lblTitle= new Label("                                                         Option ");
+			lblTitle= new Label("Option");
 		}
 		return lblTitle;
 	}

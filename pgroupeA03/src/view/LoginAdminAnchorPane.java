@@ -1,19 +1,21 @@
 package view;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.HPos;
+
 import javafx.geometry.Insets;
-import javafx.scene.Node;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
+import javafx.stage.Popup;
 
-public class LoginAdminAnchor extends AnchorPane {
+
+
+public class LoginAdminAnchorPane extends AnchorPane {
 	
+		
+		private String login = "admin", password = "helha";
 		
 		private Label lblLogin;
 		private Label lblPassword;
@@ -25,8 +27,8 @@ public class LoginAdminAnchor extends AnchorPane {
 		private Button btnRetour;
 		private PasswordField pwdPassword;
 		
-		public LoginAdminAnchor () {
-			this.setPadding(new Insets(10));
+		public LoginAdminAnchorPane () {
+			this.setPadding(new Insets(5));
 			this.getChildren().addAll(getLblLogin(),
 									getTxtLogin(),
 									getLblPassword(),
@@ -55,9 +57,22 @@ public class LoginAdminAnchor extends AnchorPane {
 		setRightAnchor(getBtnRetour(),150.);
 		}
 
-			public Button getBtnValider() {
+		public Button getBtnValider() {
 			if(btnValider==null) {
 				btnValider=new Button("Valider");
+				Popup errorPopup = new Popup();
+				btnValider.setOnAction(e->{
+					errorPopup.hide();
+					final Label lblError = new Label("Error to proceed please check your password or login");
+					if((getTxtLogin().getText().equals(login))&&(getTxtPassword().getText().equals(password))) {
+						((FinalViewStackPane) getParent()).getAdminBorderPane().setVisible(true);
+						((FinalViewStackPane) getParent()).getLoginAdminAnchorPane().setVisible(false);
+					}	
+					else {	
+						errorPopup.getContent().add(lblError);
+						errorPopup.show(getScene().getWindow()); ;			
+					}
+				});
 				return btnValider;
 		}
 		return btnValider;
@@ -89,11 +104,19 @@ public class LoginAdminAnchor extends AnchorPane {
 			}
 			return pwdPassword;
 		}
+		
 		public Button getBtnRetour() {
 			if(btnRetour==null) {
 				btnRetour=new Button("Retour");
-				return btnRetour;
-		}
+				btnRetour.setOnAction(e->{
+					((FinalViewStackPane) getParent()).getLoginAdminAnchorPane().setVisible(false);
+					((FinalViewStackPane) getParent()).getMenuBorderPane().setVisible(true);
+				});;
+			}
 		return btnRetour;
 		}
+
+		
+		
+		
 	}

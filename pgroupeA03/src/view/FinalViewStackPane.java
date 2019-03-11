@@ -5,27 +5,21 @@ import javafx.scene.layout.StackPane;
 public class FinalViewStackPane extends StackPane{
 	private MenuBorderPane menuBorderPane;
 	private GamePlayBorderPane gamePlayBorderPane;
-	
+	private LoginAdminAnchorPane loginAdminAnchorPane;
+	private OptionsBorderPane optionBorderPane;
+	private AdminBorderPane adminBorderPane;
 	
 
 	public FinalViewStackPane() {
-		getChildren().addAll(getMenuBorderPane(),getGamePlayBorderPane());
+		getChildren().addAll(getMenuBorderPane(),getGamePlayBorderPane(),getLoginAdminAnchorPane(),getOptionBorderPane(),getAdminBorderPane());
 		
 	}
 
 	public MenuBorderPane getMenuBorderPane() {
 		if(menuBorderPane==null) {
 			menuBorderPane= new MenuBorderPane();
-			menuBorderPane.getMenuVBox().getBtnPlay().setOnAction(e->{
-				menuBorderPane.setVisible(false);
-				getGamePlayBorderPane().setVisible(true);
-			});
 		}
 		return menuBorderPane;
-	}
-
-	public void setMenuBorderPane(MenuBorderPane menuBorderPane) {
-		this.menuBorderPane = menuBorderPane;
 	}
 	
 	public GamePlayBorderPane getGamePlayBorderPane() {
@@ -37,7 +31,29 @@ public class FinalViewStackPane extends StackPane{
 		return gamePlayBorderPane;
 	}
 
-	public void setGamePlayBorderPane(GamePlayBorderPane gamePlayBorderPane) {
-		this.gamePlayBorderPane = gamePlayBorderPane;
+	public LoginAdminAnchorPane getLoginAdminAnchorPane() {
+		if(loginAdminAnchorPane==null) {
+			loginAdminAnchorPane= new LoginAdminAnchorPane();
+			loginAdminAnchorPane.setVisible(false);
+		}
+		return loginAdminAnchorPane;
 	}
+
+	public OptionsBorderPane getOptionBorderPane() {
+		if(optionBorderPane==null) {
+			optionBorderPane = new OptionsBorderPane();
+			optionBorderPane.setVisible(false);
+		}
+		return optionBorderPane;
+	}
+	
+	public AdminBorderPane getAdminBorderPane() {
+		if(adminBorderPane==null) {
+			adminBorderPane = new AdminBorderPane();
+			adminBorderPane.setVisible(false);
+		}
+		return adminBorderPane;
+	}
+	
+	
 }
