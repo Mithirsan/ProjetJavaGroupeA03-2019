@@ -15,11 +15,21 @@ public class AdminBorderPane extends BorderPane {
 	private MenuItem menuISave;
 	private MenuItem menuISaveAs;
 	
+	private TableQuestionBorderPane tableQuestion;
+	
 
 	public AdminBorderPane() {
 		setTop(getMenuBar());
+		setCenter(getTableQuestion());
 		
 		
+	}
+
+	public TableQuestionBorderPane getTableQuestion() {
+		if(tableQuestion==null) {	
+			tableQuestion = new TableQuestionBorderPane();
+		}
+		return tableQuestion;
 	}
 
 	public MenuBar getMenuBar() {
