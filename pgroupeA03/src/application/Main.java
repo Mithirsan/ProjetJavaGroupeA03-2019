@@ -1,18 +1,12 @@
 package application;
 	
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
-
-import view.MenuBorderPane;
-import view.OptionsBorderPane;
-
-import view.GamePlayBorderPane;
-import view.GamePlayLevelsVBox;
-import view.GamePlayOptionAndJokersVBox;
-import view.GamePlayStatementAndChoicesVBox;
-import view.GamePlayTimerHBox;
-import view.LoginAdminAnchorPane;
-import view.AdminBorderPane;
+import model.Deck;
 import view.FinalViewStackPane;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -34,7 +28,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			BorderPane root = new BorderPane();
-			Scene scene = new Scene(getFinalViewStackPane(),400,400);
+			Scene scene = new Scene(getFinalViewStackPane(), 960, 540);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 
@@ -45,6 +39,16 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
+		File file = new File("Test.json");
+		try {
+			Deck.getInstance().loadDeck(file);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		launch(args);
 	}
 }

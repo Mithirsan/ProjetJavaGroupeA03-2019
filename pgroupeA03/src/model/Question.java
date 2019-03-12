@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import exception.AlreadyFourChoicesException;
-import exception.AlreadyTrueChoice;
+import exception.AlreadyTrueChoiceException;
 
 
 public class Question {
@@ -22,7 +22,7 @@ public class Question {
 		this.setStatement(statement);
 		try {
 			this.setChoices(choices);
-		} catch (AlreadyTrueChoice e) {
+		} catch (AlreadyTrueChoiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (AlreadyFourChoicesException e) {
@@ -39,13 +39,13 @@ public class Question {
 		choices = new HashMap<String, Boolean>();
 	}
 
-	public boolean addChoices(String rep,Boolean value) throws AlreadyFourChoicesException, AlreadyTrueChoice{
+	public boolean addChoices(String rep,Boolean value) throws AlreadyFourChoicesException, AlreadyTrueChoiceException{
 		if(choices.size()>NB_CHOICES_MAX) {
 			throw new AlreadyFourChoicesException((byte) 0);
 		}
 		if(value==true) {
 			if(choices.containsValue(true)) {
-				throw new AlreadyTrueChoice((byte) 0);
+				throw new AlreadyTrueChoiceException((byte) 0);
 			}
 			else {
 				choices.put(rep, value);
@@ -86,7 +86,7 @@ public class Question {
 		return choices;
 	}
 
-	public boolean setChoices(Map <String,Boolean> choices) throws AlreadyTrueChoice, AlreadyFourChoicesException{
+	public boolean setChoices(Map <String,Boolean> choices) throws AlreadyTrueChoiceException, AlreadyFourChoicesException{
 		int nbTrue = 0, nbChoice = 0;
 		for(Map.Entry<String, Boolean> entry : choices.entrySet()) {
 			Boolean v = entry.getValue();
@@ -101,7 +101,7 @@ public class Question {
 			this.choices = choices;
 			return true;
 		}
-		throw new AlreadyTrueChoice((byte) 1);
+		throw new AlreadyTrueChoiceException((byte) 1);
 	}
 
 	@Override
@@ -132,5 +132,9 @@ public class Question {
 	@Override
 	public String toString() {
 		return "author=" + author + ", round=" + round + ",\n " + statement + ":\n " + choices + "\n\n";
+	}
+
+	public String getChoice(int i) {
+		return (String) choices.keySet().toArray()[i];
 	}
 }
