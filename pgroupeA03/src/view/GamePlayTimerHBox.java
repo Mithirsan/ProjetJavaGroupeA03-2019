@@ -26,12 +26,11 @@ public class GamePlayTimerHBox extends HBox {
 		
 		this.setAlignment(Pos.BASELINE_CENTER);
 		
-		startTimer();
 	}
 	
 	public Label getLblCountDown() {
 		if(lblCountDown == null) {
-			lblCountDown = new Label(START_TIME + "seconds remaining");
+			lblCountDown = new Label(START_TIME + " seconds remaining");
 		}
 		return lblCountDown;
 	}

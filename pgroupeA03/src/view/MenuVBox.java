@@ -25,6 +25,7 @@ public class MenuVBox extends VBox{
 			btnPlay.setOnAction(e->{
 				getParent().setVisible(false);
 				((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().setVisible(true);
+				((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getTimer().startTimer();
 			});
 		}
 		return btnPlay;
