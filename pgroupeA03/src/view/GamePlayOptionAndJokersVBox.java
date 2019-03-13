@@ -39,6 +39,7 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 			btnOption.setOnAction(e->{
 				((FinalViewStackPane) getParent().getParent()).getOptionBorderPane().setVisible(true);
 				getParent().setVisible(false);
+				((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getTimer().pauseTimer(true);
 			});
 			
 		}

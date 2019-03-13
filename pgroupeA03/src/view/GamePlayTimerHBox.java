@@ -45,6 +45,7 @@ public class GamePlayTimerHBox extends HBox {
 		if(timer != null) {
 			stopTimer();
 		}
+		getLblCountDown().setText(seconds + " seconds remaining");
 		KeyFrame frame = new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
 
 			@Override
@@ -63,7 +64,7 @@ public class GamePlayTimerHBox extends HBox {
 	
 	public void freezeTimer(int secTmp) {
 		this.stopTimer();
-		getLblCountDown().setText(secTmp + " seconds remaining");
+		getLblCountDown().setText("Time freezed !");
 		
 		
 	}
@@ -73,4 +74,14 @@ public class GamePlayTimerHBox extends HBox {
 		seconds = START_TIME;
 	}
 	
+	public void pauseTimer(boolean bool) {
+		if(bool) {
+			timer.stop();
+		}
+		else {
+			if(!getLblCountDown().getText().equals("Time freezed !")) {
+				timer.play();
+			}	
+		}
+	}
 }

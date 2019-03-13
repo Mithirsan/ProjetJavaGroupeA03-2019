@@ -25,6 +25,7 @@ public class OptionsVBox extends VBox{
 			btnContinue.setOnAction(e->{
 				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().setVisible(true);
 				((FinalViewStackPane) getParent() .getParent()).getOptionBorderPane().setVisible(false);
+				((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getTimer().pauseTimer(false);
 				
 			});
 		}
