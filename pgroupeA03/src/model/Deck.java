@@ -38,8 +38,9 @@ public class Deck {
 	}
 
 	public static void increaseIndex() {
-		index ++;
-		System.out.println(index);
+		if(index < 15) {
+			index ++;
+		}
 	}
 	
 	public List<Question> getQuestions() {

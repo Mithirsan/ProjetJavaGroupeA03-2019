@@ -29,6 +29,14 @@ public class GamePlayChoicesGridPane extends GridPane {
 	public Button getBtnAnswerA() {
 		if (btnAnswerA == null) {
 			btnAnswerA = new Button("A: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(0));
+			btnAnswerA.setOnAction(e->{
+				if(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(0)) {
+					this.refresh();	
+					//TODO if good answer
+				} else {
+					//TODO if bad answer
+				}
+			});
 //			btnAnswerA.getStyleClass().add("btnAnswer");
 		}
 		return btnAnswerA;
@@ -37,6 +45,14 @@ public class GamePlayChoicesGridPane extends GridPane {
 	public Button getBtnAnswerB() {
 		if(btnAnswerB == null) {
 			btnAnswerB = new Button("B: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(1));
+			btnAnswerB.setOnAction(e->{
+				if(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(1)) {
+					this.refresh();
+					//TODO if good answer
+				} else {
+					//TODO if bad answer
+				}
+			});
 //			btnAnswerB.getStyleClass().add("btnAnswer");
 		}
 		return btnAnswerB;
@@ -45,6 +61,14 @@ public class GamePlayChoicesGridPane extends GridPane {
 	public Button getBtnAnswerC() {
 		if(btnAnswerC == null) {
 			btnAnswerC = new Button("C: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(2));
+			btnAnswerC.setOnAction(e->{
+				if(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(2)) {
+					this.refresh();
+					//TODO if good answer
+				} else {
+					//TODO if bad answer
+				}
+			});
 //			btnAnswerC.getStyleClass().add("btnAnswer");
 		}
 		return btnAnswerC;
@@ -53,8 +77,25 @@ public class GamePlayChoicesGridPane extends GridPane {
 	public Button getBtnAnswerD() {
 		if(btnAnswerD == null) {
 			btnAnswerD = new Button("D: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(3));
+			btnAnswerD.setOnAction(e->{
+				if(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(3)) {
+					this.refresh();
+					//TODO if good answer
+				} else {
+					//TODO if ban answer
+				}
+			});
 //			btnAnswerD.getStyleClass().add("btnAnswer");
 		}
 		return btnAnswerD;
+	}
+	
+	private void refresh() {
+		Deck.increaseIndex();
+		((GamePlayStatementAndChoicesVBox) getParent()).getLblStatement().setText(Deck.getInstance().getQuestions().get(Deck.getIndex()).getStatement());
+		btnAnswerA.setText("A: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(0));
+		btnAnswerB.setText("B: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(1));
+		btnAnswerC.setText("C: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(2));
+		btnAnswerD.setText("D: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(3));
 	}
 }
