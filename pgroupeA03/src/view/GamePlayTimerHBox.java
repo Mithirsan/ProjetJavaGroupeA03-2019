@@ -38,6 +38,7 @@ public class GamePlayTimerHBox extends HBox {
 	public int getSeconds() {
 		return seconds;
 	}
+	
 
 	public void startTimer() {
 		timer = new Timeline();
@@ -62,7 +63,7 @@ public class GamePlayTimerHBox extends HBox {
 		timer.playFromStart();
 	}
 	
-	public void freezeTimer(int secTmp) {
+	public void freezeTimer() {
 		this.stopTimer();
 		getLblCountDown().setText("Time freezed !");
 		
@@ -83,5 +84,14 @@ public class GamePlayTimerHBox extends HBox {
 				timer.play();
 			}	
 		}
+	}
+
+	public Timeline getTimer() {
+		return timer;
+	}
+	
+	public void refreshTimer() {
+		stopTimer();
+		timer.play();
 	}
 }
