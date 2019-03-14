@@ -26,12 +26,11 @@ public class GamePlayTimerHBox extends HBox {
 		
 		this.setAlignment(Pos.BASELINE_CENTER);
 		
-		startTimer();
 	}
 	
 	public Label getLblCountDown() {
 		if(lblCountDown == null) {
-			lblCountDown = new Label(START_TIME + "seconds remaining");
+			lblCountDown = new Label(START_TIME + " seconds remaining");
 		}
 		return lblCountDown;
 	}
@@ -39,6 +38,7 @@ public class GamePlayTimerHBox extends HBox {
 	public int getSeconds() {
 		return seconds;
 	}
+	
 
 	public void startTimer() {
 		timer = new Timeline();
@@ -46,6 +46,7 @@ public class GamePlayTimerHBox extends HBox {
 		if(timer != null) {
 			stopTimer();
 		}
+		getLblCountDown().setText(seconds + " seconds remaining");
 		KeyFrame frame = new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
 
 			@Override
@@ -62,11 +63,9 @@ public class GamePlayTimerHBox extends HBox {
 		timer.playFromStart();
 	}
 	
-	public void freezeTimer(int secTmp) {
+	public void freezeTimer() {
 		this.stopTimer();
-		getLblCountDown().setText(secTmp + " seconds remaining");
-		
-		
+		getLblCountDown().setText("Time freezed !");
 	}
 	
 	public void stopTimer() {
@@ -74,4 +73,23 @@ public class GamePlayTimerHBox extends HBox {
 		seconds = START_TIME;
 	}
 	
+	public void pauseTimer(boolean bool) {
+		if(bool) {
+			timer.stop();
+		}
+		else {
+			if(!getLblCountDown().getText().equals("Time freezed !")) {
+				timer.play();
+			}	
+		}
+	}
+
+	public Timeline getTimer() {
+		return timer;
+	}
+	
+	public void refreshTimer() {
+		stopTimer();
+		timer.play();
+	}
 }

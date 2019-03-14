@@ -39,6 +39,7 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 			btnOption.setOnAction(e->{
 				((FinalViewStackPane) getParent().getParent()).getOptionBorderPane().setVisible(true);
 				getParent().setVisible(false);
+				((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getTimer().pauseTimer(true);
 			});
 			
 		}
@@ -67,7 +68,7 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 //			btnJokerTimeFreezer.getStyleClass().add("btnJoker");
 			
 			btnJokerTimeFreezer.setOnAction(e->{
-					((GamePlayBorderPane) getParent()).getTimer().freezeTimer(((GamePlayBorderPane) getParent()).getTimer().getSeconds());
+					((GamePlayBorderPane) getParent()).getTimer().freezeTimer();
 				});
 			}
 		return btnJokerTimeFreezer;

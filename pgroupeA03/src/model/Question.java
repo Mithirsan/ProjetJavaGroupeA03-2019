@@ -137,4 +137,8 @@ public class Question {
 	public String getChoice(int i) {
 		return (String) choices.keySet().toArray()[i];
 	}
+	
+	public boolean getChoiceValue(int i) {
+		return (boolean) choices.values().toArray()[i];
+	}
 }
