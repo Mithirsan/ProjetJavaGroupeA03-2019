@@ -27,8 +27,7 @@ public class FinalViewStackPane extends StackPane{
 	public GamePlayBorderPane getGamePlayBorderPane() {
 		if(gamePlayBorderPane==null) {
 			gamePlayBorderPane = new GamePlayBorderPane();
-			gamePlayBorderPane.setVisible(false);
-			
+			gamePlayBorderPane.setVisible(false);	
 		}
 		return gamePlayBorderPane;
 	}
@@ -64,7 +63,4 @@ public AddQuestionBorderPane getAddQuestionBorderPane() {
 	}
 		return addQuestionBorderPane;
 	}
-
-	
-	
 }
