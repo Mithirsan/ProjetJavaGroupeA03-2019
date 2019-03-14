@@ -61,11 +61,44 @@
             "statement": "How long does the revolution period of Mars take ?",      
             "choices": {        
                 "about 365 days and 6 hours ": false,        
-                "Mabout 687 days and 23 hours": true,        
+                "about 687 days and 23 hours": true,        
                 "about 876 days and 2 minutes": false,        
                 "1.65x earth's revolution period": false      
             }    
-        }
+        },
+        {
+            "author": "Axel Lux",
+            "round": "FIRST_ROUND",
+            "statement": "what's the shape of the Earth ?",
+            "choices": {
+                "Spherical": true,
+                "Flat": false,
+                "Rectangular": false,
+                "Triangular": false
+            }
+		},
+		{
+            "author": "Axel Lux",
+            "round": "SECOND_ROUND",
+            "statement": "Which one is the fourth planets of the solar system ?",
+            "choices": {
+                "Earth": false,
+                "Mars": true,
+                "Saturn": false,
+                "Jupiter": false
+            }
+		},
+		{
+            "author": "Axel Lux",
+            "round": "LAST_ROUND",
+            "statement": "What is the name of the biggest star ?",
+            "choices": {
+                "UY Scuti": true,
+                "the Sun": false,
+                "VY Canis Majoris": false,
+                "VV Cephei A": false
+            }    
+		}   
 	]
 }
 		
