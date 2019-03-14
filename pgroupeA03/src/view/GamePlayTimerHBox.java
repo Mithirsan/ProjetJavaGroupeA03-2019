@@ -62,11 +62,9 @@ public class GamePlayTimerHBox extends HBox {
 		timer.playFromStart();
 	}
 	
-	public void freezeTimer(int secTmp) {
+	public void freezeTimer() {
 		this.stopTimer();
 		getLblCountDown().setText("Time freezed !");
-		
-		
 	}
 	
 	public void stopTimer() {
