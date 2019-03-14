@@ -98,5 +98,6 @@ public class GamePlayChoicesGridPane extends GridPane {
 		btnAnswerC.setText("C: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(2));
 		btnAnswerD.setText("D: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(3));
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().refreshTimer();
+		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getLevels().nextStage();
 	}
 }

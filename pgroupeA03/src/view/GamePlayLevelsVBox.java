@@ -1,29 +1,51 @@
 package view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
-import javafx.scene.control.ListView;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import model.Stage;
 
 public class GamePlayLevelsVBox extends VBox {
 	
-	private ListView<String> lvLevels;
+	private List<Label> lblLevels;
+	
+	private int stage;
 	
 	public GamePlayLevelsVBox() {
 		this.setPadding(new Insets(10));
 		this.setSpacing(5);
-		
-		this.getChildren().addAll(getLvLevels());
+		this.getChildren().addAll(getLblLevels());
+	}
+
+	public List<Label> getLblLevels() {
+		if (lblLevels == null) {
+			lblLevels = new ArrayList<Label>();
+			int tmp = -1;
+			ObservableList<Stage> stages = FXCollections.observableArrayList(Stage.values());
+			for (Stage s : stages) {
+				Label tmpLabel = new Label(s.getStage());		
+				lblLevels.add(0,tmpLabel);
+				tmp ++;
+			}
+			stage = tmp;
+			lblLevels.get(stage).getStyleClass().add("stageActual");
+		}
+		return lblLevels;
 	}
 	
-	public ListView<String> getLvLevels() {
-		if(lvLevels == null) {
-			lvLevels = new ListView<String>();
-			ObservableList<String> items = FXCollections.observableArrayList(
-					"15", "14", "13", "12", "11", "10", "9", "8", "7", "6", "5", "4", "3", "2", "1");
-			lvLevels.setItems(items);
+	public void nextStage() {
+		lblLevels.get(stage).getStyleClass().remove("stageActual");
+		if(stage%5 ==0) {
+			lblLevels.get(stage).getStyleClass().add("stageWonSaved");
+		} else { 
+			lblLevels.get(stage).getStyleClass().add("stageWon");
 		}
-		return lvLevels;
+
+		lblLevels.get(--stage).getStyleClass().add("stageActual");
 	}
 }

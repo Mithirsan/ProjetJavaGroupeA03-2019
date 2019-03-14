@@ -4,6 +4,25 @@
 	-fx-font-size: 16pt;
 }
 
+/* Stage viex style */
+.stageActual{
+	-fx-font-smoothing-type: lcd;
+	-fx-font-size: 12pt;
+	-fx-text-fill: rgb(0,230,30);
+}
+
+.stageWon{
+	-fx-font-smoothing-type: lcd;
+	-fx-font-size: 11pt;
+	-fx-text-fill: rgb(134,210,64);
+}
+
+.stageWonSaved{
+	-fx-font-smoothing-type: lcd;
+	-fx-font-size: 13pt;
+	-fx-text-fill: rgb(0,210,34);
+}
+
 /* Answer buttons style */
 .btnAnswer{
 	-fx-padding: 8 15 15 15;
