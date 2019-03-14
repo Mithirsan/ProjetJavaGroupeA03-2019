@@ -23,8 +23,8 @@
 	-fx-text-fill: rgb(0,210,34);
 }
 
-/* Answer buttons style */
-.btnAnswer{
+/* button style */
+.btn{
 	-fx-padding: 8 15 15 15;
     -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
     -fx-background-radius: 8;
@@ -37,6 +37,25 @@
     -fx-font-weight: bold;
     -fx-font-size: 1.1em;
     -fx-text-fill: #FAFEF8;
+}
+.btn:hover {
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #A2A5A3 0%, #929593 100%),
+        #949795,
+        #ACAFAD,
+        radial-gradient(center 50% 50%, radius 100%, #BCBFBD, #A2A5A3);
+}
+.btn:pressed {
+    -fx-padding: 10 15 13 15;
+    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+}
+.btn Text {
+    -fx-fill: white;
+    -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
+}
+
+/* Answer buttons style */
+.btnAnswer{
     -fx-pref-width: 350px;
     -fx-pref-height: 50px;
 }
@@ -47,28 +66,9 @@
         #6ed83a,
         radial-gradient(center 50% 50%, radius 100%, #7fea4b, #4ec52c);
 }
-.btnAnswer:pressed {
-    -fx-padding: 10 15 13 15;
-    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
-}
-.btnAnswer Text {
-    -fx-fill: white;
-    -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
-}
 
 /* Joker buttons style */
 .btnJoker{
-	-fx-padding: 8 15 15 15;
-    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
-    -fx-background-radius: 8;
-    -fx-background-color: 
-        linear-gradient(from 0% 93% to 0% 100%, #A1A0A3 0%, #919093 100%),
-        #939295,
-        #ABAAAD,
-        radial-gradient(center 50% 50%, radius 100%, #BBBABD, #A1A0A3);
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
-    -fx-font-weight: bold;
-    -fx-font-size: 1.1em;
     -fx-pref-width: 25px;
     -fx-pref-height: 25px;	
 }
@@ -79,28 +79,9 @@
         #3a6ed8,
         radial-gradient(center 50% 50%, radius 100%, #4b7fea, #2c4ec5);
 }
-.btnJoker:pressed {
-    -fx-padding: 10 15 13 15;
-    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
-}
-.btnJoker Text {
-    -fx-fill: white;
-    -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
-}
 
 /* Option button style */
 .btnOption{
-	-fx-padding: 8 15 15 15;
-    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
-    -fx-background-radius: 8;
-    -fx-background-color: 
-        linear-gradient(from 0% 93% to 0% 100%, #A1A0A3 0%, #919093 100%),
-        #939295,
-        #ABAAAD,
-        radial-gradient(center 50% 50%, radius 100%, #BBBABD, #A1A0A3);
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
-    -fx-font-weight: bold;
-    -fx-font-size: 1.1em;
     -fx-pref-width: 25px;
     -fx-pref-height: 25px;	
 }
@@ -111,29 +92,9 @@
         #d83a6e,
         radial-gradient(center 50% 50%, radius 100%, #ea4b7f, #c52c4e);
 }
-.btnOption:pressed {
-    -fx-padding: 10 15 13 15;
-    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
-}
-.btnOption Text {
-    -fx-fill: white;
-    -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
-}
 
 /* Pool style */
 .btnLeaveWPool{
-	-fx-padding: 8 15 15 15;
-    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
-    -fx-background-radius: 8;
-    -fx-background-color: 
-        linear-gradient(from 0% 93% to 0% 100%, #A1A0A3 0%, #919093 100%),
-        #939295,
-        #ABAAAD,
-        radial-gradient(center 50% 50%, radius 100%, #BBBABD, #A1A0A3);
-    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
-    -fx-font-weight: bold;
-    -fx-font-size: 1.1em;
-    -fx-text-fill: #FAFEF8;
     -fx-pref-width: 250px;
     -fx-pref-height: 25px;	
 }
@@ -143,14 +104,6 @@
         #9dA440,
         #d8Ca6e,
         radial-gradient(center 50% 50%, radius 100%, #eaDb7f, #c5Bc4e);
-}
-.btnLeaveWPool:pressed {
-    -fx-padding: 10 15 13 15;
-    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
-}
-.btnLeaveWPool Text {
-    -fx-fill: white;
-    -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
 }
 .lblViewPool {
 	-fx-padding: 8 15 15 15;

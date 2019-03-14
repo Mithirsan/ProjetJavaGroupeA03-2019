@@ -13,7 +13,7 @@ public class GamePlayBorderPane extends BorderPane {
 	public GamePlayBorderPane() {
 		setTop(getTimer());
 		setLeft(getOptionAndJokers());
-		setCenter(getPoolStatus());
+//		setCenter(getPoolStatus());
 		setRight(getLevels());
 		setBottom(getStatementAndChoices());
 	}

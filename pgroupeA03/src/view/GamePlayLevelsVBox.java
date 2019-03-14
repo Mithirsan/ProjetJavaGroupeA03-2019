@@ -45,7 +45,8 @@ public class GamePlayLevelsVBox extends VBox {
 		} else { 
 			lblLevels.get(stage).getStyleClass().add("stageWon");
 		}
-
+		String tmp = lblLevels.get(stage).getText();
 		lblLevels.get(--stage).getStyleClass().add("stageActual");
+	//	((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getPoolStatus().getLblViewPool().setText(tmp);
 	}
 }
