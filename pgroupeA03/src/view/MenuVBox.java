@@ -1,8 +1,13 @@
 package view;
 
+import java.io.File;
+
+import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class MenuVBox extends VBox{
 	private Button btnPlay;
@@ -10,12 +15,15 @@ public class MenuVBox extends VBox{
 	private Button btnOption;
 	private Button btnQuit;
 	private static final double prefWidth = 150. ;
+	private MediaPlayer musicPlayer;
 			
 	
 	public MenuVBox() {
 		getChildren().addAll(getBtnPlay(),getBtnLoad(),getBtnOption(),getBtnQuit());
 		setSpacing(10);
 		setAlignment(Pos.CENTER);
+		getMusic().play();
+		getMusic().setVolume(0.05);
 	}
 	
 	public Button getBtnPlay() {
@@ -66,5 +74,20 @@ public class MenuVBox extends VBox{
 	public void setBtnQuit(Button btnQuit) {
 		this.btnQuit = btnQuit;
 	}
+
+	public static double getPrefwidth() {
+		return prefWidth;
+	}
+
+	public MediaPlayer getMusic() {
+		if( musicPlayer==null) {
+			Media media = new Media(new File("soundtrack/MusiqueTest.mp3").toURI().toString());
+			musicPlayer = new MediaPlayer(media);
+			musicPlayer.setCycleCount(Timeline.INDEFINITE);
+		}
+		return musicPlayer;
+	}
+	
+	
 	
 }
