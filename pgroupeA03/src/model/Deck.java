@@ -12,6 +12,9 @@ import java.util.List;
 
 
 public class Deck {
+	
+	private static int index = 0;
+	
 	private static Deck instance;
 	private List<Question> questions;
 	
@@ -28,6 +31,15 @@ public class Deck {
 
 	public Deck() {
 		questions = new ArrayList<>();
+	}
+	
+	public static int getIndex() {
+		return index;
+	}
+
+	public static void increaseIndex() {
+		index ++;
+		System.out.println(index);
 	}
 	
 	public List<Question> getQuestions() {
@@ -67,9 +79,9 @@ public class Deck {
 		return "Deck : " + questions;
 	}
 
-	public static String toJSon() {
-		Gson gson = new GsonBuilder().disableHtmlEscaping().create();
-		return gson.toJson(getInstance());
+	public String toJSon() {
+		Gson gson = new Gson();
+		return gson.toJson(this);
 	}
 	
 	public static Deck fromJSon(String json) {
@@ -83,6 +95,7 @@ public class Deck {
 			getInstance().addQuestion(x);
 		}
 	}
+	
 	public void loadDeck(File file) throws FileNotFoundException, IOException {
 		Deck fileDeck = fromJSon(Serializable.readDeck(file.getAbsolutePath()));
 		getInstance().questions.clear();

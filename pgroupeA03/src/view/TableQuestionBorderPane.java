@@ -1,5 +1,6 @@
 package view;
 
+import java.util.List;
 import java.util.Map;
 
 import javafx.collections.FXCollections;
@@ -107,9 +108,9 @@ public class TableQuestionBorderPane extends BorderPane {
 	public TableColumn<Question, Map<String, Boolean>> getColChoices() {
 		if (colChoices == null) {
 			colChoices = new TableColumn<>("choices");
-			TableColumn colAnswer = new TableColumn<>("Answer"); 
-			TableColumn colValue = new TableColumn<>("Value"); 
-			colChoices.getColumns().addAll(colAnswer,colValue);	
+			TableColumn<Question,List<String> >colAnswer = new TableColumn<>("Answer"); 
+			TableColumn<Question,List<Boolean> >colValue = new TableColumn<>("Value"); 
+			colChoices.getColumns().addAll(colAnswer,colValue);
 		}
 		return colChoices;
 	}
@@ -124,6 +125,10 @@ public class TableQuestionBorderPane extends BorderPane {
 	public Button getBtnAdd() {
 		if(btnAdd==null) {
 			btnAdd=new Button("Add");
+			btnAdd.setOnAction(e->{
+				((FinalViewStackPane)getParent().getParent()).getAddQuestionBorderPane().setVisible(true);
+				((FinalViewStackPane)getParent().getParent()).getAdminBorderPane().setVisible(false);
+			});
 		}
 		return btnAdd;
 	}

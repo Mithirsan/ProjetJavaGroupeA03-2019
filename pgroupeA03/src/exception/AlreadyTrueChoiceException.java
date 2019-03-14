@@ -1,8 +1,8 @@
 package exception;
 
-public class AlreadyTrueChoice extends Exception {
+public class AlreadyTrueChoiceException extends Exception {
 	
-	public AlreadyTrueChoice(byte i) {
+	public AlreadyTrueChoiceException(byte i) {
 		super(getMsg(i));
 	}
 	

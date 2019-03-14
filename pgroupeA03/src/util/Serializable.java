@@ -1,32 +1,34 @@
 package util;
 
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import model.Deck;
-
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class Serializable {
 	
-	public static String readDeck(String fileName) throws FileNotFoundException, IOException {
-		String res = "";
+	public static String readDeck(String fileName) {
 		String tmp = "";
-		BufferedReader reader = new BufferedReader(new FileReader(fileName));
-		while((tmp = reader.readLine()) != null) {
-			res += tmp;
+		try(Scanner scan = new Scanner(new BufferedInputStream(new FileInputStream(fileName)))){
+			while(scan.hasNext()) {
+				tmp += scan.nextLine();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		reader.close();
-		return res;
+		return tmp;
 	}
 	
-	public static void writeDeck(String fileName) throws IOException {
-		BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
-		writer.write(Deck.toJSon());
-		writer.close();
+	public static void writeDeck(String jsonObject, String fileName) {
+		try(PrintWriter json = new PrintWriter(new BufferedOutputStream(new FileOutputStream(fileName)))) {
+			json.write(jsonObject);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-
 }

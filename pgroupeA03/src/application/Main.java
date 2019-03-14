@@ -1,16 +1,14 @@
 package application;
 	
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import view.MenuBorderPane;
-import view.OptionsBorderPane;
+import model.Deck;
 
-import view.GamePlayBorderPane;
-import view.GamePlayLevelsVBox;
-import view.GamePlayOptionAndJokersVBox;
-import view.GamePlayStatementAndChoicesVBox;
-import view.GamePlayTimerHBox;
 import view.FinalViewStackPane;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -18,14 +16,7 @@ import javafx.scene.layout.BorderPane;
 
 public class Main extends Application {
 
-	private MenuBorderPane menuBorderPane;
-	private OptionsBorderPane optionsBorderPane;
-	public MenuBorderPane getMenuBorderPane() {
-		if(menuBorderPane == null) {
-			menuBorderPane = new MenuBorderPane();
-		}
-		return menuBorderPane;
-	}
+	
 	private FinalViewStackPane finalViewStackPane;
 	public FinalViewStackPane getFinalViewStackPane() {
 		if(finalViewStackPane == null) {
@@ -35,21 +26,12 @@ public class Main extends Application {
 		return finalViewStackPane;
 	}
 
-	public OptionsBorderPane getOptionsBorderPane() {
-		if(optionsBorderPane == null) {
-			optionsBorderPane = new OptionsBorderPane();
-		}
-		return optionsBorderPane;
-	}
-
-
-
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+			
 			BorderPane root = new BorderPane();
-
-			Scene scene = new Scene(getFinalViewStackPane() , 800, 550);
+			Scene scene = new Scene(getFinalViewStackPane(), 960, 540);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 
@@ -60,6 +42,16 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
+		File file = new File("Test.json");
+		try {
+			Deck.getInstance().loadDeck(file);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		launch(args);
 	}
 }
