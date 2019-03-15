@@ -108,7 +108,8 @@
 } */
 .lblViewPool {
 	-fx-font-smoothing-type: lcd;
-	-fx-pref-width: 50px;
+	-fx-alignment: CENTER_RIGHT;
+	-fx-pref-width: 100px;
 	-fx-font-size: 13pt;
 	-fx-font-weight: bold;	
 }
