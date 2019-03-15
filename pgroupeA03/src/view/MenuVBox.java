@@ -81,7 +81,7 @@ public class MenuVBox extends VBox{
 
 	public MediaPlayer getMusic() {
 		if( musicPlayer==null) {
-			Media media = new Media(new File("soundtrack/MusiqueTest.mp3").toURI().toString());
+			Media media = new Media(new File("ressources/sounds/MusiqueTest.mp3").toURI().toString());
 			musicPlayer = new MediaPlayer(media);
 			musicPlayer.setCycleCount(Timeline.INDEFINITE);
 		}
