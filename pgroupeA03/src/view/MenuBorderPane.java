@@ -1,6 +1,8 @@
 package view;
 
 
+import java.io.File;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -20,7 +22,7 @@ public class MenuBorderPane extends BorderPane{
 
 	public MenuBorderPane() {
 		BackgroundSize backgroundSize = new BackgroundSize( 960, 540, true, true, true, false);
-		BackgroundImage bg = new BackgroundImage(new Image("Background.jpg"), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+		BackgroundImage bg = new BackgroundImage(new Image(new File("ressources/pictures/Background.jpg").toURI().toString()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
 		setBackground(new Background(bg));
 		setCenter(getMenuVBox());
 		
