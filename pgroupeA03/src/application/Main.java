@@ -9,8 +9,6 @@ import javafx.stage.Stage;
 import model.Deck;
 import view.FinalViewStackPane;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-
 
 public class Main extends Application {
 
@@ -27,10 +25,10 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = new BorderPane();
 			Scene scene = new Scene(getFinalViewStackPane(), 960, 540);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
+			primaryStage.setTitle(" Who want to reduce his punishment ?");
 
 			primaryStage.show();
 		} catch(Exception e) {

@@ -51,5 +51,10 @@ public class GamePlayLevelsVBox extends VBox {
 	}
 
 	public void restart() {
+		for(Label l : lblLevels) {
+			l.getStyleClass().removeAll("stageActual", "stageWonSaved", "stageWon");
+		}
+		stage = 14;
+		lblLevels.get(stage).getStyleClass().add("stageActual");
 	}
 }

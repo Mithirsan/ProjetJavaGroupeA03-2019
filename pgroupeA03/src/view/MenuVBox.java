@@ -14,7 +14,6 @@ public class MenuVBox extends VBox{
 	private Button btnLoad;
 	private Button btnOption;
 	private Button btnQuit;
-	private static final double prefWidth = 150. ;
 	private MediaPlayer musicPlayer;
 			
 	
@@ -29,7 +28,7 @@ public class MenuVBox extends VBox{
 	public Button getBtnPlay() {
 		if(btnPlay==null) {
 			btnPlay=new Button("Play");
-			btnPlay.setPrefWidth(prefWidth);
+			btnPlay.getStyleClass().add("mainMenuBtn");
 			btnPlay.setOnAction(e->{
 				getParent().setVisible(false);
 				((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().setVisible(true);
@@ -44,27 +43,27 @@ public class MenuVBox extends VBox{
 	public Button getBtnLoad() {
 		if(btnLoad==null) {
 			btnLoad=new Button("Load");
-			btnLoad.setPrefWidth(prefWidth);
+			btnLoad.getStyleClass().add("mainMenuBtn");
+			
+			btnLoad.setDisable(true);
 		}
 		return btnLoad;
 	}
-	public void setBtnLoad(Button btnLoad) {
-		this.btnLoad = btnLoad;
-	}
+	
 	public Button getBtnOption() {
 		if(btnOption==null) {
 			btnOption= new Button("Option");
-			btnOption.setPrefWidth(prefWidth);
+			btnOption.getStyleClass().add("mainMenuBtn");
+			
+			btnOption.setDisable(true);
 		}
 		return btnOption;
 	}
-	public void setBtnOption(Button btnOption) {
-		this.btnOption = btnOption;
-	}
+	
 	public Button getBtnQuit() {
 		if(btnQuit==null) {
 			btnQuit= new Button("Quit");
-			btnQuit.setPrefWidth(prefWidth);
+			btnQuit.getStyleClass().add("mainMenuBtn");
 			btnQuit.setOnAction(e->{
 				System.exit(0);
 			});
@@ -75,10 +74,6 @@ public class MenuVBox extends VBox{
 		this.btnQuit = btnQuit;
 	}
 
-	public static double getPrefwidth() {
-		return prefWidth;
-	}
-
 	public MediaPlayer getMusic() {
 		if( musicPlayer==null) {
 			Media media = new Media(new File("ressources/sounds/MusiqueTest.mp3").toURI().toString());
@@ -87,7 +82,4 @@ public class MenuVBox extends VBox{
 		}
 		return musicPlayer;
 	}
-	
-	
-	
 }

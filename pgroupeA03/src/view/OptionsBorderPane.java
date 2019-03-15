@@ -10,8 +10,8 @@ public class OptionsBorderPane extends BorderPane {
 	private OptionsVBox optionsVBox;
 	
 	public OptionsBorderPane() {
-		setTop(getLblTitle());
-		setAlignment(getLblTitle(), Pos.CENTER);
+//		setTop(getLblTitle());
+//		setAlignment(getLblTitle(), Pos.CENTER);
 		setCenter(getOptionsVBox());
 	}
 	

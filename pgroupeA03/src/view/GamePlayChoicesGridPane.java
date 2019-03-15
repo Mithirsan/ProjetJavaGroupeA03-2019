@@ -38,7 +38,7 @@ public class GamePlayChoicesGridPane extends GridPane {
 		
 				}
 			});
-//			btnAnswerA.getStyleClass().add("btnAnswer");
+			btnAnswerA.getStyleClass().add("btnAnswer");
 		}
 		return btnAnswerA;
 	}
@@ -55,7 +55,7 @@ public class GamePlayChoicesGridPane extends GridPane {
 				
 				}
 			});
-//			btnAnswerB.getStyleClass().add("btnAnswer");
+			btnAnswerB.getStyleClass().add("btnAnswer");
 		}
 		return btnAnswerB;
 	}
@@ -71,7 +71,7 @@ public class GamePlayChoicesGridPane extends GridPane {
 					
 				}
 			});
-//			btnAnswerC.getStyleClass().add("btnAnswer");
+			btnAnswerC.getStyleClass().add("btnAnswer");
 		}
 		return btnAnswerC;
 	}
@@ -87,7 +87,7 @@ public class GamePlayChoicesGridPane extends GridPane {
 					this.fail(); 
 				}
 			});
-//			btnAnswerD.getStyleClass().add("btnAnswer");
+			btnAnswerD.getStyleClass().add("btnAnswer");
 		}
 		return btnAnswerD;
 	}
