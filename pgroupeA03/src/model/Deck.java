@@ -101,6 +101,7 @@ public class Deck {
 		Deck fileDeck = fromJSon(Serializable.readDeck(file.getAbsolutePath()));
 		getInstance().questions.clear();
 		for(Question x : fileDeck.getQuestions()) {
+			x.shuffleChoices();
 			getInstance().addQuestion(x);
 		}
 	}
