@@ -102,7 +102,7 @@ public class GamePlayChoicesGridPane extends GridPane {
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().refreshTimer();
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getLevels().nextStage();
 	}
-	private void fail() {
+	public void fail() {
 		((FinalViewStackPane)getParent().getParent().getParent()).getGamePlayBorderPane().setVisible(false);
 		((GamePlayBorderPane)getParent().getParent()).start();
 		((FinalViewStackPane) getParent(). getParent().getParent()).getGamePlayBorderPane().getTimer().stopTimer();

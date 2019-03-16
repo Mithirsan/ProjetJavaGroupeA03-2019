@@ -55,6 +55,7 @@ public class GamePlayTimerHBox extends HBox {
 				getLblCountDown().setText(seconds + " seconds remaining");
 				if(seconds <= 0) {
 					stopTimer();
+					((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getStatementAndChoices().getChoices().fail();
 				}
 				
 			}
