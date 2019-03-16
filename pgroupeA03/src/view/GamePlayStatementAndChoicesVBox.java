@@ -10,12 +10,12 @@ public class GamePlayStatementAndChoicesVBox extends VBox {
 	
 	private Label lblStatement;
 	
-	private GamePlayChoicesGridPane choices = new GamePlayChoicesGridPane();
+	private GamePlayChoicesGridPane choices;
 	
 	public GamePlayStatementAndChoicesVBox() {
 		this.setPadding(new Insets(5));
 		
-		this.getChildren().addAll(getLblStatement(), choices);
+		this.getChildren().addAll(getLblStatement(), getChoices());
 		
 		this.setAlignment(Pos.CENTER);
 	}
@@ -27,4 +27,12 @@ public class GamePlayStatementAndChoicesVBox extends VBox {
 		}
 		return lblStatement;
 	}
+
+	public GamePlayChoicesGridPane getChoices() {
+		if(choices == null) {
+			choices = new GamePlayChoicesGridPane();
+		}
+		return choices;
+	}
+	
 }
