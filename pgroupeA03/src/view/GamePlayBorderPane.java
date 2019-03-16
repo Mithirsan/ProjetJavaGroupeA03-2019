@@ -52,7 +52,7 @@ public class GamePlayBorderPane extends BorderPane {
 		}
 		return poolStatus;
 	}
-	public void start () {
+	public void reset() {
 		getLevels().restart();
 		getPoolStatus().getLblViewPool().setText("none");
 	}
