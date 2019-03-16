@@ -38,4 +38,5 @@ public class GameplayPoolStatusHBox extends HBox{
 		}
 		return lblViewPool;
 	}
+	
 }
