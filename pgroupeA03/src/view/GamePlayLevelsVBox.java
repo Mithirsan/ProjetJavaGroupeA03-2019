@@ -53,6 +53,7 @@ public class GamePlayLevelsVBox extends VBox {
 		if (stage == 0) {
 			((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().setVisible(false);
 			((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getTimer().stopTimer();
+			((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().reset();
 			((FinalViewStackPane) getParent().getParent()).getWinScreen().setVisible(true);
 			
 		} else {
