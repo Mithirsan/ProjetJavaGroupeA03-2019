@@ -16,6 +16,10 @@ public class GamePlayLevelsVBox extends VBox {
 	
 	private int stage;
 	
+	
+	
+
+
 	public GamePlayLevelsVBox() {
 		this.setPadding(new Insets(10));
 		this.setSpacing(5);
@@ -47,7 +51,8 @@ public class GamePlayLevelsVBox extends VBox {
 		}
 		String tmp = lblLevels.get(stage).getText();
 		if (stage == 0) {
-			//TODO Win screen
+			((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().setVisible(false);
+			((FinalViewStackPane) getParent().getParent()).getWinScreen().setVisible(true);
 		} else {
 			lblLevels.get(--stage).getStyleClass().add("stageActual");
 		    ((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getPoolStatus().getLblViewPool().setText(tmp);
@@ -61,4 +66,5 @@ public class GamePlayLevelsVBox extends VBox {
 		stage = 14;
 		lblLevels.get(stage).getStyleClass().add("stageActual");
 	}
+	
 }
