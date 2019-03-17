@@ -30,6 +30,10 @@ public class WinScreenBorderPane extends BorderPane {
 			portalImageView.setPreserveRatio(true);
 			portalImageView.setSmooth(true);
 			portalImageView.setCache(true);
+			portalImageView.setOnMouseClicked(e->{
+				((FinalViewStackPane) getParent()).getMenuBorderPane().setVisible(true);
+				((FinalViewStackPane) getParent()).getWinScreen().setVisible(false);
+			});
 		}
 		return portalImageView;
 	}
