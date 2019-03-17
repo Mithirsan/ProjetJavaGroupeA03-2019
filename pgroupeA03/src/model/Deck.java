@@ -39,8 +39,10 @@ public class Deck {
 	}
 
 	public static void increaseIndex() {
-		if(index < 14) {
+		if(index < 15) {
 			index ++;
+		} else {
+			index%=15;
 		}
 	}
 	
@@ -49,7 +51,7 @@ public class Deck {
 	}
 
 	public void setDeck(List<Question> questions){
-		this.questions=questions;
+		this.questions = questions;
 	}
 	
 	public boolean addQuestion(Question x){
@@ -106,5 +108,6 @@ public class Deck {
 			nbQuestion++;
 			getInstance().addQuestion(x);
 		}
+//		Collections.shuffle(questions);
 	}
 }
