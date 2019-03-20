@@ -29,10 +29,7 @@ public class ChoicesVBox extends VBox{
 		
 	}
 	
-	public void setTxtChoices1(TextField txtChoices1) {
-		this.txtChoices1 = txtChoices1;
-	}
-	
+
 	public TextField getTxtChoices2() {
 		if(txtChoices2==null) {
 			txtChoices2 = new TextField();
@@ -42,9 +39,6 @@ public class ChoicesVBox extends VBox{
 		
 	}
 	
-	public void setTxtChoices2(TextField txtChoices2) {
-		this.txtChoices2 = txtChoices2;
-	}
 	
 	public TextField getTxtChoices3() {
 		if(txtChoices3==null) {
@@ -55,9 +49,6 @@ public class ChoicesVBox extends VBox{
 		
 	}
 	
-	public void setTxtChoices3(TextField txtChoices3) {
-		this.txtChoices3 = txtChoices3;
-	}
 	
 	public TextField getTxtChoices4() {
 		if(txtChoices4==null) {

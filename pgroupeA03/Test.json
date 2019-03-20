@@ -98,7 +98,29 @@
                 "VY Canis Majoris": false,
                 "VV Cephei A": false
             }    
-		}   
+        }, 
+        {
+            "author": "to delete",
+            "round": "FIRST_ROUND",
+            "statement": "what's not a dish ?",
+            "choices": {
+                "donut": false,
+                "tnt": true,
+                "rice": false,
+                "pizza": false
+            }
+        },
+        {
+            "author": "To delete",
+            "round": "FIRST_ROUND",
+            "statement": "this game is code in ?",
+            "choices": {
+                "Phyton": false,
+                "Java": true,
+                "C++": false,
+                "C#": false
+            }
+		} 
 	]
 }
 		

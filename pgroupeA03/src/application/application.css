@@ -4,22 +4,26 @@
 	-fx-font-size: 16pt;
 }
 
+.withe{
+	-fx-text-fill: rgb(230,230,230);
+}
+
 /* Stage viex style */
 .stageActual{
 	-fx-font-smoothing-type: lcd;
-	-fx-font-size: 12pt;
-	-fx-text-fill: rgb(0,230,30);
+	-fx-font-size: 11pt;
+	-fx-text-fill: rgb(0,230,183);
 }
 
 .stageWon{
 	-fx-font-smoothing-type: lcd;
-	-fx-font-size: 11pt;
+	-fx-font-size: 9pt;
 	-fx-text-fill: rgb(134,210,64);
 }
 
 .stageWonSaved{
 	-fx-font-smoothing-type: lcd;
-	-fx-font-size: 13pt;
+	-fx-font-size: 10pt;
 	-fx-text-fill: rgb(0,210,34);
 }
 
@@ -56,9 +60,9 @@
 
 /* Answer buttons style */
 .btnAnswer{
-    -fx-pref-width: 350px;
-    -fx-pref-height: 50px;
-}
+    -fx-pref-width: 400px;
+    -fx-pref-height: 35px;
+} /* 
 .btnAnswer:hover {
     -fx-background-color: 
         linear-gradient(from 0% 93% to 0% 100%, #43a313 0%, #3b9012 100%),
@@ -69,9 +73,9 @@
 
 /* Joker buttons style */
 .btnJoker{
-    -fx-pref-width: 25px;
+    -fx-pref-width: 85px;
     -fx-pref-height: 25px;	
-}
+} /*
 .btnJoker:hover {
     -fx-background-color: 
         linear-gradient(from 0% 93% to 0% 100%, #1343a3 0%, #123b90 100%),
@@ -82,9 +86,9 @@
 
 /* Option button style */
 .btnOption{
-    -fx-pref-width: 25px;
+    -fx-pref-width: 85px;
     -fx-pref-height: 25px;	
-}
+} /*
 .btnOption:hover {
     -fx-background-color: 
         linear-gradient(from 0% 93% to 0% 100%, #a31343 0%, #90123b 100%),
@@ -95,19 +99,21 @@
 
 /* Pool style */
 .btnLeaveWPool{
-    -fx-pref-width: 250px;
-    -fx-pref-height: 25px;	
-}
+	-fx-font-size: 10pt;
+    -fx-pref-width: 180px;
+    -fx-pref-height: 25px;
+} /*
 .btnLeaveWPool:hover {
     -fx-background-color: 
         linear-gradient(from 0% 93% to 0% 100%, #a39343 0%, #90923b 100%),
         #9dA440,
         #d8Ca6e,
         radial-gradient(center 50% 50%, radius 100%, #eaDb7f, #c5Bc4e);
-}
+} */
 .lblViewPool {
-	-fx-padding: 8 15 15 15;
 	-fx-font-smoothing-type: lcd;
+	-fx-alignment: CENTER_RIGHT;
+	-fx-pref-width: 100px;
 	-fx-font-size: 13pt;
 	-fx-font-weight: bold;	
 }
@@ -115,4 +121,17 @@
 /* separator invisible */
 .sep{
 	-fx-background-color: #FFFFFF;
+}
+
+/* Main menu button */
+.mainMenuBtn {
+	-fx-pref-width: 255px;
+    -fx-pref-height: 30px;
+}
+
+/* Admin btn on main menu */
+.btnAdmin {
+	-fx-pref-width: 55px;
+    -fx-pref-height: 30px;
+    -fx-border-insets: 5px;
 }

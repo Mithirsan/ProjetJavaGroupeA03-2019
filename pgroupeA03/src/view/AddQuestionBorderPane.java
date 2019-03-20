@@ -48,11 +48,6 @@ public class AddQuestionBorderPane extends BorderPane{
 		return trueVBox;
 	}
 
-
-	public void setVbt(TrueVBox vbt) {
-		this.trueVBox = vbt;
-	}
-
 	public Button getBtnOk() {
 		if(btnOK==null) {
 			btnOK= new Button("OK");
@@ -61,9 +56,5 @@ public class AddQuestionBorderPane extends BorderPane{
 		return btnOK;
 	}
 
-
-	public void setBtnOk(Button btnOk) {
-		this.btnOK = btnOk;
-	}
 
 }

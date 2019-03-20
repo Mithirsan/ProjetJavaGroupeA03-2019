@@ -9,10 +9,13 @@ public class FinalViewStackPane extends StackPane{
 	private OptionsBorderPane optionBorderPane;
 	private AdminBorderPane adminBorderPane;
 	private AddQuestionBorderPane addQuestionBorderPane;
+	private WinScreenBorderPane WinScreen;
+	private LooseScreenBorderPane looseScreenBorderPane;
 	
 
 	public FinalViewStackPane() {
-		getChildren().addAll(getMenuBorderPane(),getGamePlayBorderPane(),getLoginAdminAnchorPane(),getOptionBorderPane(),getAdminBorderPane(),getAddQuestionBorderPane());
+		getChildren().addAll(getMenuBorderPane(),getGamePlayBorderPane(),getLoginAdminAnchorPane()
+				,getOptionBorderPane(),getAdminBorderPane(),getAddQuestionBorderPane(),getWinScreen(),getLooseScreenBorderPane());
 		
 	}
 
@@ -27,8 +30,7 @@ public class FinalViewStackPane extends StackPane{
 	public GamePlayBorderPane getGamePlayBorderPane() {
 		if(gamePlayBorderPane==null) {
 			gamePlayBorderPane = new GamePlayBorderPane();
-			gamePlayBorderPane.setVisible(false);
-			
+			gamePlayBorderPane.setVisible(false);	
 		}
 		return gamePlayBorderPane;
 	}
@@ -64,7 +66,30 @@ public AddQuestionBorderPane getAddQuestionBorderPane() {
 	}
 		return addQuestionBorderPane;
 	}
+public WinScreenBorderPane getWinScreen() {
+	if (WinScreen==null) {
+		WinScreen = new WinScreenBorderPane();
+		WinScreen.setVisible(false);
+		WinScreen.setOnMouseClicked(e->{
+			WinScreen.setVisible(false);
+			getMenuBorderPane().setVisible(true);
+		});
+	}
+	return WinScreen;
+	}
 
-	
+
+public LooseScreenBorderPane getLooseScreenBorderPane() {
+	if(looseScreenBorderPane==null) {
+		looseScreenBorderPane = new LooseScreenBorderPane();
+		looseScreenBorderPane.setVisible(false);
+		looseScreenBorderPane.setOnMouseClicked(e->{
+			looseScreenBorderPane.setVisible(false);
+			getMenuBorderPane().setVisible(true);
+		});
+	}
+	return looseScreenBorderPane;
+}
+
 	
 }

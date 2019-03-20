@@ -32,12 +32,13 @@ public class GamePlayChoicesGridPane extends GridPane {
 			btnAnswerA.setOnAction(e->{
 				if(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(0)) {
 					this.refresh();	
-					//TODO if good answer
+				
 				} else {
-					//TODO if bad answer
+					this.fail();
+		
 				}
 			});
-//			btnAnswerA.getStyleClass().add("btnAnswer");
+			btnAnswerA.getStyleClass().add("btnAnswer");
 		}
 		return btnAnswerA;
 	}
@@ -48,12 +49,13 @@ public class GamePlayChoicesGridPane extends GridPane {
 			btnAnswerB.setOnAction(e->{
 				if(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(1)) {
 					this.refresh();
-					//TODO if good answer
+		
 				} else {
-					//TODO if bad answer
+					this.fail();
+				
 				}
 			});
-//			btnAnswerB.getStyleClass().add("btnAnswer");
+			btnAnswerB.getStyleClass().add("btnAnswer");
 		}
 		return btnAnswerB;
 	}
@@ -64,12 +66,12 @@ public class GamePlayChoicesGridPane extends GridPane {
 			btnAnswerC.setOnAction(e->{
 				if(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(2)) {
 					this.refresh();
-					//TODO if good answer
 				} else {
-					//TODO if bad answer
+					this.fail();
+					
 				}
 			});
-//			btnAnswerC.getStyleClass().add("btnAnswer");
+			btnAnswerC.getStyleClass().add("btnAnswer");
 		}
 		return btnAnswerC;
 	}
@@ -80,12 +82,12 @@ public class GamePlayChoicesGridPane extends GridPane {
 			btnAnswerD.setOnAction(e->{
 				if(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(3)) {
 					this.refresh();
-					//TODO if good answer
+
 				} else {
-					//TODO if ban answer
+					this.fail(); 
 				}
 			});
-//			btnAnswerD.getStyleClass().add("btnAnswer");
+			btnAnswerD.getStyleClass().add("btnAnswer");
 		}
 		return btnAnswerD;
 	}
@@ -99,5 +101,11 @@ public class GamePlayChoicesGridPane extends GridPane {
 		btnAnswerD.setText("D: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(3));
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().refreshTimer();
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getLevels().nextStage();
+	}
+	public void fail() {
+		((FinalViewStackPane)getParent().getParent().getParent()).getGamePlayBorderPane().setVisible(false);
+		((GamePlayBorderPane)getParent().getParent()).reset();
+		((FinalViewStackPane) getParent(). getParent().getParent()).getGamePlayBorderPane().getTimer().stopTimer();
+		((FinalViewStackPane)getParent().getParent().getParent()).getLooseScreenBorderPane().setVisible(true);
 	}
 }

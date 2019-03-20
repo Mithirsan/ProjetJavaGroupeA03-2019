@@ -1,27 +1,34 @@
 package view;
 
+import java.io.File;
+
+import javafx.animation.Timeline;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 public class MenuVBox extends VBox{
 	private Button btnPlay;
 	private Button btnLoad;
 	private Button btnOption;
 	private Button btnQuit;
-	private static final double prefWidth = 150. ;
+	private MediaPlayer musicPlayer;
 			
 	
 	public MenuVBox() {
 		getChildren().addAll(getBtnPlay(),getBtnLoad(),getBtnOption(),getBtnQuit());
 		setSpacing(10);
 		setAlignment(Pos.CENTER);
+		getMusic().play();
+		getMusic().setVolume(0.05);
 	}
 	
 	public Button getBtnPlay() {
 		if(btnPlay==null) {
 			btnPlay=new Button("Play");
-			btnPlay.setPrefWidth(prefWidth);
+			btnPlay.getStyleClass().add("mainMenuBtn");
 			btnPlay.setOnAction(e->{
 				getParent().setVisible(false);
 				((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().setVisible(true);
@@ -36,27 +43,27 @@ public class MenuVBox extends VBox{
 	public Button getBtnLoad() {
 		if(btnLoad==null) {
 			btnLoad=new Button("Load");
-			btnLoad.setPrefWidth(prefWidth);
+			btnLoad.getStyleClass().add("mainMenuBtn");
+			
+			btnLoad.setDisable(true);
 		}
 		return btnLoad;
 	}
-	public void setBtnLoad(Button btnLoad) {
-		this.btnLoad = btnLoad;
-	}
+	
 	public Button getBtnOption() {
 		if(btnOption==null) {
 			btnOption= new Button("Option");
-			btnOption.setPrefWidth(prefWidth);
+			btnOption.getStyleClass().add("mainMenuBtn");
+			
+			btnOption.setDisable(true);
 		}
 		return btnOption;
 	}
-	public void setBtnOption(Button btnOption) {
-		this.btnOption = btnOption;
-	}
+	
 	public Button getBtnQuit() {
 		if(btnQuit==null) {
 			btnQuit= new Button("Quit");
-			btnQuit.setPrefWidth(prefWidth);
+			btnQuit.getStyleClass().add("mainMenuBtn");
 			btnQuit.setOnAction(e->{
 				System.exit(0);
 			});
@@ -66,5 +73,13 @@ public class MenuVBox extends VBox{
 	public void setBtnQuit(Button btnQuit) {
 		this.btnQuit = btnQuit;
 	}
-	
+
+	public MediaPlayer getMusic() {
+		if( musicPlayer==null) {
+			Media media = new Media(new File("ressources/sounds/MusiqueTest.mp3").toURI().toString());
+			musicPlayer = new MediaPlayer(media);
+			musicPlayer.setCycleCount(Timeline.INDEFINITE);
+		}
+		return musicPlayer;
+	}
 }

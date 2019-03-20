@@ -41,20 +41,26 @@ public class GamePlayTimerHBox extends HBox {
 	
 
 	public void startTimer() {
+		//creation d'une TimeLine cyclique infinie
 		timer = new Timeline();
 		timer.setCycleCount(Timeline.INDEFINITE);
+		//si la TimeLine n'est pas null, on utilise la methode stopTimer
 		if(timer != null) {
 			stopTimer();
 		}
+		//mise à jour du text
 		getLblCountDown().setText(seconds + " seconds remaining");
+		//creation d'une keyframe qui s'excecute toutes les seconds
 		KeyFrame frame = new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
 
 			@Override
 			public void handle(ActionEvent event) {
 				seconds--;
 				getLblCountDown().setText(seconds + " seconds remaining");
+				//si le temps atteind 0, la partie est fini (utilisation de la methode fail() pour eviter le code redondant).
 				if(seconds <= 0) {
 					stopTimer();
+					((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getStatementAndChoices().getChoices().fail();
 				}
 				
 			}
@@ -64,16 +70,19 @@ public class GamePlayTimerHBox extends HBox {
 	}
 	
 	public void freezeTimer() {
+		//utilisation du joker Time Frezer
 		this.stopTimer();
 		getLblCountDown().setText("Time freezed !");
 	}
 	
 	public void stopTimer() {
+		//arrete la timeline et remet les seconds à la valeur par default
 		timer.stop();
 		seconds = START_TIME;
 	}
 	
 	public void pauseTimer(boolean bool) {
+		//arrete la timeline ou la relance selon la velur reçue en arguement
 		if(bool) {
 			timer.stop();
 		}

@@ -1,7 +1,12 @@
 package model;
 
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import exception.AlreadyFourChoicesException;
@@ -37,6 +42,15 @@ public class Question {
 		this.setRound(round);
 		this.setStatement(statement);
 		choices = new HashMap<String, Boolean>();
+	}
+	
+	public void shuffleChoices() {
+		List<String> list = new ArrayList<>(choices.keySet());
+	    Collections.shuffle(list);
+
+	    Map<String, Boolean> shuffleMap = new LinkedHashMap<>();
+	    list.forEach(e->shuffleMap.put(e, choices.get(e)));
+	    choices = shuffleMap;
 	}
 
 	public boolean addChoices(String rep,Boolean value) throws AlreadyFourChoicesException, AlreadyTrueChoiceException{

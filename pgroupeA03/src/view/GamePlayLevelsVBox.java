@@ -16,6 +16,10 @@ public class GamePlayLevelsVBox extends VBox {
 	
 	private int stage;
 	
+	
+	
+
+
 	public GamePlayLevelsVBox() {
 		this.setPadding(new Insets(10));
 		this.setSpacing(5);
@@ -46,7 +50,24 @@ public class GamePlayLevelsVBox extends VBox {
 			lblLevels.get(stage).getStyleClass().add("stageWon");
 		}
 		String tmp = lblLevels.get(stage).getText();
-		lblLevels.get(--stage).getStyleClass().add("stageActual");
-	//	((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getPoolStatus().getLblViewPool().setText(tmp);
+		if (stage == 0) {
+			((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().setVisible(false);
+			((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getTimer().stopTimer();
+			((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().reset();
+			((FinalViewStackPane) getParent().getParent()).getWinScreen().setVisible(true);
+			
+		} else {
+			lblLevels.get(--stage).getStyleClass().add("stageActual");
+		    ((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getPoolStatus().getLblViewPool().setText(tmp);
+		}
 	}
+
+	public void restart() {
+		for(Label l : lblLevels) {
+			l.getStyleClass().removeAll("stageActual", "stageWonSaved", "stageWon");
+		}
+		stage = 14;
+		lblLevels.get(stage).getStyleClass().add("stageActual");
+	}
+	
 }

@@ -8,13 +8,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
 public class Deck {
 	
 	private static int index = 0;
-	
+	private static int nbQuestion = 0;
 	private static Deck instance;
 	private List<Question> questions;
 	
@@ -34,12 +35,14 @@ public class Deck {
 	}
 	
 	public static int getIndex() {
-		return index;
+		return index%nbQuestion;
 	}
 
 	public static void increaseIndex() {
 		if(index < 15) {
 			index ++;
+		} else {
+			index%=15;
 		}
 	}
 	
@@ -48,7 +51,7 @@ public class Deck {
 	}
 
 	public void setDeck(List<Question> questions){
-		this.questions=questions;
+		this.questions = questions;
 	}
 	
 	public boolean addQuestion(Question x){
@@ -101,7 +104,10 @@ public class Deck {
 		Deck fileDeck = fromJSon(Serializable.readDeck(file.getAbsolutePath()));
 		getInstance().questions.clear();
 		for(Question x : fileDeck.getQuestions()) {
+			x.shuffleChoices();
+			nbQuestion++;
 			getInstance().addQuestion(x);
 		}
+//		Collections.shuffle(questions);
 	}
 }
