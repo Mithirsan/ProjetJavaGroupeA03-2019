@@ -1,10 +1,9 @@
 package view;
 
-import java.util.List;
-import java.util.Map;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.scene.control.Button;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
@@ -50,9 +49,9 @@ public class TableQuestionBorderPane extends BorderPane {
 		if(tableQuestion == null) {
 			tableQuestion = new TableView<>();
 			tableQuestion.setItems(getListQuestion());
-			tableQuestion.setEditable(true);
 			tableQuestion.setPrefHeight(620.);
 			tableQuestion.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+			tableQuestion.setColumnResizePolicy(tableQuestion.CONSTRAINED_RESIZE_POLICY);
 		}
 		return tableQuestion;
 	}
@@ -73,8 +72,7 @@ public class TableQuestionBorderPane extends BorderPane {
 				
 			});
 			colAuthor.setOnEditStart(e->{
-				((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().setVisible(true);
-				((FinalViewStackPane) getParent().getParent()).getAdminBorderPane().setVisible(false);
+				autocomplet(e);
 			});
 		}
 		return colAuthor;
@@ -90,8 +88,7 @@ public class TableQuestionBorderPane extends BorderPane {
 				
 			});
 			colStatement.setOnEditStart(e->{
-				((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().setVisible(true);
-				((FinalViewStackPane) getParent().getParent()).getAdminBorderPane().setVisible(false);
+				autocomplet(e);
 			});
 		}
 		return colStatement;
@@ -108,8 +105,7 @@ public class TableQuestionBorderPane extends BorderPane {
 				Deck.getInstance().update(e.getRowValue());
 			});
 			colRound.setOnEditStart(e->{
-				((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().setVisible(true);
-				((FinalViewStackPane) getParent().getParent()).getAdminBorderPane().setVisible(false);
+				autocomplet(e);
 			});
 		}
 		return colRound;
@@ -132,5 +128,16 @@ public class TableQuestionBorderPane extends BorderPane {
 		return btnAdd;
 	}
 	
-
+	public void autocomplet (Event e) {
+		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().setVisible(true);
+		((FinalViewStackPane) getParent().getParent()).getAdminBorderPane().setVisible(false);
+		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getTitleAnchorPane().getTxtAuthor().setText(((CellEditEvent<Question, String>) e).getRowValue().getAuthor());	
+		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getTitleAnchorPane().getTxtStatement().setText(((CellEditEvent<Question, String>) e).getRowValue().getStatement());
+		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getTitleAnchorPane().getCbRound().setValue(((CellEditEvent<Question,Round>) e).getRowValue().getRound());
+		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getChoicesVBox().getTxtChoices1().setText(((CellEditEvent<Question, String>) e).getRowValue().getChoice(0));
+		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getChoicesVBox().getTxtChoices2().setText(((CellEditEvent<Question,String>) e).getRowValue().getChoice(1));
+		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getChoicesVBox().getTxtChoices3().setText(((CellEditEvent<Question, String>) e).getRowValue().getChoice(2));
+		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getChoicesVBox().getTxtChoices4().setText(((CellEditEvent<Question,String>) e).getRowValue().getChoice(3));
+		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getTrueVBox().setRdbTrue(((CellEditEvent<Question,String>) e).getRowValue().getChoiceTrue());	
+	}
 }

@@ -18,7 +18,7 @@ import model.Question;
 import model.Round;
 
 public class AddQuestionBorderPane extends BorderPane{
-	private TitleAnchorPane titleAnchoPane;
+	private TitleAnchorPane titleAnchorPane;
 	private ChoicesVBox choicesVBox;
 	private TrueVBox trueVBox;
 	private Button btnOK;
@@ -40,10 +40,10 @@ public class AddQuestionBorderPane extends BorderPane{
 
 	
 	public TitleAnchorPane getTitleAnchorPane() {
-		if(titleAnchoPane==null) {
-			 titleAnchoPane = new TitleAnchorPane();
+		if(titleAnchorPane==null) {
+			 titleAnchorPane = new TitleAnchorPane();
 		}
-		return titleAnchoPane;
+		return titleAnchorPane;
 	}
 	
 	public ChoicesVBox getChoicesVBox() {

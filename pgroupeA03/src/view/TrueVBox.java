@@ -36,4 +36,7 @@ public class TrueVBox extends VBox {
 		}
 		return toggle;
 	}
+	public void setRdbTrue(int ind) {
+		rdbTrue[ind].setSelected(true);
+	}
 }

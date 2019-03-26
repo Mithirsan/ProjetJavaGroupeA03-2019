@@ -5,10 +5,9 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 public class UpdateQuestionBorderPane extends BorderPane {
-	private TitleAnchorPane titleAnchoPane;
+	private TitleAnchorPane titleAnchorPane;
 	private ChoicesVBox choicesVBox;
 	private TrueVBox trueVBox;
 	private Button btnOK;
@@ -19,7 +18,7 @@ public class UpdateQuestionBorderPane extends BorderPane {
 
 	public UpdateQuestionBorderPane() {
 		this.setPadding(new Insets(10));
-		setTop(getTitleAcnhorPane());
+		setTop(getTitleAnchorPane());
 		HBox hbox = new HBox(getChoicesVBox(),getTrueVBox());
 		hbox.setSpacing(10.);
 		hbox.setAlignment(Pos.CENTER);
@@ -31,11 +30,11 @@ public class UpdateQuestionBorderPane extends BorderPane {
 	}
 
 	
-	public TitleAnchorPane getTitleAcnhorPane() {
-		if(titleAnchoPane==null) {
-			 titleAnchoPane = new TitleAnchorPane();
+	public TitleAnchorPane getTitleAnchorPane() {
+		if(titleAnchorPane==null) {
+			 titleAnchorPane = new TitleAnchorPane();
 		}
-		return titleAnchoPane;
+		return titleAnchorPane;
 	}
 	
 	public ChoicesVBox getChoicesVBox() {
@@ -54,7 +53,7 @@ public class UpdateQuestionBorderPane extends BorderPane {
 
 	public Button getBtnOk() {
 		if(btnOK==null) {
-			btnOK= new Button("OK");
+			btnOK= new Button("Update");
 			
 		}
 		return btnOK;
