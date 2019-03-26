@@ -107,7 +107,8 @@ public class AddQuestionBorderPane extends BorderPane{
 				}
 				if (allFieldComplete) {
 					Question tmpQuestion = new Question(tmpAuthor, tmpRound, tmpStatement,tmpChoices);
-					Deck.getInstance().addQuestion(tmpQuestion);
+					Deck.getInstance().addQuestion(tmpQuestion.clone());
+					((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().getListQuestion().add(tmpQuestion.clone());
 					this.setVisible(false);
 					((FinalViewStackPane) getParent()).getAdminBorderPane().setVisible(true);
 					
