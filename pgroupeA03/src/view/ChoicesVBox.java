@@ -1,5 +1,8 @@
 package view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.TextField;
@@ -57,7 +60,5 @@ public class ChoicesVBox extends VBox{
 		}
 		return txtChoices4 ;
 		
-	}
-
-	
+	}	
 }

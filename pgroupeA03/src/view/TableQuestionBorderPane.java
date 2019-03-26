@@ -26,7 +26,6 @@ public class TableQuestionBorderPane extends BorderPane {
 	private ObservableList<Question> listQuestion;
 	private TableColumn<Question, String> colAuthor, colStatement;
 	private TableColumn<Question, Round> colRound ;
-	private TableColumn<Question, Map<String, Boolean>> colChoices;
 	private HBox hboxButton;
 	private Button btnDel,btnAdd;
 	
@@ -35,7 +34,6 @@ public class TableQuestionBorderPane extends BorderPane {
 		getTableQuestion().getColumns().add(getColAuthor());
 		getTableQuestion().getColumns().add(getColRound());
 		getTableQuestion().getColumns().add(getColStatement());
-		getTableQuestion().getColumns().add(getColChoices());
 		setBottom(getHboxButton());
 		
 	}
@@ -74,6 +72,10 @@ public class TableQuestionBorderPane extends BorderPane {
 				Deck.getInstance().update(e.getRowValue());
 				
 			});
+			colAuthor.setOnEditStart(e->{
+				((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().setVisible(true);
+				((FinalViewStackPane) getParent().getParent()).getAdminBorderPane().setVisible(false);
+			});
 		}
 		return colAuthor;
 	}
@@ -86,6 +88,10 @@ public class TableQuestionBorderPane extends BorderPane {
 				e.getRowValue().setStatement(e.getNewValue());
 				Deck.getInstance().update(e.getRowValue());
 				
+			});
+			colStatement.setOnEditStart(e->{
+				((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().setVisible(true);
+				((FinalViewStackPane) getParent().getParent()).getAdminBorderPane().setVisible(false);
 			});
 		}
 		return colStatement;
@@ -101,20 +107,13 @@ public class TableQuestionBorderPane extends BorderPane {
 				e.getRowValue().setRound(e.getNewValue());
 				Deck.getInstance().update(e.getRowValue());
 			});
+			colRound.setOnEditStart(e->{
+				((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().setVisible(true);
+				((FinalViewStackPane) getParent().getParent()).getAdminBorderPane().setVisible(false);
+			});
 		}
 		return colRound;
-	}
-	
-	public TableColumn<Question, Map<String, Boolean>> getColChoices() {
-		if (colChoices == null) {
-			colChoices = new TableColumn<>("choices");
-			TableColumn<Question,List<String> >colAnswer = new TableColumn<>("Answer"); 
-			TableColumn<Question,List<Boolean> >colValue = new TableColumn<>("Value"); 
-			colChoices.getColumns().addAll(colAnswer,colValue);
-		}
-		return colChoices;
-	}
-	
+	}	
 	public Button getBtnDel() {
 		if(btnDel==null) {
 			btnDel = new Button("Delete");
