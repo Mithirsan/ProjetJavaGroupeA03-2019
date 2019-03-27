@@ -70,7 +70,7 @@ public class LoginAdminAnchorPane extends AnchorPane {
 					}	
 					else {	
 						errorPopup.getContent().add(lblError);
-						errorPopup.show(getScene().getWindow()); ;			
+						errorPopup.show(getScene().getWindow()); 		
 					}
 				});
 				return btnValider;

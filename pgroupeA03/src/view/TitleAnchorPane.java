@@ -21,9 +21,9 @@ public class TitleAnchorPane extends AnchorPane  {
 	
 	public TitleAnchorPane() {
 		setPadding(new Insets(10));
-		getCmbRound().getSelectionModel().selectFirst();
+		getCbRound().getSelectionModel().selectFirst();
 		HBox hbox = new HBox();
-		hbox.getChildren().addAll(getTxtAuthor(),getCmbRound());
+		hbox.getChildren().addAll(getTxtAuthor(),getCbRound());
 		hbox.setSpacing(10.);
 		hbox.setPadding(new Insets(0,0,10,0));
 		VBox vbox = new VBox();
@@ -57,7 +57,7 @@ public class TitleAnchorPane extends AnchorPane  {
 		this.txtAuthor = txtAuthor;
 	}
 
-	public ComboBox<Round> getCmbRound() {
+	public ComboBox<Round> getCbRound() {
 		if(cbRound==null) {
 			cbRound = new ComboBox<>();
 			ObservableList<Round> round = FXCollections.observableArrayList(Round.values());

@@ -1,10 +1,9 @@
 package view;
 
-import java.util.List;
-import java.util.Map;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.scene.control.Button;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
@@ -26,7 +25,6 @@ public class TableQuestionBorderPane extends BorderPane {
 	private ObservableList<Question> listQuestion;
 	private TableColumn<Question, String> colAuthor, colStatement;
 	private TableColumn<Question, Round> colRound ;
-	private TableColumn<Question, Map<String, Boolean>> colChoices;
 	private HBox hboxButton;
 	private Button btnDel,btnAdd;
 	
@@ -35,7 +33,6 @@ public class TableQuestionBorderPane extends BorderPane {
 		getTableQuestion().getColumns().add(getColAuthor());
 		getTableQuestion().getColumns().add(getColRound());
 		getTableQuestion().getColumns().add(getColStatement());
-		getTableQuestion().getColumns().add(getColChoices());
 		setBottom(getHboxButton());
 		
 	}
@@ -52,9 +49,9 @@ public class TableQuestionBorderPane extends BorderPane {
 		if(tableQuestion == null) {
 			tableQuestion = new TableView<>();
 			tableQuestion.setItems(getListQuestion());
-			tableQuestion.setEditable(true);
 			tableQuestion.setPrefHeight(620.);
 			tableQuestion.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+			tableQuestion.setColumnResizePolicy(tableQuestion.CONSTRAINED_RESIZE_POLICY);
 		}
 		return tableQuestion;
 	}
@@ -74,6 +71,9 @@ public class TableQuestionBorderPane extends BorderPane {
 				Deck.getInstance().update(e.getRowValue());
 				
 			});
+			colAuthor.setOnEditStart(e->{
+				autocomplet(e);
+			});
 		}
 		return colAuthor;
 	}
@@ -86,6 +86,9 @@ public class TableQuestionBorderPane extends BorderPane {
 				e.getRowValue().setStatement(e.getNewValue());
 				Deck.getInstance().update(e.getRowValue());
 				
+			});
+			colStatement.setOnEditStart(e->{
+				autocomplet(e);
 			});
 		}
 		return colStatement;
@@ -101,20 +104,12 @@ public class TableQuestionBorderPane extends BorderPane {
 				e.getRowValue().setRound(e.getNewValue());
 				Deck.getInstance().update(e.getRowValue());
 			});
+			colRound.setOnEditStart(e->{
+				autocomplet(e);
+			});
 		}
 		return colRound;
-	}
-	
-	public TableColumn<Question, Map<String, Boolean>> getColChoices() {
-		if (colChoices == null) {
-			colChoices = new TableColumn<>("choices");
-			TableColumn<Question,List<String> >colAnswer = new TableColumn<>("Answer"); 
-			TableColumn<Question,List<Boolean> >colValue = new TableColumn<>("Value"); 
-			colChoices.getColumns().addAll(colAnswer,colValue);
-		}
-		return colChoices;
-	}
-	
+	}	
 	public Button getBtnDel() {
 		if(btnDel==null) {
 			btnDel = new Button("Delete");
@@ -133,5 +128,16 @@ public class TableQuestionBorderPane extends BorderPane {
 		return btnAdd;
 	}
 	
-
+	public void autocomplet (Event e) {
+		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().setVisible(true);
+		((FinalViewStackPane) getParent().getParent()).getAdminBorderPane().setVisible(false);
+		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getTitleAnchorPane().getTxtAuthor().setText(((CellEditEvent<Question, String>) e).getRowValue().getAuthor());	
+		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getTitleAnchorPane().getTxtStatement().setText(((CellEditEvent<Question, String>) e).getRowValue().getStatement());
+		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getTitleAnchorPane().getCbRound().setValue(((CellEditEvent<Question,Round>) e).getRowValue().getRound());
+		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getChoicesVBox().getTxtChoices1().setText(((CellEditEvent<Question, String>) e).getRowValue().getChoice(0));
+		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getChoicesVBox().getTxtChoices2().setText(((CellEditEvent<Question,String>) e).getRowValue().getChoice(1));
+		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getChoicesVBox().getTxtChoices3().setText(((CellEditEvent<Question, String>) e).getRowValue().getChoice(2));
+		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getChoicesVBox().getTxtChoices4().setText(((CellEditEvent<Question,String>) e).getRowValue().getChoice(3));
+		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getTrueVBox().setRdbTrue(((CellEditEvent<Question,String>) e).getRowValue().getChoiceTrue());	
+	}
 }

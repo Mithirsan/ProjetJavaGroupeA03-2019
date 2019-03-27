@@ -155,4 +155,16 @@ public class Question {
 	public boolean getChoiceValue(int i) {
 		return (boolean) choices.values().toArray()[i];
 	}
+	public int getChoiceTrue() {
+		for (int i =0 ; i<= choices.size();i++){
+			if ((boolean) choices.values().toArray()[i]) {
+				return i;
+			}
+		}
+		return 0;
+	}
+	public Question clone() {
+		return new Question(author, round, statement, choices);
+	}
+	
 }
