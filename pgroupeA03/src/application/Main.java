@@ -28,7 +28,8 @@ public class Main extends Application {
 			Scene scene = new Scene(getFinalViewStackPane(), 960, 540);
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
-			primaryStage.setTitle(" Who want to reduce his punishment ?");
+			primaryStage.setResizable(false);
+			primaryStage.setTitle(" Who wants to reduce his punishment ?");
 
 			primaryStage.show();
 		} catch(Exception e) {

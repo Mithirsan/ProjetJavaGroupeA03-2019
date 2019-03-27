@@ -1,9 +1,12 @@
 package view;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.VBox;
+import model.Deck;
 
 public class GamePlayOptionAndJokersVBox extends VBox {
 
@@ -48,8 +51,13 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 		if(btnJokerAudienceOpinion == null) {
 			btnJokerAudienceOpinion = new Button("A O");
 			btnJokerAudienceOpinion.getStyleClass().add("btnJoker");
+			btnJokerAudienceOpinion.setOnAction(e->{
+				AudienceOpinionJokerStrategy aOJoker = new AudienceOpinionJokerStrategy();
+				aOJoker.effectOfJoker(Deck.getInstance().getQuestions().get(Deck.getIndex()).getRound());
+				aOJoker.getAudienceChoices();
+			});
 			
-			btnJokerAudienceOpinion.setDisable(true);
+//			btnJokerAudienceOpinion.setDisable(true);
 		}
 		return btnJokerAudienceOpinion;
 	}
