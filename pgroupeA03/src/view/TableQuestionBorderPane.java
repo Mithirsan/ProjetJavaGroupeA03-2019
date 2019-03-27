@@ -67,11 +67,6 @@ public class TableQuestionBorderPane extends BorderPane {
 			colAuthor = new TableColumn<>("author");
 			colAuthor.setCellValueFactory(new PropertyValueFactory<>("author"));
 			colAuthor.setCellFactory(TextFieldTableCell.<Question>forTableColumn());
-			colAuthor.setOnEditCommit((CellEditEvent<Question, String> e) -> {
-				e.getRowValue().setAuthor(e.getNewValue());
-				Deck.getInstance().update(e.getRowValue());
-				
-			});
 			colAuthor.setOnEditStart(e->{
 				autocomplet(e);
 			});
@@ -83,11 +78,6 @@ public class TableQuestionBorderPane extends BorderPane {
 			colStatement = new TableColumn<>("statement");
 			colStatement.setCellValueFactory(new PropertyValueFactory<>("statement"));
 			colStatement.setCellFactory(TextFieldTableCell.<Question>forTableColumn());
-			colStatement.setOnEditCommit((CellEditEvent<Question, String> e) -> {
-				e.getRowValue().setStatement(e.getNewValue());
-				Deck.getInstance().update(e.getRowValue());
-				
-			});
 			colStatement.setOnEditStart(e->{
 				autocomplet(e);
 			});
@@ -101,10 +91,6 @@ public class TableQuestionBorderPane extends BorderPane {
 			colRound.setCellValueFactory(new PropertyValueFactory<>("round"));
 			ObservableList<Round> roundV = FXCollections.observableArrayList(Round.values());
 			colRound.setCellFactory(ComboBoxTableCell.forTableColumn(roundV));
-			colRound.setOnEditCommit((CellEditEvent<Question,Round> e) -> {
-				e.getRowValue().setRound(e.getNewValue());
-				Deck.getInstance().update(e.getRowValue());
-			});
 			colRound.setOnEditStart(e->{
 				autocomplet(e);
 			});
@@ -140,5 +126,6 @@ public class TableQuestionBorderPane extends BorderPane {
 		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getChoicesVBox().getTxtChoices3().setText(((CellEditEvent<Question, String>) e).getRowValue().getChoice(2));
 		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getChoicesVBox().getTxtChoices4().setText(((CellEditEvent<Question,String>) e).getRowValue().getChoice(3));
 		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getTrueVBox().setRdbTrue(((CellEditEvent<Question,String>) e).getRowValue().getChoiceTrue());	
+	//	((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().setIndexQuestion(listQuestion.indexOf(listQuestion.indexOf( ((CellEditEvent<Question,String>) e)) );
 	}
 }
