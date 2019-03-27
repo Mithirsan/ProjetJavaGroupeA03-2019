@@ -50,6 +50,7 @@ public class TableQuestionBorderPane extends BorderPane {
 			tableQuestion = new TableView<>();
 			tableQuestion.setItems(getListQuestion());
 			tableQuestion.setPrefHeight(620.);
+			tableQuestion.setEditable(true);
 			tableQuestion.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 			tableQuestion.setColumnResizePolicy(tableQuestion.CONSTRAINED_RESIZE_POLICY);
 		}
