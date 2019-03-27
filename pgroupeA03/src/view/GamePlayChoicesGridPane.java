@@ -63,6 +63,7 @@ public class GamePlayChoicesGridPane extends GridPane {
 	public Button getBtnAnswerC() {
 		if(btnAnswerC == null) {
 			btnAnswerC = new Button("C: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(2));
+
 			btnAnswerC.setOnAction(e->{
 				if(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(2)) {
 					this.refresh();

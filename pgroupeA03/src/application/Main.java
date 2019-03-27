@@ -30,7 +30,6 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
 			primaryStage.setTitle(" Who wants to reduce his punishment ?");
-
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
