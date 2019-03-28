@@ -1,7 +1,5 @@
 package view;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -54,7 +52,7 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 			btnJokerAudienceOpinion.getStyleClass().add("btnJoker");
 			btnJokerAudienceOpinion.setOnAction(e->{
 				AudienceOpinionJokerStrategy aOJoker = new AudienceOpinionJokerStrategy();
-				aOJoker.effectOfJoker(Deck.getInstance().getQuestions().get(Deck.getIndex()).getRound());
+				aOJoker.effectOfJoker();
 				double[] tmp = aOJoker.getAudienceChoices();
 				showPourcent(tmp);
 			});
@@ -67,10 +65,14 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 			tmp[i] = (double)Math.round(tmp[i] * 100d) / 100d;
 		}
 		Node nodeTmp = ((GamePlayBorderPane) getParent()).getStatementAndChoices().getChoices();
-		((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerA().setText("A: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(0) + " - " + tmp[0] + "%");
-		((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerB().setText("B: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(1) + " - " + tmp[1] + "%");
-		((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerC().setText("C: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(2) + " - " + tmp[2] + "%");
-		((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerD().setText("D: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(3) + " - " + tmp[3] + "%");
+		((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerA().setText("A: " + Deck.getInstance().
+				getQuestions().get(Deck.getIndex()).getChoice(0) + " - " + tmp[0] + "%");
+		((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerB().setText("B: " + Deck.getInstance().
+				getQuestions().get(Deck.getIndex()).getChoice(1) + " - " + tmp[1] + "%");
+		((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerC().setText("C: " + Deck.getInstance().
+				getQuestions().get(Deck.getIndex()).getChoice(2) + " - " + tmp[2] + "%");
+		((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerD().setText("D: " + Deck.getInstance().
+				getQuestions().get(Deck.getIndex()).getChoice(3) + " - " + tmp[3] + "%");
 		getBtnJokerAudienceOpinion().setDisable(true);
 	}
 
@@ -79,9 +81,29 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 			btnJokerFiftyFifty = new Button("F F");
 			btnJokerFiftyFifty.getStyleClass().add("btnJoker");
 			
-			btnJokerFiftyFifty.setDisable(true);
+			btnJokerFiftyFifty.setOnAction(e->{
+				FiftyFiftyJokerStrategy fFJoker = new FiftyFiftyJokerStrategy();
+				fFJoker.effectOfJoker();
+				disable2False(fFJoker.get2FalseIndex());
+			});
 		}
 		return btnJokerFiftyFifty;
+	}
+
+	private void disable2False(int[] get2FalseIndex) {
+		Node nodeTmp = ((GamePlayBorderPane) getParent()).getStatementAndChoices().getChoices();
+		for(int i = 0; i < 2; i++) {
+			if(get2FalseIndex[i] == 0) {
+				((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerA().setDisable(true);
+			}else if(get2FalseIndex[i] == 1) {
+				((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerB().setDisable(true);
+			}else if(get2FalseIndex[i] == 2) {
+				((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerC().setDisable(true);
+			}else {
+				((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerD().setDisable(true);
+			}
+			getBtnJokerFiftyFifty().setDisable(true);
+		}
 	}
 
 	public Button getBtnJokerTimeFreezer() {
@@ -96,8 +118,6 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 		return btnJokerTimeFreezer;
 	}
 		
-
-
 	public Button getBtnJokerAnotherChance() {
 		if(btnJokerAnotherChance == null) {
 			btnJokerAnotherChance = new Button("A C");
@@ -114,7 +134,5 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 			separator.getStyleClass().add("sep");
 		}
 		return separator;
-	}
-	
-	
+	}	
 }

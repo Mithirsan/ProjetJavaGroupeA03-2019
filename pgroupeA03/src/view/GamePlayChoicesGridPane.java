@@ -100,6 +100,7 @@ public class GamePlayChoicesGridPane extends GridPane {
 		getBtnAnswerB().setText("B: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(1));
 		getBtnAnswerC().setText("C: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(2));
 		getBtnAnswerD().setText("D: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(3));
+		getBtnAnswerA().setDisable(false);getBtnAnswerB().setDisable(false);getBtnAnswerC().setDisable(false);getBtnAnswerD().setDisable(false);
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().refreshTimer();
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getLevels().nextStage();
 	}

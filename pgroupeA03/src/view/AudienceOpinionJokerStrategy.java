@@ -14,7 +14,7 @@ public class AudienceOpinionJokerStrategy implements JokerStrategy {
 	private int idTrue;
 	
 	@Override
-	public void effectOfJoker(Round round) {
+	public void effectOfJoker() {
 		for (int i = 0; i < 4; i++) {
 			audienceChoices[i] = 0;
 			vals.add(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(i));
@@ -22,7 +22,7 @@ public class AudienceOpinionJokerStrategy implements JokerStrategy {
 				idTrue = i;
 			} 
 		}
-		switch (round) {
+		switch (Deck.getInstance().getQuestions().get(Deck.getIndex()).getRound()) {
 			case FIRST_ROUND : FirstRoundQuestions();
 				break;
 			case SECOND_ROUND : SecondRoundQuestion();
@@ -31,7 +31,6 @@ public class AudienceOpinionJokerStrategy implements JokerStrategy {
 		}	
 	}
 	
-	@Override
 	public void FirstRoundQuestions() {
 		double rand;
 		for(int i = 0; i < 1000; i++) {
@@ -80,7 +79,6 @@ public class AudienceOpinionJokerStrategy implements JokerStrategy {
 		}
 	}
 	
-	@Override
 	public void SecondRoundQuestion() {
 		double rand;
 		for(int i = 0; i < 1000; i++) {
@@ -129,7 +127,6 @@ public class AudienceOpinionJokerStrategy implements JokerStrategy {
 		}
 	}
 	
-	@Override
 	public void LastRoundQuestion() {
 		double rand;
 		for(int i = 0; i < 1000; i++) {
