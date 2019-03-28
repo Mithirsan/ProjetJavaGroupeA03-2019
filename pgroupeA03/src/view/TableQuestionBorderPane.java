@@ -100,6 +100,10 @@ public class TableQuestionBorderPane extends BorderPane {
 	public Button getBtnDel() {
 		if(btnDel==null) {
 			btnDel = new Button("Delete");
+			btnDel.setOnAction(e->{
+				Deck.getInstance().deleteAllDeck(getTableQuestion().getSelectionModel().getSelectedItems());
+				updateObservableList();
+			});
 		}
 		return btnDel;
 	}
