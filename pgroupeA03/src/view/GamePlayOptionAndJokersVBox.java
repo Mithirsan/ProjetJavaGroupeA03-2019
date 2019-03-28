@@ -3,6 +3,7 @@ package view;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Separator;
 import javafx.scene.layout.VBox;
@@ -54,12 +55,23 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 			btnJokerAudienceOpinion.setOnAction(e->{
 				AudienceOpinionJokerStrategy aOJoker = new AudienceOpinionJokerStrategy();
 				aOJoker.effectOfJoker(Deck.getInstance().getQuestions().get(Deck.getIndex()).getRound());
-				aOJoker.getAudienceChoices();
+				double[] tmp = aOJoker.getAudienceChoices();
+				showPourcent(tmp);
 			});
-			
-//			btnJokerAudienceOpinion.setDisable(true);
 		}
 		return btnJokerAudienceOpinion;
+	}
+
+	private void showPourcent(double[] tmp) {
+		for(int i = 0; i < 4; i++) {
+			tmp[i] = (double)Math.round(tmp[i] * 100d) / 100d;
+		}
+		Node nodeTmp = ((GamePlayBorderPane) getParent()).getStatementAndChoices().getChoices();
+		((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerA().setText("A: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(0) + " - " + tmp[0] + "%");
+		((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerB().setText("B: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(1) + " - " + tmp[1] + "%");
+		((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerC().setText("C: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(2) + " - " + tmp[2] + "%");
+		((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerD().setText("D: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(3) + " - " + tmp[3] + "%");
+		getBtnJokerAudienceOpinion().setDisable(true);
 	}
 
 	public Button getBtnJokerFiftyFifty() {

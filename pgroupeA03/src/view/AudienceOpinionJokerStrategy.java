@@ -34,24 +34,47 @@ public class AudienceOpinionJokerStrategy implements JokerStrategy {
 	@Override
 	public void FirstRoundQuestions() {
 		double rand;
-		for(int i = 0; i < 100; i++) {
+		for(int i = 0; i < 1000; i++) {
 			rand = Math.random() + 0.45;
-			for (int j = 0; j < 4; j++) {
-				if(j != idTrue) {
-					if(rand <= 0.2) {
-						audienceChoices[j] ++;
-						break;
-					} else if(rand <= 0.5) {
-						audienceChoices[j] ++;
-						break;
-					} else if(rand > 0.9) {
-						audienceChoices[j] ++;
-						break;
-					}
-				} else {
-					if(rand > 0.5 && rand <= 0.9)
-						audienceChoices[j] ++;
-					break;
+			if(vals.get(0)) {
+				if(rand<=0.46) {
+					audienceChoices[1]++;
+				}else if(rand<=0.60) {
+					audienceChoices[2]++;
+				}else if(rand<=0.69) {
+					audienceChoices[3]++;
+				}else {
+					audienceChoices[0]++;
+				}
+			}else if(vals.get(1)) {
+				if(rand<=0.46) {
+					audienceChoices[0]++;
+				}else if(rand<=0.60) {
+					audienceChoices[3]++;
+				}else if(rand<=0.69) {
+					audienceChoices[2]++;
+				}else {
+					audienceChoices[1]++;
+				}
+			}else if(vals.get(2)) {
+				if(rand<=0.46) {
+					audienceChoices[0]++;
+				}else if(rand<=0.60) {
+					audienceChoices[3]++;
+				}else if(rand<=0.69) {
+					audienceChoices[1]++;
+				}else {
+					audienceChoices[2]++;
+				}
+			}else{
+				if(rand<=0.46) {
+					audienceChoices[2]++;
+				}else if(rand<=0.60) {
+					audienceChoices[0]++;
+				}else if(rand<=0.69) {
+					audienceChoices[1]++;
+				}else{
+					audienceChoices[3]++;
 				}
 			}
 		}
@@ -59,26 +82,113 @@ public class AudienceOpinionJokerStrategy implements JokerStrategy {
 	
 	@Override
 	public void SecondRoundQuestion() {
-		
+		double rand;
+		for(int i = 0; i < 1000; i++) {
+			rand = Math.random() + 0.20;
+			if(vals.get(0)) {
+				if(rand<=0.21) {
+					audienceChoices[1]++;
+				}else if(rand<=0.40) {
+					audienceChoices[2]++;
+				}else if(rand<=0.60) {
+					audienceChoices[3]++;
+				}else {
+					audienceChoices[0]++;
+				}
+			}else if(vals.get(1)) {
+				if(rand<=0.21) {
+					audienceChoices[0]++;
+				}else if(rand<=0.40) {
+					audienceChoices[3]++;
+				}else if(rand<=0.60) {
+					audienceChoices[2]++;
+				}else {
+					audienceChoices[1]++;
+				}
+			}else if(vals.get(2)) {
+				if(rand<=0.21) {
+					audienceChoices[0]++;
+				}else if(rand<=0.40) {
+					audienceChoices[3]++;
+				}else if(rand<=0.60) {
+					audienceChoices[1]++;
+				}else {
+					audienceChoices[2]++;
+				}
+			}else{
+				if(rand<=0.21) {
+					audienceChoices[2]++;
+				}else if(rand<=0.40) {
+					audienceChoices[0]++;
+				}else if(rand<=0.60) {
+					audienceChoices[1]++;
+				}else{
+					audienceChoices[3]++;
+				}
+			}
+		}
 	}
 	
 	@Override
 	public void LastRoundQuestion() {
-		
+		double rand;
+		for(int i = 0; i < 1000; i++) {
+			rand = Math.random();
+			if(vals.get(0)) {
+				if(rand<=0.2) {
+					audienceChoices[1]++;
+				}else if(rand<=0.5) {
+					audienceChoices[2]++;
+				}else if(rand>0.8) {
+					audienceChoices[3]++;
+				}else {
+					audienceChoices[0]++;
+				}
+			}else if(vals.get(1)) {
+				if(rand<=0.2) {
+					audienceChoices[0]++;
+				}else if(rand<=0.5) {
+					audienceChoices[3]++;
+				}else if(rand>0.8) {
+					audienceChoices[2]++;
+				}else {
+					audienceChoices[1]++;
+				}
+			}else if(vals.get(2)) {
+				if(rand<=0.2) {
+					audienceChoices[0]++;
+				}else if(rand<=0.5) {
+					audienceChoices[3]++;
+				}else if(rand>0.8) {
+					audienceChoices[1]++;
+				}else {
+					audienceChoices[2]++;
+				}
+			}else{
+				if(rand<=0.2) {
+					audienceChoices[2]++;
+				}else if(rand<=0.5) {
+					audienceChoices[0]++;
+				}else if(rand>0.8) {
+					audienceChoices[1]++;
+				}else{
+					audienceChoices[3]++;
+				}
+			}
+		}
 	}
 
 	public double[] getAudienceChoices() {
 		int tmp = 0;
 		for(int i = 0; i < 4; i++) {
 			tmp += audienceChoices[i];
-			System.out.println(audienceChoices[i]);
 		}
 		
 		double[] percent = {0, 0, 0, 0};
 		for(int i = 0; i < 4; i++) {
-			percent[i] = audienceChoices[i]/tmp;
+			percent[i] = audienceChoices[i]/tmp * 100;
 		}
-		return audienceChoices;
+		return percent;
 	}
 
 }

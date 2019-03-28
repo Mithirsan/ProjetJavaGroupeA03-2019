@@ -96,10 +96,10 @@ public class GamePlayChoicesGridPane extends GridPane {
 	private void refresh() {
 		Deck.increaseIndex();
 		((GamePlayStatementAndChoicesVBox) getParent()).getLblStatement().setText(Deck.getInstance().getQuestions().get(Deck.getIndex()).getStatement());
-		btnAnswerA.setText("A: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(0));
-		btnAnswerB.setText("B: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(1));
-		btnAnswerC.setText("C: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(2));
-		btnAnswerD.setText("D: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(3));
+		getBtnAnswerA().setText("A: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(0));
+		getBtnAnswerB().setText("B: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(1));
+		getBtnAnswerC().setText("C: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(2));
+		getBtnAnswerD().setText("D: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(3));
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().refreshTimer();
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getLevels().nextStage();
 	}
