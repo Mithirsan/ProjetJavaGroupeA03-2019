@@ -50,6 +50,7 @@ public class TableQuestionBorderPane extends BorderPane {
 			tableQuestion = new TableView<>();
 			tableQuestion.setItems(getListQuestion());
 			tableQuestion.setPrefHeight(620.);
+			tableQuestion.setEditable(true);
 			tableQuestion.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 			tableQuestion.setColumnResizePolicy(tableQuestion.CONSTRAINED_RESIZE_POLICY);
 		}
@@ -66,11 +67,6 @@ public class TableQuestionBorderPane extends BorderPane {
 			colAuthor = new TableColumn<>("author");
 			colAuthor.setCellValueFactory(new PropertyValueFactory<>("author"));
 			colAuthor.setCellFactory(TextFieldTableCell.<Question>forTableColumn());
-			colAuthor.setOnEditCommit((CellEditEvent<Question, String> e) -> {
-				e.getRowValue().setAuthor(e.getNewValue());
-				Deck.getInstance().update(e.getRowValue());
-				
-			});
 			colAuthor.setOnEditStart(e->{
 				autocomplet(e);
 			});
@@ -82,11 +78,6 @@ public class TableQuestionBorderPane extends BorderPane {
 			colStatement = new TableColumn<>("statement");
 			colStatement.setCellValueFactory(new PropertyValueFactory<>("statement"));
 			colStatement.setCellFactory(TextFieldTableCell.<Question>forTableColumn());
-			colStatement.setOnEditCommit((CellEditEvent<Question, String> e) -> {
-				e.getRowValue().setStatement(e.getNewValue());
-				Deck.getInstance().update(e.getRowValue());
-				
-			});
 			colStatement.setOnEditStart(e->{
 				autocomplet(e);
 			});
@@ -100,10 +91,6 @@ public class TableQuestionBorderPane extends BorderPane {
 			colRound.setCellValueFactory(new PropertyValueFactory<>("round"));
 			ObservableList<Round> roundV = FXCollections.observableArrayList(Round.values());
 			colRound.setCellFactory(ComboBoxTableCell.forTableColumn(roundV));
-			colRound.setOnEditCommit((CellEditEvent<Question,Round> e) -> {
-				e.getRowValue().setRound(e.getNewValue());
-				Deck.getInstance().update(e.getRowValue());
-			});
 			colRound.setOnEditStart(e->{
 				autocomplet(e);
 			});
@@ -113,6 +100,10 @@ public class TableQuestionBorderPane extends BorderPane {
 	public Button getBtnDel() {
 		if(btnDel==null) {
 			btnDel = new Button("Delete");
+			btnDel.setOnAction(e->{
+				Deck.getInstance().deleteAllDeck(getTableQuestion().getSelectionModel().getSelectedItems());
+				updateObservableList();
+			});
 		}
 		return btnDel;
 	}
@@ -139,5 +130,9 @@ public class TableQuestionBorderPane extends BorderPane {
 		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getChoicesVBox().getTxtChoices3().setText(((CellEditEvent<Question, String>) e).getRowValue().getChoice(2));
 		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getChoicesVBox().getTxtChoices4().setText(((CellEditEvent<Question,String>) e).getRowValue().getChoice(3));
 		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getTrueVBox().setRdbTrue(((CellEditEvent<Question,String>) e).getRowValue().getChoiceTrue());	
+	}
+	public void updateObservableList() {
+		getListQuestion().clear();
+        getListQuestion().addAll(Deck.getInstance().getQuestions());
 	}
 }

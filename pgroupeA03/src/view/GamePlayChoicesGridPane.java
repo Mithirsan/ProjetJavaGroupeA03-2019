@@ -82,6 +82,7 @@ public class GamePlayChoicesGridPane extends GridPane  {
 	public Button getBtnAnswerC() {
 		if(btnAnswerC == null) {
 			btnAnswerC = new Button("C: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(2));
+
 			btnAnswerC.setOnAction(e->{
 				if(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(2)) {
 					//btnAnswerC.setStyle("-fx-background-color: green;-fx-border-color: grey ");
@@ -129,10 +130,11 @@ public class GamePlayChoicesGridPane extends GridPane  {
 	private void refresh() {
 		Deck.increaseIndex();
 		((GamePlayStatementAndChoicesVBox) getParent()).getLblStatement().setText(Deck.getInstance().getQuestions().get(Deck.getIndex()).getStatement());
-		btnAnswerA.setText("A: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(0));
-		btnAnswerB.setText("B: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(1));
-		btnAnswerC.setText("C: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(2));
-		btnAnswerD.setText("D: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(3));
+		getBtnAnswerA().setText("A: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(0));
+		getBtnAnswerB().setText("B: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(1));
+		getBtnAnswerC().setText("C: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(2));
+		getBtnAnswerD().setText("D: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(3));
+		getBtnAnswerA().setDisable(false);getBtnAnswerB().setDisable(false);getBtnAnswerC().setDisable(false);getBtnAnswerD().setDisable(false);
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().refreshTimer();
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getLevels().nextStage();
 	
