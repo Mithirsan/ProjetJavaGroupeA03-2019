@@ -1,12 +1,18 @@
 package view;
 
+
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import model.Deck;
 
-public class GamePlayChoicesGridPane extends GridPane {
+public class GamePlayChoicesGridPane extends GridPane  {
 
 	private Button btnAnswerA;
 	private Button btnAnswerB;
@@ -31,11 +37,17 @@ public class GamePlayChoicesGridPane extends GridPane {
 			btnAnswerA = new Button("A: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(0));
 			btnAnswerA.setOnAction(e->{
 				if(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(0)) {
-					this.refresh();	
-				
-				} else {
+				//	btnAnswerA.setStyle("-fx-background-color: green ;-fx-border-color: grey ");
+				//	try {
+						//Thread.sleep(1000);
+						this.refresh();
+					//} catch (InterruptedException e1) {
+						//// TODO Auto-generated catch block
+						//e1.printStackTrace();
+				//	}
+				}else {
 					this.fail();
-		
+					
 				}
 			});
 			btnAnswerA.getStyleClass().add("btnAnswer");
@@ -48,11 +60,18 @@ public class GamePlayChoicesGridPane extends GridPane {
 			btnAnswerB = new Button("B: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(1));
 			btnAnswerB.setOnAction(e->{
 				if(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(1)) {
-					this.refresh();
-		
-				} else {
+					//btnAnswerB.setStyle("-fx-background-color: green;-fx-border-color: grey ");
+					//try {
+						
+					//	Thread.sleep(1000);
+						this.refresh();
+					//} catch (InterruptedException e1) {
+					//	// TODO Auto-generated catch block
+					//	e1.printStackTrace();
+				//	}
+				}else {
 					this.fail();
-				
+					
 				}
 			});
 			btnAnswerB.getStyleClass().add("btnAnswer");
@@ -65,8 +84,15 @@ public class GamePlayChoicesGridPane extends GridPane {
 			btnAnswerC = new Button("C: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(2));
 			btnAnswerC.setOnAction(e->{
 				if(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(2)) {
-					this.refresh();
-				} else {
+					//btnAnswerC.setStyle("-fx-background-color: green;-fx-border-color: grey ");
+					//try {
+					//	Thread.sleep(1000);
+						this.refresh();
+				//	} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+					//	e1.printStackTrace();
+				//	}
+				}else {
 					this.fail();
 					
 				}
@@ -81,14 +107,22 @@ public class GamePlayChoicesGridPane extends GridPane {
 			btnAnswerD = new Button("D: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(3));
 			btnAnswerD.setOnAction(e->{
 				if(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(3)) {
-					this.refresh();
-
-				} else {
-					this.fail(); 
+				//	btnAnswerD.setStyle("-fx-background-color: green ;-fx-border-color: grey ");
+				//	try {
+					//	Thread.sleep(1000);
+						this.refresh();
+				//	} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+					//	e1.printStackTrace();
+				//	}
+				}else {
+					this.fail();
+					
 				}
 			});
 			btnAnswerD.getStyleClass().add("btnAnswer");
 		}
+		
 		return btnAnswerD;
 	}
 	
@@ -101,6 +135,11 @@ public class GamePlayChoicesGridPane extends GridPane {
 		btnAnswerD.setText("D: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(3));
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().refreshTimer();
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getLevels().nextStage();
+	
+	//	btnAnswerA.setStyle("-fx-background-color: rgba(255, 255, 255, 0);-fx-border-color: grey " );
+	//	btnAnswerB.setStyle("-fx-background-color: rgba(255, 255, 255, 0);-fx-border-color: grey ");
+	//	btnAnswerC.setStyle("-fx-background-color: rgba(255, 255, 255, 0);-fx-border-color: grey  ");
+	//	btnAnswerD.setStyle("-fx-background-color: rgba(255, 255, 255, 0);-fx-border-color: grey ");
 	}
 	public void fail() {
 		((FinalViewStackPane)getParent().getParent().getParent()).getGamePlayBorderPane().setVisible(false);
