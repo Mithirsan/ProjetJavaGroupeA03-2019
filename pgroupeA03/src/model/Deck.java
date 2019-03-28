@@ -110,4 +110,11 @@ public class Deck {
 		}
 //		Collections.shuffle(questions);
 	}
+	
+	public void loadState(List<Question> state) {
+		questions.clear();
+		state.forEach(element -> {
+			questions.add(element.clone());
+		});
+	}
 }
