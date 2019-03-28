@@ -126,6 +126,9 @@ public class TableQuestionBorderPane extends BorderPane {
 		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getChoicesVBox().getTxtChoices3().setText(((CellEditEvent<Question, String>) e).getRowValue().getChoice(2));
 		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getChoicesVBox().getTxtChoices4().setText(((CellEditEvent<Question,String>) e).getRowValue().getChoice(3));
 		((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().getTrueVBox().setRdbTrue(((CellEditEvent<Question,String>) e).getRowValue().getChoiceTrue());	
-	//	((FinalViewStackPane) getParent().getParent()).getUpdateQuestionBorderPane().setIndexQuestion(listQuestion.indexOf(listQuestion.indexOf( ((CellEditEvent<Question,String>) e)) );
+	}
+	public void updateObservableList() {
+		getListQuestion().clear();
+        getListQuestion().addAll(Deck.getInstance().getQuestions());
 	}
 }
