@@ -48,7 +48,7 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 	
 	public Button getBtnJokerAudienceOpinion() {
 		if(btnJokerAudienceOpinion == null) {
-			btnJokerAudienceOpinion = new Button("A O");
+			btnJokerAudienceOpinion = new Button("Audience Opinion");
 			btnJokerAudienceOpinion.getStyleClass().add("btnJoker");
 			btnJokerAudienceOpinion.setOnAction(e->{
 				AudienceOpinionJokerStrategy aOJoker = new AudienceOpinionJokerStrategy();
@@ -78,7 +78,7 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 
 	public Button getBtnJokerFiftyFifty() {
 		if(btnJokerFiftyFifty == null) {
-			btnJokerFiftyFifty = new Button("F F");
+			btnJokerFiftyFifty = new Button("Fifty Fifty");
 			btnJokerFiftyFifty.getStyleClass().add("btnJoker");
 			
 			btnJokerFiftyFifty.setOnAction(e->{
@@ -113,6 +113,7 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 			
 			btnJokerTimeFreezer.setOnAction(e->{
 					((GamePlayBorderPane) getParent()).getTimer().freezeTimer();
+					btnJokerTimeFreezer.setDisable(true);
 				});
 			}
 		return btnJokerTimeFreezer;
