@@ -14,6 +14,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Popup;
 import model.Deck;
+import model.OriginMemento;
 import model.Question;
 import model.Round;
 
@@ -105,11 +106,28 @@ public class UpdateQuestionBorderPane extends BorderPane {
 						}
 					}
 				}
-				System.out.println("Avant update :"+Deck.getInstance().getQuestions());
-				Question q= new Question (tmpAuthor,tmpRound,tmpStatement,tmpChoices);
-				System.out.println(Deck.getInstance().update(q));	
-				System.out.println("Apres update :"+Deck.getInstance().getQuestions());
-				((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().updateObservableList();
+				if (allFieldComplete) {
+					Question q= new Question (tmpAuthor,tmpRound,tmpStatement,tmpChoices);
+					Deck.getInstance().update(q);	
+					((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().updateObservableList();	
+					int tmpManip=((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().getNbManip();
+					tmpManip++;
+					((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().setNbManip(tmpManip);
+					((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().setTotalManip(tmpManip);
+					OriginMemento tmpOrigin = ((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().getOriginMemento();
+					
+					tmpOrigin.setState(Deck.getInstance().getQuestions());
+					((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().getcTakerMemento().add(tmpOrigin.saveToMemento());
+					this.setVisible(false);
+					((FinalViewStackPane) getParent()).getAdminBorderPane().setVisible(true);
+					
+					
+				}
+				else {
+				
+					errorFieldPopup.getContent().add(lblError);
+					errorFieldPopup.show(getScene().getWindow()); 
+				}
 			});
 		}
 		return btnUpdate;
