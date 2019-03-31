@@ -1,5 +1,7 @@
 package view;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -25,8 +27,12 @@ public class GameplayPoolStatusHBox extends HBox{
 		if (btnLeaveWithPool == null) {
 			btnLeaveWithPool = new Button("Leave with the actual gain");
 			btnLeaveWithPool.getStyleClass().add("btnLeaveWPool");
+			btnLeaveWithPool.setOnAction(e-> {
+				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().setVisible(false);
+				((FinalViewStackPane) getParent() .getParent()).getLeavingHBox().setVisible(true);
+				
+			});
 			
-			btnLeaveWithPool.setDisable(true);
 		}
 		return btnLeaveWithPool;
 	}

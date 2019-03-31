@@ -12,11 +12,13 @@ public class FinalViewStackPane extends StackPane{
 	private UpdateQuestionBorderPane updateQuestionBorderPane;
 	private WinScreenBorderPane WinScreen;
 	private LooseScreenBorderPane looseScreenBorderPane;
+	private LeavingHBox leavingHBox ;
 	
+
 
 	public FinalViewStackPane() {
 		getChildren().addAll(getMenuBorderPane(),getGamePlayBorderPane(),getLoginAdminAnchorPane()
-				,getOptionBorderPane(),getAdminBorderPane(),getAddQuestionBorderPane(),getWinScreen(),getLooseScreenBorderPane(),getUpdateQuestionBorderPane());
+				,getOptionBorderPane(),getAdminBorderPane(),getAddQuestionBorderPane(),getWinScreen(),getLooseScreenBorderPane(),getUpdateQuestionBorderPane(),getLeavingHBox());
 		
 	}
 
@@ -98,6 +100,17 @@ public UpdateQuestionBorderPane getUpdateQuestionBorderPane() {
 	}
 		return updateQuestionBorderPane;
 	}
+public LeavingHBox getLeavingHBox() {
+	if(leavingHBox==null) {
+		leavingHBox = new LeavingHBox();
+		leavingHBox.setVisible(false);
+		leavingHBox.setOnMouseClicked(e->{
+			leavingHBox.setVisible(false);
+			getMenuBorderPane().setVisible(true);
+		});
+	}
+	return leavingHBox;
+}
 
 	
 }
