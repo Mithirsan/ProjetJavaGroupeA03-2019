@@ -112,7 +112,9 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 			btnJokerTimeFreezer.getStyleClass().add("btnJoker");
 			
 			btnJokerTimeFreezer.setOnAction(e->{
-					((GamePlayBorderPane) getParent()).getTimer().freezeTimer();
+					TimeFreezeJokerStrategy tFJoker = new TimeFreezeJokerStrategy();
+					tFJoker.setNode(((GamePlayBorderPane) getParent()).getTimer());
+					tFJoker.effectOfJoker();
 					btnJokerTimeFreezer.setDisable(true);
 				});
 			}
