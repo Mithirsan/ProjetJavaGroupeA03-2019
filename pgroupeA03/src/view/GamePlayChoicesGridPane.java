@@ -94,14 +94,14 @@ public class GamePlayChoicesGridPane extends GridPane  {
 			flashing.pseudoClassStateChanged(test, false);
 	    });
 		
-		KeyFrame beforEnd = new KeyFrame(Duration.seconds(1), ek-> {
+		KeyFrame beforEnd = new KeyFrame(Duration.seconds(0.1), ek-> {
 			flashing.pseudoClassStateChanged(flashHighlight, true);
 		});
 		KeyFrame end = new KeyFrame(Duration.seconds(0.4), ek-> {
 			flashing.pseudoClassStateChanged(flashHighlight, false);
 		});
 		
-		Timeline endFlasher = new Timeline(end);
+		Timeline endFlasher = new Timeline(beforEnd, end);
 		endFlasher.setCycleCount(1);
 		endFlasher.setAutoReverse(true);
 		
