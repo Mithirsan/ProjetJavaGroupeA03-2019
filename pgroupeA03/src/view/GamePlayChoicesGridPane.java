@@ -1,12 +1,8 @@
 package view;
 
-import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.css.PseudoClass;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -39,41 +35,7 @@ public class GamePlayChoicesGridPane extends GridPane  {
 		if (btnAnswerA == null) {
 			btnAnswerA = new Button("A: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(0));
 			btnAnswerA.setOnAction(e->{
-				if(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(0)) {
-					PseudoClass flashHighlight = PseudoClass.getPseudoClass("RightAnswer");
-					Node background = ((GamePlayBorderPane) getParent().getParent()).getStatementAndChoices().getLblStatement();
-					KeyFrame on = new KeyFrame(Duration.seconds(0.5), ek-> {
-						background.pseudoClassStateChanged(flashHighlight, true);
-				    });
-					KeyFrame off = new KeyFrame(Duration.seconds(0.5), ek-> {
-						background.pseudoClassStateChanged(flashHighlight, false);
-				    });
-					
-					Timeline flasher = new Timeline(on, off);
-					flasher.setCycleCount(4);
-					flasher.playFromStart();
-					flasher.setOnFinished(ek->{
-						background.pseudoClassStateChanged(flashHighlight, false);
-						refresh();				
-					});
-				}else {
-					PseudoClass flashHighlight = PseudoClass.getPseudoClass("WrongAnswer");
-					Node background = ((GamePlayBorderPane) getParent().getParent()).getStatementAndChoices().getLblStatement();
-					KeyFrame on = new KeyFrame(Duration.seconds(0.5), ek-> {
-						background.pseudoClassStateChanged(flashHighlight, true);
-				    });
-					KeyFrame off = new KeyFrame(Duration.seconds(0.5), ek-> {
-						background.pseudoClassStateChanged(flashHighlight, false);
-				    });
-					
-					Timeline flasher = new Timeline(on, off);
-					flasher.setCycleCount(4);
-					flasher.playFromStart();
-					flasher.setOnFinished(ek->{
-						background.pseudoClassStateChanged(flashHighlight, false);
-						fail();				
-					});
-				}
+				checkAnswer(btnAnswerA, Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(0));
 			});
 			btnAnswerA.getStyleClass().add("btnAnswer");
 		}
@@ -84,41 +46,7 @@ public class GamePlayChoicesGridPane extends GridPane  {
 		if(btnAnswerB == null) {
 			btnAnswerB = new Button("B: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(1));
 			btnAnswerB.setOnAction(e->{
-				if(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(1)) {
-					PseudoClass flashHighlight = PseudoClass.getPseudoClass("RightAnswer");
-					Node background = ((GamePlayBorderPane) getParent().getParent()).getStatementAndChoices().getLblStatement();
-					KeyFrame on = new KeyFrame(Duration.seconds(0.5), ek-> {
-						background.pseudoClassStateChanged(flashHighlight, true);
-				    });
-					KeyFrame off = new KeyFrame(Duration.seconds(0.5), ek-> {
-						background.pseudoClassStateChanged(flashHighlight, false);
-				    });
-					
-					Timeline flasher = new Timeline(on, off);
-					flasher.setCycleCount(4);
-					flasher.playFromStart();
-					flasher.setOnFinished(ek->{
-						background.pseudoClassStateChanged(flashHighlight, false);
-						refresh();				
-					});
-				}else {
-					PseudoClass flashHighlight = PseudoClass.getPseudoClass("WrongAnswer");
-					Node background = ((GamePlayBorderPane) getParent().getParent()).getStatementAndChoices().getLblStatement();
-					KeyFrame on = new KeyFrame(Duration.seconds(0.5), ek-> {
-						background.pseudoClassStateChanged(flashHighlight, true);
-				    });
-					KeyFrame off = new KeyFrame(Duration.seconds(0.5), ek-> {
-						background.pseudoClassStateChanged(flashHighlight, false);
-				    });
-					
-					Timeline flasher = new Timeline(on, off);
-					flasher.setCycleCount(4);
-					flasher.playFromStart();
-					flasher.setOnFinished(ek->{
-						background.pseudoClassStateChanged(flashHighlight, false);
-						fail();				
-					});
-				}
+				checkAnswer(btnAnswerB, Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(1));
 			});
 			btnAnswerB.getStyleClass().add("btnAnswer");
 		}
@@ -130,41 +58,7 @@ public class GamePlayChoicesGridPane extends GridPane  {
 			btnAnswerC = new Button("C: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(2));
 
 			btnAnswerC.setOnAction(e->{
-				if(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(2)) {
-					PseudoClass flashHighlight = PseudoClass.getPseudoClass("RightAnswer");
-					Node background = ((GamePlayBorderPane) getParent().getParent()).getStatementAndChoices().getLblStatement();
-					KeyFrame on = new KeyFrame(Duration.seconds(0.5), ek-> {
-						background.pseudoClassStateChanged(flashHighlight, true);
-				    });
-					KeyFrame off = new KeyFrame(Duration.seconds(0.5), ek-> {
-						background.pseudoClassStateChanged(flashHighlight, false);
-				    });
-					
-					Timeline flasher = new Timeline(on, off);
-					flasher.setCycleCount(4);
-					flasher.playFromStart();
-					flasher.setOnFinished(ek->{
-						background.pseudoClassStateChanged(flashHighlight, false);
-						refresh();				
-					});
-				}else {
-					PseudoClass flashHighlight = PseudoClass.getPseudoClass("WrongAnswer");
-					Node background = ((GamePlayBorderPane) getParent().getParent()).getStatementAndChoices().getLblStatement();
-					KeyFrame on = new KeyFrame(Duration.seconds(0.5), ek-> {
-						background.pseudoClassStateChanged(flashHighlight, true);
-				    });
-					KeyFrame off = new KeyFrame(Duration.seconds(0.5), ek-> {
-						background.pseudoClassStateChanged(flashHighlight, false);
-				    });
-					
-					Timeline flasher = new Timeline(on, off);
-					flasher.setCycleCount(4);
-					flasher.playFromStart();
-					flasher.setOnFinished(ek->{
-						background.pseudoClassStateChanged(flashHighlight, false);
-						fail();				
-					});
-				}
+				checkAnswer(btnAnswerC, Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(2));
 			});
 			btnAnswerC.getStyleClass().add("btnAnswer");
 		}
@@ -175,46 +69,61 @@ public class GamePlayChoicesGridPane extends GridPane  {
 		if(btnAnswerD == null) {
 			btnAnswerD = new Button("D: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(3));
 			btnAnswerD.setOnAction(e->{
-				if(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(3)) {
-					PseudoClass flashHighlight = PseudoClass.getPseudoClass("RightAnswer");
-					Node background = ((GamePlayBorderPane) getParent().getParent()).getStatementAndChoices().getLblStatement();
-					KeyFrame on = new KeyFrame(Duration.seconds(0.5), ek-> {
-						background.pseudoClassStateChanged(flashHighlight, true);
-				    });
-					KeyFrame off = new KeyFrame(Duration.seconds(0.5), ek-> {
-						background.pseudoClassStateChanged(flashHighlight, false);
-				    });
-					
-					Timeline flasher = new Timeline(on, off);
-					flasher.setCycleCount(4);
-					flasher.playFromStart();
-					flasher.setOnFinished(ek->{
-						background.pseudoClassStateChanged(flashHighlight, false);
-						refresh();				
-					});
-				}else {
-					PseudoClass flashHighlight = PseudoClass.getPseudoClass("WrongAnswer");
-					Node background = ((GamePlayBorderPane) getParent().getParent()).getStatementAndChoices().getLblStatement();
-					KeyFrame on = new KeyFrame(Duration.seconds(0.5), ek-> {
-						background.pseudoClassStateChanged(flashHighlight, true);
-				    });
-					KeyFrame off = new KeyFrame(Duration.seconds(0.5), ek-> {
-						background.pseudoClassStateChanged(flashHighlight, false);
-				    });
-					
-					Timeline flasher = new Timeline(on, off);
-					flasher.setCycleCount(4);
-					flasher.playFromStart();
-					flasher.setOnFinished(ek->{
-						background.pseudoClassStateChanged(flashHighlight, false);
-						fail();				
-					});
-				}
+				checkAnswer(btnAnswerD, Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(3));
 			});
 			btnAnswerD.getStyleClass().add("btnAnswer");
 		}
 		
 		return btnAnswerD;
+	}
+	
+	private void checkAnswer(Node flashing, boolean bool) {
+		PseudoClass flashHighlight;
+		PseudoClass test = PseudoClass.getPseudoClass("Testing");
+		
+		if(bool) {
+			flashHighlight = PseudoClass.getPseudoClass("RightAnswer");
+		}else {
+			flashHighlight = PseudoClass.getPseudoClass("WrongAnswer");
+		}
+		
+		KeyFrame on = new KeyFrame(Duration.seconds(0.1), ek-> {
+			flashing.pseudoClassStateChanged(test, true);
+	    });
+		KeyFrame off = new KeyFrame(Duration.seconds(0.4), ek-> {
+			flashing.pseudoClassStateChanged(test, false);
+	    });
+		
+		KeyFrame beforEnd = new KeyFrame(Duration.seconds(1), ek-> {
+			flashing.pseudoClassStateChanged(flashHighlight, true);
+		});
+		KeyFrame end = new KeyFrame(Duration.seconds(0.4), ek-> {
+			flashing.pseudoClassStateChanged(flashHighlight, false);
+		});
+		
+		Timeline endFlasher = new Timeline(end);
+		endFlasher.setCycleCount(1);
+		endFlasher.setAutoReverse(true);
+		
+		Timeline flasher = new Timeline(on, off);
+		flasher.setCycleCount(4);
+		flasher.setAutoReverse(true); 
+		flasher.playFromStart();
+		flasher.setOnFinished(ek->{
+			flashing.pseudoClassStateChanged(test, false);
+			endFlasher.playFromStart();
+		});
+		
+		endFlasher.setOnFinished(ek -> {
+			flashing.pseudoClassStateChanged(flashHighlight, false);
+			
+			if(bool) {
+				refresh();
+			}else {
+				fail();		
+			}		
+		});
+		
 	}
 	
 	private void refresh() {
@@ -225,6 +134,7 @@ public class GamePlayChoicesGridPane extends GridPane  {
 		getBtnAnswerC().setText("C: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(2));
 		getBtnAnswerD().setText("D: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(3));
 		getBtnAnswerA().setDisable(false);getBtnAnswerB().setDisable(false);getBtnAnswerC().setDisable(false);getBtnAnswerD().setDisable(false);
+
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().refreshTimer();
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getLevels().nextStage();
 	}
