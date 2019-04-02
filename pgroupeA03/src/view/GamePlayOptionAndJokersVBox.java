@@ -17,6 +17,8 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 	private Button btnJokerAnotherChance;
 	private Separator separator;
 	
+ 	
+	
 	public GamePlayOptionAndJokersVBox() {
 		this.setPadding(new Insets(10));
 		this.setSpacing(5);
@@ -123,10 +125,15 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 		
 	public Button getBtnJokerAnotherChance() {
 		if(btnJokerAnotherChance == null) {
-			btnJokerAnotherChance = new Button("A C");
+			btnJokerAnotherChance = new Button("Another Chance");
 			btnJokerAnotherChance.getStyleClass().add("btnJoker");
 			
-			btnJokerAnotherChance.setDisable(true);
+			btnJokerAnotherChance.setOnAction(e->{
+				AnotherChanceStrategy aCJoker= new AnotherChanceStrategy();
+				aCJoker.setNodeChoices(((GamePlayBorderPane) getParent()).getStatementAndChoices().getChoices());
+				aCJoker.effectOfJoker();
+				btnJokerAnotherChance.setDisable(true);
+			});		
 		}
 		return btnJokerAnotherChance;
 	}

@@ -12,7 +12,7 @@ import javafx.util.Duration;
 import model.Deck;
 
 public class GamePlayChoicesGridPane extends GridPane  {
-
+	private boolean aChance = false;
 	private Button btnAnswerA;
 	private Button btnAnswerB;
 	private Button btnAnswerC;
@@ -120,7 +120,12 @@ public class GamePlayChoicesGridPane extends GridPane  {
 			if(bool) {
 				refresh();
 			}else {
-				fail();		
+				if(aChance){
+					setaChance();
+				}
+				else {
+					fail();	
+				}
 			}		
 		});
 		
@@ -145,4 +150,13 @@ public class GamePlayChoicesGridPane extends GridPane  {
 		((FinalViewStackPane) getParent(). getParent().getParent()).getGamePlayBorderPane().getTimer().stopTimer();
 		((FinalViewStackPane)getParent().getParent().getParent()).getLooseScreenBorderPane().setVisible(true);
 	}
+
+	public boolean isaChance() {
+		return aChance;
+	}
+
+	public void setaChance() {
+		this.aChance = true;
+	}
+	
 }

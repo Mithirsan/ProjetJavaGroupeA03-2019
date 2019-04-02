@@ -69,5 +69,11 @@ public class GamePlayLevelsVBox extends VBox {
 		stage = 14;
 		lblLevels.get(stage).getStyleClass().add("stageActual");
 	}
+
+	public int getStage() {
+		return stage;
+	}
+	
+	
 	
 }
