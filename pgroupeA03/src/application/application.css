@@ -89,8 +89,8 @@
 
 /* Joker buttons style */
 .btnJoker{
-    -fx-pref-width: 85px;
-    -fx-pref-height: 25px;	
+    -fx-pref-width: 30px;
+    -fx-pref-height: 30px;	
 } 
 .btnJoker:hover {
     -fx-background-color: 
@@ -102,8 +102,8 @@
 
 /* Option button style */
 .btnOption{
-    -fx-pref-width: 85px;
-    -fx-pref-height: 25px;	
+    -fx-pref-width: 30px;
+    -fx-pref-height: 30px;	
 }  
 .btnOption:hover {
     -fx-background-color: 

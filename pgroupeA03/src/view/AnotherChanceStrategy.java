@@ -7,15 +7,10 @@ public class AnotherChanceStrategy implements JokerStrategy{
 
 	@Override
 	public void effectOfJoker() {
-		nodeChoices.setaChance();
+		nodeChoices.setAChance(true);
 	}
 
 	public void setNodeChoices(GamePlayChoicesGridPane nodeChoices) {
 		this.nodeChoices = nodeChoices;
-	}
-	
-	
-	
-	
-		
+	}		
 }

@@ -78,6 +78,7 @@ public class GamePlayChoicesGridPane extends GridPane  {
 	}
 	
 	private void checkAnswer(Node flashing, boolean bool) {
+		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().pauseTimer(true);;
 		PseudoClass flashHighlight;
 		PseudoClass test = PseudoClass.getPseudoClass("Testing");
 		
@@ -116,16 +117,16 @@ public class GamePlayChoicesGridPane extends GridPane  {
 		
 		endFlasher.setOnFinished(ek -> {
 			flashing.pseudoClassStateChanged(flashHighlight, false);
-			
+			((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().pauseTimer(false);
 			if(bool) {
 				refresh();
 			}else {
 				if(aChance){
-					aChance=false;
-					}
-				else {
+					flashing.setDisable(true);
+					setAChance(false);
+				}else {
 						fail();	
-					}
+				}
 			}		
 		});
 		
@@ -152,12 +153,12 @@ public class GamePlayChoicesGridPane extends GridPane  {
 		((FinalViewStackPane)getParent().getParent().getParent()).getLooseScreenBorderPane().setVisible(true);
 	}
 
-	public boolean isaChance() {
+	public boolean isAChance() {
 		return aChance;
 	}
 
-	public void setaChance() {
-		this.aChance =true;
+	public void setAChance(boolean bool) {
+		this.aChance = bool;
 	}
 	
 }
