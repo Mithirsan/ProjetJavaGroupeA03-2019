@@ -127,7 +127,7 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 		if(btnJokerAnotherChance == null) {
 			btnJokerAnotherChance = new Button("Another Chance");
 			btnJokerAnotherChance.getStyleClass().add("btnJoker");
-			
+		
 			btnJokerAnotherChance.setOnAction(e->{
 				AnotherChanceStrategy aCJoker= new AnotherChanceStrategy();
 				aCJoker.setNodeChoices(((GamePlayBorderPane) getParent()).getStatementAndChoices().getChoices());

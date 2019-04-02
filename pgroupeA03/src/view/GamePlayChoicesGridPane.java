@@ -121,11 +121,11 @@ public class GamePlayChoicesGridPane extends GridPane  {
 				refresh();
 			}else {
 				if(aChance){
-					setaChance();
-				}
+					aChance=false;
+					}
 				else {
-					fail();	
-				}
+						fail();	
+					}
 			}		
 		});
 		
@@ -142,6 +142,7 @@ public class GamePlayChoicesGridPane extends GridPane  {
 
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().refreshTimer();
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getLevels().nextStage();
+		aChance=false;
 	}
 	
 	public void fail() {
@@ -156,7 +157,7 @@ public class GamePlayChoicesGridPane extends GridPane  {
 	}
 
 	public void setaChance() {
-		this.aChance = true;
+		this.aChance =true;
 	}
 	
 }

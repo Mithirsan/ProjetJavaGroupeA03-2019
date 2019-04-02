@@ -46,6 +46,7 @@ public class GamePlayLevelsVBox extends VBox {
 		lblLevels.get(stage).getStyleClass().remove("stageActual");
 		if(stage%5 ==0) {
 			lblLevels.get(stage).getStyleClass().add("stageWonSaved");
+			((GamePlayBorderPane)getParent()).getOptionAndJokers().getBtnJokerAnotherChance().setDisable(false);
 		} else { 
 			lblLevels.get(stage).getStyleClass().add("stageWon");
 		}
