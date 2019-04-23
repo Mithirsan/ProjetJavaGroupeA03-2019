@@ -12,7 +12,6 @@ public class FinalViewStackPane extends StackPane{
 	private UpdateQuestionBorderPane updateQuestionBorderPane;
 	private WinScreenBorderPane WinScreen;
 	private LooseScreenBorderPane looseScreenBorderPane;
-	
 
 	public FinalViewStackPane() {
 		getChildren().addAll(getMenuBorderPane(),getGamePlayBorderPane(),getLoginAdminAnchorPane()
@@ -20,7 +19,6 @@ public class FinalViewStackPane extends StackPane{
 		
 	}
 
-	
 	public MenuBorderPane getMenuBorderPane() {
 		if(menuBorderPane==null) {
 			menuBorderPane= new MenuBorderPane();
@@ -60,44 +58,42 @@ public class FinalViewStackPane extends StackPane{
 		return adminBorderPane;
 	}
 	
-public AddQuestionBorderPane getAddQuestionBorderPane() {
-	if(addQuestionBorderPane==null) {
-		addQuestionBorderPane = new AddQuestionBorderPane();
-		addQuestionBorderPane.setVisible(false);
-	}
+	public AddQuestionBorderPane getAddQuestionBorderPane() {
+		if(addQuestionBorderPane==null) {
+			addQuestionBorderPane = new AddQuestionBorderPane();
+			addQuestionBorderPane.setVisible(false);
+		}
 		return addQuestionBorderPane;
 	}
-public WinScreenBorderPane getWinScreen() {
-	if (WinScreen==null) {
-		WinScreen = new WinScreenBorderPane();
-		WinScreen.setVisible(false);
-		WinScreen.setOnMouseClicked(e->{
+	public WinScreenBorderPane getWinScreen() {
+		if (WinScreen==null) {
+			WinScreen = new WinScreenBorderPane();
 			WinScreen.setVisible(false);
-			getMenuBorderPane().setVisible(true);
-		});
-	}
-	return WinScreen;
+			WinScreen.setOnMouseClicked(e->{
+				WinScreen.setVisible(false);
+				getMenuBorderPane().setVisible(true);
+			});
+		}
+		return WinScreen;
 	}
 
-
-public LooseScreenBorderPane getLooseScreenBorderPane() {
-	if(looseScreenBorderPane==null) {
-		looseScreenBorderPane = new LooseScreenBorderPane();
-		looseScreenBorderPane.setVisible(false);
-		looseScreenBorderPane.setOnMouseClicked(e->{
+	public LooseScreenBorderPane getLooseScreenBorderPane() {
+		if(looseScreenBorderPane==null) {
+			looseScreenBorderPane = new LooseScreenBorderPane();
 			looseScreenBorderPane.setVisible(false);
-			getMenuBorderPane().setVisible(true);
-		});
+			looseScreenBorderPane.setOnMouseClicked(e->{
+				looseScreenBorderPane.setVisible(false);
+				getMenuBorderPane().setVisible(true);
+			});
+		}
+		return looseScreenBorderPane;
 	}
-	return looseScreenBorderPane;
-}
-public UpdateQuestionBorderPane getUpdateQuestionBorderPane() {
-	if(updateQuestionBorderPane==null) {
-		updateQuestionBorderPane = new UpdateQuestionBorderPane();
-		updateQuestionBorderPane.setVisible(false);
-	}
+	
+	public UpdateQuestionBorderPane getUpdateQuestionBorderPane() {
+		if(updateQuestionBorderPane==null) {
+			updateQuestionBorderPane = new UpdateQuestionBorderPane();
+			updateQuestionBorderPane.setVisible(false);
+		}
 		return updateQuestionBorderPane;
 	}
-
-	
 }

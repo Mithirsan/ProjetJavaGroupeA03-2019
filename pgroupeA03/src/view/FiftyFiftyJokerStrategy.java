@@ -29,7 +29,6 @@ public class FiftyFiftyJokerStrategy implements JokerStrategy {
 			if(num != idTrue && num != test2) {
 				tmp[nb] = num;
 				test2 = num;
-				System.out.println(num);
 				nb++;
 			}
 			if(nb == 2)
