@@ -139,3 +139,8 @@
     -fx-pref-height: 30px;
     -fx-border-insets: 5px;
 }
+/*btn réponse correct */
+.btnAnswerColor{
+	-fx-background-color: green;
+	-fx-border-color: grey;
+}

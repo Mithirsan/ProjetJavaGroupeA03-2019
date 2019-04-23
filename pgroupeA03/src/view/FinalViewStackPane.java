@@ -1,5 +1,6 @@
 package view;
 
+import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 
 public class FinalViewStackPane extends StackPane{
@@ -13,12 +14,13 @@ public class FinalViewStackPane extends StackPane{
 	private WinScreenBorderPane WinScreen;
 	private LooseScreenBorderPane looseScreenBorderPane;
 	private LeavingHBox leavingHBox ;
+	private PresenterChoicesBorderPane presenterBorderPane;
 	
 
 
 	public FinalViewStackPane() {
 		getChildren().addAll(getMenuBorderPane(),getGamePlayBorderPane(),getLoginAdminAnchorPane()
-				,getOptionBorderPane(),getAdminBorderPane(),getAddQuestionBorderPane(),getWinScreen(),getLooseScreenBorderPane(),getUpdateQuestionBorderPane(),getLeavingHBox());
+				,getOptionBorderPane(),getAdminBorderPane(),getAddQuestionBorderPane(),getWinScreen(),getLooseScreenBorderPane(),getUpdateQuestionBorderPane(),getLeavingHBox(),getPresenterBorderPane());
 		
 	}
 
@@ -111,6 +113,16 @@ public LeavingHBox getLeavingHBox() {
 	}
 	return leavingHBox;
 }
+
+
+public PresenterChoicesBorderPane getPresenterBorderPane() {
+	if(presenterBorderPane==null) {
+		presenterBorderPane = new PresenterChoicesBorderPane();
+		presenterBorderPane.setVisible(false);
+	}
+	return presenterBorderPane;
+}
+
 
 	
 }

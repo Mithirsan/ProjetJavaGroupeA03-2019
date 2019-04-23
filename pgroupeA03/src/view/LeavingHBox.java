@@ -23,16 +23,16 @@ public class LeavingHBox extends HBox {
 	
 	private Label lblLeaveGain;
 	private Label lblPool;
+	private String gain;
 	
 
 
 	public LeavingHBox () {
 		this.setPadding(new Insets (10));
 		
+		this.getChildren().addAll(getLblPool(),getLblLeaveGain());
 		
-		this.getChildren().add(getLblLeaveGain());
 		
-			
 								
 		setAlignment(Pos.CENTER);
 		
@@ -41,18 +41,31 @@ public class LeavingHBox extends HBox {
 
 	public Label getLblLeaveGain() {
 		if(lblLeaveGain==null) {
-			lblLeaveGain = new  Label ("Your gain is :"); 
+			lblLeaveGain = new  Label (gain); 
+			
 		}
 		return lblLeaveGain;
+	}
+
+
+	public String getGain() {
+		return gain;
+	}
+
+
+	public void setGain(String gain) {
+		this.gain = gain;
+		lblLeaveGain.setText(gain);
 	}
 	
 	
 	public Label getLblPool() {
 		if(lblPool==null) {
-			lblPool = new Label (((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getPoolStatus().getLblViewPool().getText());
-		}
+			lblPool = new Label ("Your gain is : ");
+		}	
 		return lblPool;
 	}
+	
 
 }
 
