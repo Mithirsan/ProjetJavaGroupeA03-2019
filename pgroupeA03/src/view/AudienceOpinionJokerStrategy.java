@@ -5,22 +5,17 @@ import java.util.List;
 
 import model.Deck;
 import model.JokerStrategy;
-import model.Round;
 
 public class AudienceOpinionJokerStrategy implements JokerStrategy {
 
 	private double[] audienceChoices = {0, 0, 0, 0};
 	private List<Boolean> vals = new ArrayList<Boolean>();
-	private int idTrue;
 	
 	@Override
 	public void effectOfJoker() {
 		for (int i = 0; i < 4; i++) {
 			audienceChoices[i] = 0;
-			vals.add(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(i));
-			if(vals.get(i)) {
-				idTrue = i;
-			} 
+			vals.add(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(i)); 
 		}
 		switch (Deck.getInstance().getQuestions().get(Deck.getIndex()).getRound()) {
 			case FIRST_ROUND : FirstRoundQuestions();

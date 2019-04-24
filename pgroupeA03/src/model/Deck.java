@@ -11,13 +11,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
 public class Deck {
 	
 	private static int index = 0;
-	private static int nbQuestion = 0;
+	private static int nbQuestion = 15;
 	private static Deck instance;
 	private List<Question> questions;
+	
+	private List<Question> round1 = new ArrayList<Question>();
+	private List<Question> round2 = new ArrayList<Question>();
+	private List<Question> round3 = new ArrayList<Question>();
 	
 	public static Deck getInstance() {
 		if(instance == null) {
@@ -39,11 +42,9 @@ public class Deck {
 	}
 
 	public static void increaseIndex() {
-		if(index < 15) {
+		if(index < nbQuestion) {
 			index ++;
-		} else {
-			index%=15;
-		}
+		} 
 	}
 	
 	public List<Question> getQuestions() {
@@ -102,12 +103,60 @@ public class Deck {
 	
 	public void loadDeck(File file) throws FileNotFoundException, IOException {
 		Deck fileDeck = fromJSon(Serializable.readDeck(file.getAbsolutePath()));
+		index = 0;
 		getInstance().questions.clear();
 		for(Question x : fileDeck.getQuestions()) {
 			x.shuffleChoices();
-			nbQuestion++;
-			getInstance().addQuestion(x);
+			switch (x.getRound()) {
+				case FIRST_ROUND: 
+					round1.add(x);
+					break;
+				case SECOND_ROUND: 
+					round2.add(x);
+					break;
+				default : 
+					round3.add(x);
+			}
 		}
-//		Collections.shuffle(questions);
+		getInstance().addQuestions();
+	}
+	
+	private void addQuestions() {
+		int nb1 = 0, nb2 = 0, nb3 = 0;
+		Collections.shuffle(round1);
+		Collections.shuffle(round2);
+		Collections.shuffle(round3);
+		for(Question q : round1) {
+			if(getInstance().addQuestion(q)) {
+				nb1++;
+			}
+			if (nb1 == 5) {
+				break;
+			}
+		}
+		for(Question q : round2) {
+			if(getInstance().addQuestion(q)) {
+				nb2++;
+			}
+			if (nb2 == 5) {
+				break;
+			}
+		}
+		for(Question q : round3) {
+			if(getInstance().addQuestion(q)) {
+				nb3++;
+			}
+			if (nb3 == 5) {
+				break;
+			}
+		}
+		nbQuestion = nb1 + nb2 + nb3;
+	}
+
+	public void loadState(List<Question> state) {
+		questions.clear();
+		state.forEach(element -> {
+			questions.add(element.clone());
+		});
 	}
 }

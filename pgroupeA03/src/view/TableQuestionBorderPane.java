@@ -12,9 +12,12 @@ import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.cell.ComboBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import model.CareTMemento;
 import model.Deck;
+import model.OriginMemento;
 import model.Question;
 import model.Round;
 
@@ -28,13 +31,40 @@ public class TableQuestionBorderPane extends BorderPane {
 	private HBox hboxButton;
 	private Button btnDel,btnAdd;
 	
+	private Integer nbManip = 0;
+	private Integer totalManip = 0;
+	private CareTMemento cTakerMemento;
+	private OriginMemento originMemento;
+	
+	
 	public TableQuestionBorderPane() {
+		originMemento = new OriginMemento();
+		originMemento.setState(Deck.getInstance().getQuestions());
+		getcTakerMemento().add(originMemento.saveToMemento());
 		setCenter(getTableQuestion());
 		getTableQuestion().getColumns().add(getColAuthor());
 		getTableQuestion().getColumns().add(getColRound());
 		getTableQuestion().getColumns().add(getColStatement());
 		setBottom(getHboxButton());
 		
+		setOnKeyPressed(event -> {
+			if(event.getCode() == KeyCode.Z && event.isControlDown()) {
+				if(totalManip > 0) {
+					totalManip--;
+					originMemento.getFromMemento(getcTakerMemento().get(totalManip));
+					Deck.getInstance().loadState(originMemento.getState());
+					updateObservableList();
+				}
+			}
+			if(event.getCode() == KeyCode.Y && event.isControlDown()) {
+				if(totalManip < nbManip) {
+					totalManip++;
+					originMemento.getFromMemento(getcTakerMemento().get(totalManip));
+					Deck.getInstance().loadState(originMemento.getState());
+					updateObservableList();
+				}
+			}
+		});	
 	}
 	
 	public HBox getHboxButton() {
@@ -101,8 +131,14 @@ public class TableQuestionBorderPane extends BorderPane {
 		if(btnDel==null) {
 			btnDel = new Button("Delete");
 			btnDel.setOnAction(e->{
-				Deck.getInstance().deleteAllDeck(getTableQuestion().getSelectionModel().getSelectedItems());
-				updateObservableList();
+				ObservableList<Question> tmpList = getTableQuestion().getSelectionModel().getSelectedItems();
+				if(Deck.getInstance().deleteAllDeck(tmpList)) {
+					getListQuestion().removeAll(tmpList);
+					nbManip++;
+					totalManip= nbManip;
+					originMemento.setState(Deck.getInstance().getQuestions());
+					getcTakerMemento().add(originMemento.saveToMemento());
+				}
 			});
 		}
 		return btnDel;
@@ -135,4 +171,44 @@ public class TableQuestionBorderPane extends BorderPane {
 		getListQuestion().clear();
         getListQuestion().addAll(Deck.getInstance().getQuestions());
 	}
+
+	public CareTMemento getcTakerMemento() {
+		if(cTakerMemento==null) {
+			cTakerMemento = new CareTMemento();
+		}
+		return cTakerMemento;
+	}
+
+	public Integer getNbManip() {
+		return nbManip;
+	}
+	
+	
+	public void setNbManip(Integer nbManip) {
+		this.nbManip = nbManip;
+	}
+
+	public Integer getTotalManip() {
+		return totalManip;
+	}
+	
+	public void setTotalManip(Integer totalManip) {
+		this.totalManip = totalManip;
+	}
+
+	public OriginMemento getOriginMemento() {
+		return originMemento;
+	}
+	
+	public void emptyCareTaker() {
+		cTakerMemento = new CareTMemento();
+		OriginMemento origiMemento = new OriginMemento();
+		origiMemento.setState(Deck.getInstance().getQuestions());
+		cTakerMemento.add(origiMemento.saveToMemento());
+		nbManip = 0;
+		totalManip = 0;
+	}
+	
+	
+	
 }

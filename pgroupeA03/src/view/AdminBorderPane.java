@@ -62,7 +62,7 @@ public class AdminBorderPane extends BorderPane {
 			lblQuit.setOnMouseClicked(e->{
 				((FinalViewStackPane) getParent()).getLoginAdminAnchorPane().setVisible(true);
 				((FinalViewStackPane) getParent()).getAdminBorderPane().setVisible(false);
-				
+				getTableQuestion().emptyCareTaker();
 			});
 			
 		}

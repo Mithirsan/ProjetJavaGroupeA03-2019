@@ -75,6 +75,163 @@
     -fx-padding: 10 15 13 15;
 }
 
+.btnAnswer:RightAnswer{
+	-fx-background-color: #00FF00;
+}
+
+.btnAnswer:Testing{
+	-fx-background-color: #F1A00F;
+}
+
+.btnAnswer:WrongAnswer{
+	-fx-background-color: #FF0000;
+}
+
+/* Joker buttons style */
+.btnJoker{
+    -fx-pref-width: 30px;
+    -fx-pref-height: 30px;	
+} 
+.btnJoker:hover {
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #1343a3 0%, #123b90 100%),
+        #24409d,
+        #3a6ed8,
+        radial-gradient(center 50% 50%, radius 100%, #4b7fea, #2c4ec5);
+}
+
+/* Option button style */
+.btnOption{
+    -fx-pref-width: 30px;
+    -fx-pref-height: 30px;	
+}  
+.btnOption:hover {
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #a31343 0%, #90123b 100%),
+        #9d2440,
+        #d83a6e,
+        radial-gradient(center 50% 50%, radius 100%, #ea4b7f, #c52c4e);
+}
+
+/* Pool style */
+.btnLeaveWPool{
+	-fx-font-size: 10pt;
+    -fx-pref-width: 180px;
+    -fx-pref-height: 25px;
+} 
+.btnLeaveWPool:hover {
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #a39343 0%, #90923b 100%),
+        #9dA440,
+        #d8Ca6e,
+        radial-gradient(center 50% 50%, radius 100%, #eaDb7f, #c5Bc4e);
+} 
+.lblViewPool {
+	-fx-font-smoothing-type: lcd;
+	-fx-alignment: CENTER_RIGHT;
+	-fx-pref-width: 100px;
+	-fx-font-size: 13pt;
+	-fx-font-weight: bold;	
+}
+
+/* separator invisible */
+.sep{
+	-fx-background-color: #FFFFFF;
+}
+
+/* Main menu button */
+.mainMenuBtn {
+	-fx-pref-width: 255px;
+    -fx-pref-height: 30px;
+}
+
+/* Admin btn on main menu */
+.btnAdmin {
+	-fx-pref-width: 55px;
+    -fx-pref-height: 30px;
+    -fx-border-insets: 5px;
+}
+/*btn réponse correct */
+.btnAnswerColor{
+	-fx-background-color: green;
+	-fx-border-color: grey;
+}/* Statement view style */
+.lblStatement{
+	-fx-font-smoothing-type: lcd;
+	-fx-font-size: 16pt;
+}
+
+.withe{
+	-fx-text-fill: rgb(230,230,230);
+}
+
+/* Stage viex style */
+.stageActual{
+	-fx-font-smoothing-type: lcd;
+	-fx-font-size: 11pt;
+	-fx-text-fill: rgb(0,230,183);
+}
+
+.stageWon{
+	-fx-font-smoothing-type: lcd;
+	-fx-font-size: 9pt;
+	-fx-text-fill: rgb(134,210,64);
+}
+
+.stageWonSaved{
+	-fx-font-smoothing-type: lcd;
+	-fx-font-size: 10pt;
+	-fx-text-fill: rgb(0,210,34);
+}
+
+/* button style */
+.button{
+	-fx-padding: 8 8 8 8;
+    -fx-background-insets: 0,0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #A0A3A1 0%, #909391 100%),
+        #929593,
+        #AAADAB,
+        radial-gradient(center 50% 50%, radius 100%, #BABDBB, #A0A3A1);
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.75) , 4,0,0,1 );
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+    -fx-text-fill: #FAFEF8;
+}
+.button:hover {
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #A2A5A3 0%, #929593 100%),
+        #949795,
+        #ACAFAD,
+        radial-gradient(center 50% 50%, radius 100%, #BCBFBD, #A2A5A3);
+}
+.button:pressed {
+    -fx-padding: 8 8 8 8;
+    -fx-background-insets: 2 0 0 0,2 0 3 0, 2 0 4 0, 2 0 5 0;
+}
+.button Text {
+    -fx-fill: white;
+    -fx-effect: dropshadow( gaussian , #a30000 , 0,0,0,2 );
+}
+
+/* Answer buttons style */
+.btnAnswer{
+	-fx-padding: 8 15 15 15;
+    -fx-pref-width: 400px;
+    -fx-pref-height: 35px;
+} 
+.btnAnswer:hover {
+    -fx-background-color: 
+        linear-gradient(from 0% 93% to 0% 100%, #43a313 0%, #3b9012 100%),
+        #409d24,
+        #6ed83a,
+        radial-gradient(center 50% 50%, radius 100%, #7fea4b, #4ec52c);
+}
+.btnAnswer:pressed {
+    -fx-padding: 10 15 13 15;
+}
+
 /* Joker buttons style */
 .btnJoker{
     -fx-pref-width: 85px;

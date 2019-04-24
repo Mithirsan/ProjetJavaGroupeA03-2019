@@ -1,6 +1,5 @@
 package view;
 
-import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
 
 public class FinalViewStackPane extends StackPane{
@@ -121,8 +120,5 @@ public PresenterChoicesBorderPane getPresenterBorderPane() {
 		presenterBorderPane.setVisible(false);
 	}
 	return presenterBorderPane;
-}
-
-
-	
+	}
 }

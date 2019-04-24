@@ -55,5 +55,10 @@ public class GamePlayBorderPane extends BorderPane {
 	public void reset() {
 		getLevels().restart();
 		getPoolStatus().getLblViewPool().setText("none");
+		getOptionAndJokers().getBtnJokerAnotherChance().setDisable(false);
+		getOptionAndJokers().getBtnJokerAudienceOpinion().setDisable(false);
+		getOptionAndJokers().getBtnJokerFiftyFifty().setDisable(false);
+		getOptionAndJokers().getBtnJokerTimeFreezer().setDisable(false);
+		
 	}
 }

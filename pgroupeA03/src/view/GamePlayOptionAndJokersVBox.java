@@ -1,9 +1,13 @@
 package view;
 
+import java.io.File;
+
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Separator;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import model.Deck;
 
@@ -15,6 +19,7 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 	private Button btnJokerFiftyFifty;
 	private Button btnJokerTimeFreezer;
 	private Button btnJokerAnotherChance;
+	
 	private Separator separator;
 	
 	public GamePlayOptionAndJokersVBox() {
@@ -33,7 +38,10 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 	
 	public Button getBtnOption() {
 		if (btnOption == null) {
-			btnOption = new Button("Options");
+			ImageView ivOption = new ImageView(new Image(new File("ressources/pictures/btnOption.png").toURI().toString()));
+			ivOption.setFitHeight(25);
+			ivOption.setFitWidth(25);
+			btnOption = new Button("",ivOption);
 			btnOption.getStyleClass().add("btnOption");
 			this.setSpacing(5);
 			btnOption.setOnAction(e->{
@@ -48,7 +56,10 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 	
 	public Button getBtnJokerAudienceOpinion() {
 		if(btnJokerAudienceOpinion == null) {
-			btnJokerAudienceOpinion = new Button("Audience Opinion");
+			ImageView ivAudienceOpinion = new ImageView(new Image(new File("ressources/pictures/btnAO.png").toURI().toString()));
+			ivAudienceOpinion.setFitHeight(25);
+			ivAudienceOpinion.setFitWidth(25);
+			btnJokerAudienceOpinion = new Button("", ivAudienceOpinion);
 			btnJokerAudienceOpinion.getStyleClass().add("btnJoker");
 			btnJokerAudienceOpinion.setOnAction(e->{
 				AudienceOpinionJokerStrategy aOJoker = new AudienceOpinionJokerStrategy();
@@ -78,7 +89,10 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 
 	public Button getBtnJokerFiftyFifty() {
 		if(btnJokerFiftyFifty == null) {
-			btnJokerFiftyFifty = new Button("Fifty Fifty");
+			ImageView ivFiftyFifty = new ImageView(new Image(new File("ressources/pictures/btnFF.png").toURI().toString()));
+			ivFiftyFifty.setFitHeight(25);
+			ivFiftyFifty.setFitWidth(25);
+			btnJokerFiftyFifty = new Button("", ivFiftyFifty);
 			btnJokerFiftyFifty.getStyleClass().add("btnJoker");
 			
 			btnJokerFiftyFifty.setOnAction(e->{
@@ -108,11 +122,16 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 
 	public Button getBtnJokerTimeFreezer() {
 		if(btnJokerTimeFreezer == null) {
-			btnJokerTimeFreezer = new Button("Time Freeze");
+			ImageView ivTimeFreezer = new ImageView(new Image(new File("ressources/pictures/btnTF.png").toURI().toString()));
+			ivTimeFreezer.setFitHeight(25);
+			ivTimeFreezer.setFitWidth(25);
+			btnJokerTimeFreezer = new Button("", ivTimeFreezer);
 			btnJokerTimeFreezer.getStyleClass().add("btnJoker");
 			
 			btnJokerTimeFreezer.setOnAction(e->{
-					((GamePlayBorderPane) getParent()).getTimer().freezeTimer();
+					TimeFreezeJokerStrategy tFJoker = new TimeFreezeJokerStrategy();
+					tFJoker.setNode(((GamePlayBorderPane) getParent()).getTimer());
+					tFJoker.effectOfJoker();
 					btnJokerTimeFreezer.setDisable(true);
 				});
 			}
@@ -121,10 +140,18 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 		
 	public Button getBtnJokerAnotherChance() {
 		if(btnJokerAnotherChance == null) {
-			btnJokerAnotherChance = new Button("A C");
+			ImageView ivAnotherChance = new ImageView(new Image(new File("ressources/pictures/btnR.png").toURI().toString()));
+			ivAnotherChance.setFitHeight(25);
+			ivAnotherChance.setFitWidth(25);
+			btnJokerAnotherChance = new Button("", ivAnotherChance);
 			btnJokerAnotherChance.getStyleClass().add("btnJoker");
-			
-			btnJokerAnotherChance.setDisable(true);
+		
+			btnJokerAnotherChance.setOnAction(e->{
+				AnotherChanceStrategy aCJoker= new AnotherChanceStrategy();
+				aCJoker.setNodeChoices(((GamePlayBorderPane) getParent()).getStatementAndChoices().getChoices());
+				aCJoker.effectOfJoker();
+				btnJokerAnotherChance.setDisable(true);
+			});		
 		}
 		return btnJokerAnotherChance;
 	}
