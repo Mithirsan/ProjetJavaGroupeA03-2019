@@ -39,7 +39,7 @@ public class GamePlayChoicesGridPane extends GridPane  {
 		if (btnAnswerA == null) {
 			btnAnswerA = new Button("A: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(0));
 			btnAnswerA.setOnAction(e->{
-				checkAnswer(btnAnswerA, Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(0));
+			checkAnswer(btnAnswerA, Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(0));
 			});
 			btnAnswerA.getStyleClass().add("btnAnswer");
 		}
@@ -62,7 +62,7 @@ public class GamePlayChoicesGridPane extends GridPane  {
 			btnAnswerC = new Button("C: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(2));
 
 			btnAnswerC.setOnAction(e->{
-				checkAnswer(btnAnswerC, Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(2));
+			checkAnswer(btnAnswerC, Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(2));
 			});
 			btnAnswerC.getStyleClass().add("btnAnswer");
 		}
@@ -73,7 +73,7 @@ public class GamePlayChoicesGridPane extends GridPane  {
 		if(btnAnswerD == null) {
 			btnAnswerD = new Button("D: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(3));
 			btnAnswerD.setOnAction(e->{
-				checkAnswer(btnAnswerD, Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(3));
+						checkAnswer(btnAnswerD, Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(3));
 			});
 			btnAnswerD.getStyleClass().add("btnAnswer");
 		}

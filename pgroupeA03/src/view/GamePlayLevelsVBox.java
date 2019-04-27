@@ -12,6 +12,8 @@ import model.Stage;
 
 public class GamePlayLevelsVBox extends VBox {
 	
+
+
 	private List<Label> lblLevels;
 	
 	private int stage;
@@ -74,7 +76,4 @@ public class GamePlayLevelsVBox extends VBox {
 	public int getStage() {
 		return stage;
 	}
-	
-	
-	
 }

@@ -13,12 +13,13 @@ public class MenuVBox extends VBox{
 	private Button btnPlay;
 	private Button btnLoad;
 	private Button btnOption;
+	private Button btnpresenter;
 	private Button btnQuit;
 	private MediaPlayer musicPlayer;
 			
 	
 	public MenuVBox() {
-		getChildren().addAll(getBtnPlay(),getBtnLoad(),getBtnOption(),getBtnQuit());
+		getChildren().addAll(getBtnPlay(),getBtnLoad(),getBtnOption(),getBtnpresenter(),getBtnQuit());
 		setSpacing(10);
 		setAlignment(Pos.CENTER);
 		getMusic().play();
@@ -82,4 +83,16 @@ public class MenuVBox extends VBox{
 		}
 		return musicPlayer;
 	}
+	public Button getBtnpresenter() {
+		if(btnpresenter==null) {
+			btnpresenter= new Button("Presenter");
+			btnpresenter.getStyleClass().add("mainMenuBtn");
+			btnpresenter.setOnAction(e->{
+				getParent().setVisible(false);
+				((FinalViewStackPane) getParent(). getParent()).getPresenterBorderPane().setVisible(true);
+			});
+		}
+		return btnpresenter;
+	}
+
 }
