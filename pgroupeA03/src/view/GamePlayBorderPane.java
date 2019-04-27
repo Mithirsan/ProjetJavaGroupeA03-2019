@@ -1,6 +1,11 @@
 package view;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import javafx.scene.layout.BorderPane;
+import model.Deck;
 
 public class GamePlayBorderPane extends BorderPane {
 
@@ -53,7 +58,10 @@ public class GamePlayBorderPane extends BorderPane {
 		return poolStatus;
 	}
 	public void reset() {
+		Deck.getInstance().addQuestions();
+		
 		getLevels().restart();
+		getStatementAndChoices().getChoices().resetTxt();
 		getPoolStatus().getLblViewPool().setText("none");
 		getOptionAndJokers().getBtnJokerAnotherChance().setDisable(false);
 		getOptionAndJokers().getBtnJokerAudienceOpinion().setDisable(false);

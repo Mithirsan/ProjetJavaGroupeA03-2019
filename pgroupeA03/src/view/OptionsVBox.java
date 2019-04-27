@@ -58,6 +58,7 @@ public class OptionsVBox extends VBox{
 			btnQuit.setOnAction(e->{
 				((FinalViewStackPane) getParent() .getParent()).getOptionBorderPane().setVisible(false);
 				((FinalViewStackPane) getParent() .getParent()).getMenuBorderPane().setVisible(true);
+				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().reset();
 			});
 		}
 		return btnQuit;

@@ -16,10 +16,10 @@ public class LooseScreenBorderPane extends BorderPane {
 	private Label lblMessage;
 	
 	public LooseScreenBorderPane() {
-		BackgroundSize backgroundSize = new BackgroundSize( 960, 540, true, true, true, false);
-		BackgroundImage bg = new BackgroundImage(new Image(new File("ressources/pictures/ElectricChair.jpg").toURI().toString()), 
-				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
-		setBackground(new Background(bg));
+//		BackgroundSize backgroundSize = new BackgroundSize( 960, 540, true, true, true, false);
+//		BackgroundImage bg = new BackgroundImage(new Image(new File("ressources/pictures/ElectricChair.jpg").toURI().toString()), 
+//				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+//		setBackground(new Background(bg));
 		setBottom(getLblMessage());
 		getLblMessage().setAlignment(Pos.CENTER);
 	}

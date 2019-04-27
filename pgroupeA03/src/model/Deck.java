@@ -103,10 +103,12 @@ public class Deck {
 	
 	public void loadDeck(File file) throws FileNotFoundException, IOException {
 		Deck fileDeck = fromJSon(Serializable.readDeck(file.getAbsolutePath()));
-		index = 0;
-		getInstance().questions.clear();
+		getInstance().round1.clear();
+		getInstance().round2.clear();
+		getInstance().round3.clear();
+		
 		for(Question x : fileDeck.getQuestions()) {
-			x.shuffleChoices();
+//			x.shuffleChoices();
 			switch (x.getRound()) {
 				case FIRST_ROUND: 
 					round1.add(x);
@@ -121,12 +123,15 @@ public class Deck {
 		getInstance().addQuestions();
 	}
 	
-	private void addQuestions() {
+	public void addQuestions() {
 		int nb1 = 0, nb2 = 0, nb3 = 0;
+		index = 0;
+		getInstance().questions.clear();
 		Collections.shuffle(round1);
 		Collections.shuffle(round2);
 		Collections.shuffle(round3);
 		for(Question q : round1) {
+			q.shuffleChoices();
 			if(getInstance().addQuestion(q)) {
 				nb1++;
 			}
@@ -135,6 +140,7 @@ public class Deck {
 			}
 		}
 		for(Question q : round2) {
+			q.shuffleChoices();
 			if(getInstance().addQuestion(q)) {
 				nb2++;
 			}
@@ -143,6 +149,7 @@ public class Deck {
 			}
 		}
 		for(Question q : round3) {
+			q.shuffleChoices();
 			if(getInstance().addQuestion(q)) {
 				nb3++;
 			}
@@ -159,4 +166,6 @@ public class Deck {
 			questions.add(element.clone());
 		});
 	}
+	
+	
 }
