@@ -41,10 +41,8 @@ public class Main extends Application {
 		try {
 			Deck.getInstance().loadDeck(file);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		launch(args);
