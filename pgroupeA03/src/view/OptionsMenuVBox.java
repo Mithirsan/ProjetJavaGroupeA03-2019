@@ -23,8 +23,8 @@ public class OptionsMenuVBox extends VBox {
 			btnPresenter=new Button("Presenter");
 			btnPresenter.getStyleClass().add("mainMenuBtn");
 			btnPresenter.setOnAction(e->{
-				
-				
+				getParent().setVisible(false);
+				((FinalViewStackPane) getParent(). getParent()).getPresenterBorderPane().setVisible(true);
 			});
 		}
 		return btnPresenter;

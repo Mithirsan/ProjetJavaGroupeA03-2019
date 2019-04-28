@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
 public class GameplayPoolStatusHBox extends BorderPane {
+	private static int nb = 0;
 	
 	private Button btnLeaveWithPool;
 	
@@ -24,10 +25,28 @@ public class GameplayPoolStatusHBox extends BorderPane {
 		hboxgain.setSpacing(10);
 		hboxgain.setAlignment(Pos.BASELINE_CENTER);
 		setBottom(hboxgain);
+		
+		
 	}
 
 	public ImageView getImagePresenter() {
+		
 		return imagePresenter;
+	}
+	
+
+	public void setImagePresenter(ImageView imagePresenter) {
+		
+		this.imagePresenter = imagePresenter;
+		if (nb==0) {
+			this.getChildren().add(getImagePresenter());
+			nb++;
+		}
+		else {
+			this.getChildren().remove(getImagePresenter());
+		//	this.getChildren().add(getImagePresenter());
+		}
+		
 	}
 
 	public Button getBtnLeaveWithPool() {
@@ -50,11 +69,5 @@ public class GameplayPoolStatusHBox extends BorderPane {
 			lblViewPool.getStyleClass().add("lblViewPool");
 		}
 		return lblViewPool;
-	}
-	public void putNewImage (ImageView image) {
-		imagePresenter=image;
-		this.getChildren().add(getImagePresenter());
-		
-		
 	}
 }
