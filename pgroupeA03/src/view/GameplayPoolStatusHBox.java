@@ -1,17 +1,18 @@
 package view;
 
 
+import java.io.File;
+
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
 public class GameplayPoolStatusHBox extends BorderPane {
-	private static int nb = 0;
-	
 	private Button btnLeaveWithPool;
 	
 
@@ -21,6 +22,7 @@ public class GameplayPoolStatusHBox extends BorderPane {
 	
 	public GameplayPoolStatusHBox() {
 		this.setPadding(new Insets(10));
+		setCenter(getImagePresenter());
 		HBox hboxgain = new HBox (getLblViewPool(), getBtnLeaveWithPool());
 		hboxgain.setSpacing(10);
 		hboxgain.setAlignment(Pos.BASELINE_CENTER);
@@ -30,23 +32,15 @@ public class GameplayPoolStatusHBox extends BorderPane {
 	}
 
 	public ImageView getImagePresenter() {
-		
+		if(imagePresenter==null) {
+			imagePresenter= new ImageView(new Image ( new File("ressources/pictures/JP-Foucault.jpg").toURI().toString() ));
+		}
 		return imagePresenter;
 	}
 	
 
-	public void setImagePresenter(ImageView imagePresenter) {
-		
-		this.imagePresenter = imagePresenter;
-		if (nb==0) {
-			this.getChildren().add(getImagePresenter());
-			nb++;
-		}
-		else {
-			this.getChildren().remove(getImagePresenter());
-		//	this.getChildren().add(getImagePresenter());
-		}
-		
+	public void setImagePresenter(Image imagePresenter) {
+		this.getImagePresenter().setImage(imagePresenter);
 	}
 
 	public Button getBtnLeaveWithPool() {

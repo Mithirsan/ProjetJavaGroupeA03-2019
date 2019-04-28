@@ -17,7 +17,7 @@ import model.Presenter;
 
 public class PresenterChoicesBorderPane extends BorderPane{	
 
-	private ImageView presenterImageView;
+	private Image presenterImage;
 
 	
 	
@@ -51,18 +51,15 @@ public class PresenterChoicesBorderPane extends BorderPane{
 			btnValidate.setOnAction(e->{
 				((FinalViewStackPane) getParent()).getMenuBorderPane().getMenuVBox().setVisible(true);
 				((FinalViewStackPane) getParent()).getPresenterBorderPane().setVisible(false);
-				getpresenterImageView();
-				((FinalViewStackPane) getParent()).getGamePlayBorderPane().getPoolStatus().setImagePresenter(presenterImageView);
+				getpresenterImage();
+				((FinalViewStackPane) getParent()).getGamePlayBorderPane().getPoolStatus().setImagePresenter(presenterImage);
 				
 			});
 		}
 		return 	btnValidate;
 	}
-	public ImageView getpresenterImageView() {
-		if(presenterImageView==null) {
-			Image imgPres = new Image(new File("ressources/pictures/"+getCbPresenter().getValue().getPresenter()+".jpg").toURI().toString());	
-			presenterImageView= new ImageView(imgPres);
-		}
-		return presenterImageView;
+	public Image getpresenterImage() {
+			presenterImage = new Image(new File("ressources/pictures/"+getCbPresenter().getValue().getPresenter()+".jpg").toURI().toString());	
+			return presenterImage;
 	}
 }
