@@ -7,6 +7,7 @@ public class FinalViewStackPane extends StackPane{
 	private GamePlayBorderPane gamePlayBorderPane;
 	private LoginAdminAnchorPane loginAdminAnchorPane;
 	private OptionsBorderPane optionBorderPane;
+	private OptionsMenuBorderPane optionMenuBorderPane;
 	private AdminBorderPane adminBorderPane;
 	private AddQuestionBorderPane addQuestionBorderPane;
 	private UpdateQuestionBorderPane updateQuestionBorderPane;
@@ -19,7 +20,7 @@ public class FinalViewStackPane extends StackPane{
 
 	public FinalViewStackPane() {
 		getChildren().addAll(getMenuBorderPane(),getGamePlayBorderPane(),getLoginAdminAnchorPane()
-				,getOptionBorderPane(),getAdminBorderPane(),getAddQuestionBorderPane(),getWinScreen(),getLooseScreenBorderPane(),getUpdateQuestionBorderPane(),getLeavingHBox(),getPresenterBorderPane());
+				,getOptionBorderPane(),getAdminBorderPane(),getAddQuestionBorderPane(),getWinScreen(),getLooseScreenBorderPane(),getUpdateQuestionBorderPane(),getOptionsMenuBorderPane(),getLeavingHBox(),getPresenterBorderPane());
 		
 	}
 
@@ -100,7 +101,19 @@ public UpdateQuestionBorderPane getUpdateQuestionBorderPane() {
 		updateQuestionBorderPane.setVisible(false);
 	}
 		return updateQuestionBorderPane;
+}
+public OptionsMenuBorderPane getOptionsMenuBorderPane() {
+	if(optionMenuBorderPane== null) {
+		optionMenuBorderPane = new OptionsMenuBorderPane();
+		optionMenuBorderPane.setVisible(false);
 	}
+	return optionMenuBorderPane;
+	
+}
+
+
+
+
 public LeavingHBox getLeavingHBox() {
 	if(leavingHBox==null) {
 		leavingHBox = new LeavingHBox();

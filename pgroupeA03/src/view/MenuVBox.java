@@ -55,8 +55,11 @@ public class MenuVBox extends VBox{
 		if(btnOption==null) {
 			btnOption= new Button("Option");
 			btnOption.getStyleClass().add("mainMenuBtn");
+			btnOption.setOnAction(e->{
+				((FinalViewStackPane) getParent() .getParent()).getOptionsMenuBorderPane().setVisible(true);
+				((FinalViewStackPane) getParent() .getParent()).getMenuBorderPane().getMenuVBox().setVisible(false);
+			});
 			
-			btnOption.setDisable(true);
 		}
 		return btnOption;
 	}
