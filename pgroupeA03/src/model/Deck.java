@@ -108,7 +108,6 @@ public class Deck {
 		getInstance().round3.clear();
 		
 		for(Question x : fileDeck.getQuestions()) {
-//			x.shuffleChoices();
 			switch (x.getRound()) {
 				case FIRST_ROUND: 
 					round1.add(x);
@@ -166,6 +165,9 @@ public class Deck {
 			questions.add(element.clone());
 		});
 	}
-	
-	
+
+	public static void saveGame() {
+		// TODO Auto-generated method stub
+		
+	}
 }

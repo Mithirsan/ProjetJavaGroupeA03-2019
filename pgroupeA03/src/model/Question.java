@@ -144,7 +144,7 @@ public class Question {
 
 	@Override
 	public String toString() {
-		return "author=" + author + ", round=" + round + ",\n " + statement + ":\n " + choices + "\n\n";
+		return "author=" + author + ", round=" + round + ", " + statement + ":\n" + choices;
 	}
 
 	public String getChoice(int i) {
@@ -161,7 +161,7 @@ public class Question {
 				return i;
 			}
 		}
-		return 0;
+		return -1;
 	}
 	
 	public Question clone() {
