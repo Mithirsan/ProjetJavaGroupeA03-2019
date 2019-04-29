@@ -1,8 +1,9 @@
 package model;
 
 public enum Presenter {
-	JPFOUCAULT ("JP-Foucault"),
-	THEREAPER ("TheReaper");
+	JP_FOUCAULT ("JP-Foucault"),
+	THE_REAPER ("TheReaper"),
+	Camille ("CamilleCombal");
 	
 	String presenter;
 	Presenter (String presenter){
