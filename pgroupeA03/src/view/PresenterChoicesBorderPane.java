@@ -4,6 +4,7 @@ import java.io.File;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -11,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import model.Presenter;
 
 
@@ -28,9 +30,12 @@ public class PresenterChoicesBorderPane extends BorderPane{
 	
 	public PresenterChoicesBorderPane () {
 		getCbPresenter().getSelectionModel().selectFirst();
-		HBox hboxbtn = new HBox (getCbPresenter(),getBtnValidate(),getImagePreview());
-		hboxbtn.setAlignment(Pos.CENTER);
-		hboxbtn.setSpacing(150);
+		VBox vboxSelect = new VBox(getCbPresenter(),getBtnValidate());
+		vboxSelect.setSpacing(10.);
+		HBox hboxbtn = new HBox (vboxSelect,getImagePreview());
+		setCenter(hboxbtn);
+		hboxbtn.setSpacing(10.);
+		hboxbtn.setPadding(new Insets(250.));
 
 		setCenter(hboxbtn);
 
