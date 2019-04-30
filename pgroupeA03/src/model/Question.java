@@ -52,7 +52,7 @@ public class Question {
 	    choices = shuffleMap;
 	}
 
-	public boolean addChoices(String rep,Boolean value) throws AlreadyFourChoicesException, AlreadyTrueChoiceException{
+	public boolean addChoice(String rep,Boolean value) throws AlreadyFourChoicesException, AlreadyTrueChoiceException{
 		if(choices.size()>NB_CHOICES_MAX) {
 			throw new AlreadyFourChoicesException((byte) 0);
 		}
