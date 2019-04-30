@@ -14,13 +14,13 @@ import java.util.List;
 public class Deck {
 	
 	private static int index = 0;
-	private static int nbQuestion = 15;
+	private static final int NBQUESTION = 15;
 	private static Deck instance;
 	private List<Question> questions;
 	
-	private List<Question> round1 = new ArrayList<Question>();
-	private List<Question> round2 = new ArrayList<Question>();
-	private List<Question> round3 = new ArrayList<Question>();
+	private static List<Question> round1 = new ArrayList<Question>();
+	private static List<Question> round2 = new ArrayList<Question>();
+	private static List<Question> round3 = new ArrayList<Question>();
 	
 	public static Deck getInstance() {
 		if(instance == null) {
@@ -38,11 +38,11 @@ public class Deck {
 	}
 	
 	public static int getIndex() {
-		return index%nbQuestion;
+		return index%NBQUESTION;
 	}
 
 	public static void increaseIndex() {
-		if(index < nbQuestion) {
+		if(index < NBQUESTION) {
 			index ++;
 		} 
 	}
@@ -52,7 +52,9 @@ public class Deck {
 	}
 
 	public void setDeck(List<Question> questions){
-		this.questions = questions;
+		for(Question q : questions) {
+			this.addQuestion(q);
+		}
 	}
 	
 	public boolean addQuestion(Question x){
@@ -156,7 +158,6 @@ public class Deck {
 				break;
 			}
 		}
-		nbQuestion = nb1 + nb2 + nb3;
 	}
 
 	public void loadState(List<Question> state) {
