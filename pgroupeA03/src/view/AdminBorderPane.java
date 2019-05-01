@@ -21,7 +21,7 @@ public class AdminBorderPane extends BorderPane {
 	private MenuItem menuISave;
 	private MenuItem menuISaveAs;
 	private FileChooser fChooser = new FileChooser();
-	private File file = new File("Test.json") ;
+	private File file = new File("Test.json") ; 
 	
 	private TableQuestionBorderPane tableQuestion;
 	

@@ -1,6 +1,8 @@
 package view;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
 import javafx.animation.Timeline;
 import javafx.geometry.Pos;
@@ -8,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import model.Deck;
+import model.Game;
 
 public class MenuVBox extends VBox{
 	private Button btnPlay;
@@ -45,8 +49,29 @@ public class MenuVBox extends VBox{
 		if(btnLoad==null) {
 			btnLoad=new Button("Load");
 			btnLoad.getStyleClass().add("mainMenuBtn");
+			btnLoad.setOnAction(e->{
+				try {
+					Game game = new Game().downloadData();
+					List<Boolean>tmpList =game.getJokerUsed();
+					Deck.setInstance(game.getDeck());
+					
+					((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getTimer().setSeconds(game.getTimerLeft());
+					((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getLevels().setStage(game.getIndex());
+					((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getOptionAndJokers().getBtnJokerAnotherChance().setDisable(tmpList.get(0));
+					((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getOptionAndJokers().getBtnJokerAudienceOpinion().setDisable(tmpList.get(1));
+					((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getOptionAndJokers().getBtnJokerFiftyFifty().setDisable(tmpList.get(2));
+					((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getOptionAndJokers().getBtnJokerTimeFreezer().setDisable(tmpList.get(3));
+				
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				getParent().setVisible(false);
+				((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().setVisible(true);
 			
-			btnLoad.setDisable(true);
+				
+			});
+			
 		}
 		return btnLoad;
 	}

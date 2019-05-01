@@ -27,7 +27,7 @@ public class GameplayPoolStatusHBox extends BorderPane {
 		hboxgain.setSpacing(10);
 		hboxgain.setAlignment(Pos.BASELINE_CENTER);
 		setBottom(hboxgain);
-		
+		 
 		
 	}
 

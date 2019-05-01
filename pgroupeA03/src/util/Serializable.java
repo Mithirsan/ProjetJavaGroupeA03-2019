@@ -31,4 +31,29 @@ public class Serializable {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	public static String readSavedGame() {
+		String tmp = "";
+		try(Scanner scan = new Scanner(new BufferedInputStream(new FileInputStream("gameSaved.json")))){
+			while(scan.hasNext()) {
+				tmp += scan.nextLine();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return tmp;
+	}
+	
+	
+	public static void writeSaveGame(String jsonObject) {
+		try(PrintWriter json = new PrintWriter(new BufferedOutputStream(new FileOutputStream("gameSaved.json")))) {
+			json.write(jsonObject);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 }

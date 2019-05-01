@@ -77,7 +77,7 @@ public class Deck {
 		int ind = getInstance().questions.indexOf(x);
 		if(ind == -1) {
 			return false;
-		}
+		} 
 		questions.set(ind, x);
 		return true;
 	}
@@ -171,4 +171,10 @@ public class Deck {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public static void setInstance(Deck instance) {
+		Deck.instance = instance;
+	}
+	
+	
 }

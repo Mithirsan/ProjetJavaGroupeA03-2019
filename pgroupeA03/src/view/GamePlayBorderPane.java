@@ -20,7 +20,7 @@ public class GamePlayBorderPane extends BorderPane {
 		setLeft(getOptionAndJokers());
 		setCenter(getPoolStatus());
 		setRight(getLevels());
-		setBottom(getStatementAndChoices());
+		setBottom(getStatementAndChoices()); 
 	}
 	
 	public GamePlayStatementAndChoicesVBox getStatementAndChoices() {

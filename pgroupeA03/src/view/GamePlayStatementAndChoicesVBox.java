@@ -17,7 +17,7 @@ public class GamePlayStatementAndChoicesVBox extends VBox {
 		
 		this.getChildren().addAll(getLblStatement(), getChoices());
 		
-		this.setAlignment(Pos.CENTER);
+		this.setAlignment(Pos.CENTER); 
 	}
 	
 	public Label getLblStatement() {

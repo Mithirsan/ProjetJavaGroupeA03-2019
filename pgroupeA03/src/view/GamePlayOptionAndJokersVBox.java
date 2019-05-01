@@ -31,7 +31,7 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 				getSeparator(),
 				getBtnJokerAudienceOpinion(), 
 				getBtnJokerFiftyFifty(), 
-				getBtnJokerTimeFreezer(), 
+				getBtnJokerTimeFreezer(),  
 				getBtnJokerAnotherChance()
 		);
 	}

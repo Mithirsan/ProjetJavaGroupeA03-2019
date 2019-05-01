@@ -28,7 +28,7 @@ public class TestQuestion {
 		choices = new HashMap<>();
 		choices.put("Elizabeth tower", true);
 		choices.put("Big Ben is also the building name", false);
-		choices.put("Tower Clock", false);
+		choices.put("Tower Clock", false); 
 		choices.put("Augustus Tower", false);
 		for (int i = 0; i <= choices.size(); i++){
 			if ((boolean) choices.values().toArray()[i]) {
@@ -112,8 +112,8 @@ public class TestQuestion {
 
 	@Test
 	public void testGetStatement() {
-		assertEquals("On which building is Big Ben?", question.getStatement());
-	}
+		assertEquals("On which building is Big Ben?", question.getStatement()); 
+	} 
 
 	@Test
 	public void testSetStatement() {

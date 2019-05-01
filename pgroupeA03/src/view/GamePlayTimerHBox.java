@@ -101,4 +101,14 @@ public class GamePlayTimerHBox extends HBox {
 		stopTimer();
 		timer.play();
 	}
+
+	public void setSeconds(int seconds) {
+		startTimer();
+		stopTimer();
+		this.seconds = seconds;
+		timer.play();
+	}
+	
+	
+	
 }

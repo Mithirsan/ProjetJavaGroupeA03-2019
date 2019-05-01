@@ -1,8 +1,14 @@
 package view;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import model.Deck;
+import model.Game;
+import util.Serializable;
 
 public class OptionsVBox extends VBox{
 	private Button btnContinue;
@@ -58,8 +64,23 @@ public class OptionsVBox extends VBox{
 			btnQuit.setOnAction(e->{
 				((FinalViewStackPane) getParent() .getParent()).getOptionBorderPane().setVisible(false);
 				((FinalViewStackPane) getParent() .getParent()).getMenuBorderPane().setVisible(true);
+				int tmpIndex = Deck.getInstance().getIndex();
+				int tmpTimeLeft =((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getTimer().getSeconds();
+				boolean tmpJ1,tmpJ2,tmpJ3,tmpJ4;
+				tmpJ1=((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getOptionAndJokers().getBtnJokerAnotherChance().isDisabled();
+				tmpJ2=((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getOptionAndJokers().getBtnJokerAudienceOpinion().isDisabled();
+				tmpJ3=((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getOptionAndJokers().getBtnJokerFiftyFifty().isDisabled();
+				tmpJ4=((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getOptionAndJokers().getBtnJokerTimeFreezer().isDisabled();
+				List<Boolean>tmpList = new ArrayList<>();
+				tmpList.add(tmpJ1);
+				tmpList.add(tmpJ2);
+				tmpList.add(tmpJ3);
+				tmpList.add(tmpJ4);
+				Deck tmpDeck = Deck.getInstance();
+				Game saveGame = new Game(tmpIndex, tmpTimeLeft, tmpList, tmpDeck);
+				Serializable.writeSaveGame(saveGame.toJSon());
 				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().reset();
-			});
+						});
 		}
 		return btnQuit;
 	}	

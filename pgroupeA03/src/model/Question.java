@@ -136,7 +136,7 @@ public class Question {
 		Question other = (Question) obj;
 		if (statement == null) {
 			if (other.statement != null)
-				return false;
+				return false; 
 		} else if (!statement.equals(other.statement))
 			return false;
 		return true;

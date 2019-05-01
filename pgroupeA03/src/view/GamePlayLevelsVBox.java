@@ -24,7 +24,7 @@ public class GamePlayLevelsVBox extends VBox {
 
 	public GamePlayLevelsVBox() {
 		this.setPadding(new Insets(10));
-		this.setSpacing(5);
+		this.setSpacing(5); 
 		this.getChildren().addAll(getLblLevels());
 	}
 
@@ -75,5 +75,9 @@ public class GamePlayLevelsVBox extends VBox {
 
 	public int getStage() {
 		return stage;
+	}
+
+	public void setStage(int stage) {
+		this.stage = stage;
 	}
 }
