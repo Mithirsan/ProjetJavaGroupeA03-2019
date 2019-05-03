@@ -1,9 +1,5 @@
 package view;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.css.PseudoClass;
@@ -37,9 +33,9 @@ public class GamePlayChoicesGridPane extends GridPane  {
 	
 	public Button getBtnAnswerA() {
 		if (btnAnswerA == null) {
-			btnAnswerA = new Button("A: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(0));
+			btnAnswerA = new Button("A: " + Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoice(0));
 			btnAnswerA.setOnAction(e->{
-			checkAnswer(btnAnswerA, Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(0));
+			checkAnswer(btnAnswerA, Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoiceValue(0));
 			});
 			btnAnswerA.getStyleClass().add("btnAnswer");
 		}
@@ -48,9 +44,9 @@ public class GamePlayChoicesGridPane extends GridPane  {
 
 	public Button getBtnAnswerB() {
 		if(btnAnswerB == null) {
-			btnAnswerB = new Button("B: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(1));
+			btnAnswerB = new Button("B: " + Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoice(1));
 			btnAnswerB.setOnAction(e->{
-				checkAnswer(btnAnswerB, Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(1));
+				checkAnswer(btnAnswerB, Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoiceValue(1));
 			});
 			btnAnswerB.getStyleClass().add("btnAnswer");
 		}
@@ -59,10 +55,10 @@ public class GamePlayChoicesGridPane extends GridPane  {
 
 	public Button getBtnAnswerC() {
 		if(btnAnswerC == null) {
-			btnAnswerC = new Button("C: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(2));
+			btnAnswerC = new Button("C: " + Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoice(2));
 
 			btnAnswerC.setOnAction(e->{
-			checkAnswer(btnAnswerC, Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(2));
+			checkAnswer(btnAnswerC, Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoiceValue(2));
 			});
 			btnAnswerC.getStyleClass().add("btnAnswer");
 		}
@@ -71,9 +67,9 @@ public class GamePlayChoicesGridPane extends GridPane  {
 
 	public Button getBtnAnswerD() {
 		if(btnAnswerD == null) {
-			btnAnswerD = new Button("D: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(3));
+			btnAnswerD = new Button("D: " + Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoice(3));
 			btnAnswerD.setOnAction(e->{
-						checkAnswer(btnAnswerD, Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(3));
+						checkAnswer(btnAnswerD, Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoiceValue(3));
 			});
 			btnAnswerD.getStyleClass().add("btnAnswer");
 		}
@@ -146,11 +142,11 @@ public class GamePlayChoicesGridPane extends GridPane  {
 	}
 	
 	public void resetTxt() {
-		((GamePlayStatementAndChoicesVBox) getParent()).getLblStatement().setText(Deck.getInstance().getQuestions().get(Deck.getIndex()).getStatement());
-		getBtnAnswerA().setText("A: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(0));
-		getBtnAnswerB().setText("B: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(1));
-		getBtnAnswerC().setText("C: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(2));
-		getBtnAnswerD().setText("D: " + Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoice(3));
+		((GamePlayStatementAndChoicesVBox) getParent()).getLblStatement().setText(Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getStatement());
+		getBtnAnswerA().setText("A: " + Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoice(0));
+		getBtnAnswerB().setText("B: " + Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoice(1));
+		getBtnAnswerC().setText("C: " + Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoice(2));
+		getBtnAnswerD().setText("D: " + Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoice(3));
 		getBtnAnswerA().setDisable(false);getBtnAnswerB().setDisable(false);getBtnAnswerC().setDisable(false);getBtnAnswerD().setDisable(false);
 	}
 	

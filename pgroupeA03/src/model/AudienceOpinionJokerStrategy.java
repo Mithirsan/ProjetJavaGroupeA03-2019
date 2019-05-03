@@ -1,10 +1,7 @@
-package view;
+package model;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import model.Deck;
-import model.JokerStrategy;
 
 public class AudienceOpinionJokerStrategy implements JokerStrategy {
 
@@ -13,11 +10,12 @@ public class AudienceOpinionJokerStrategy implements JokerStrategy {
 	
 	@Override
 	public void effectOfJoker() {
+		Deck.getInstance().jokerUse("AudienceOpinion");
 		for (int i = 0; i < 4; i++) {
 			audienceChoices[i] = 0;
-			vals.add(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(i)); 
+			vals.add(Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoiceValue(i)); 
 		}
-		switch (Deck.getInstance().getQuestions().get(Deck.getIndex()).getRound()) {
+		switch (Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getRound()) {
 			case FIRST_ROUND : FirstRoundQuestions();
 				break;
 			case SECOND_ROUND : SecondRoundQuestion();

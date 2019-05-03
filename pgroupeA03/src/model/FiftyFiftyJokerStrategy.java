@@ -1,9 +1,6 @@
-package view;
+package model;
 
 import java.util.Random;
-
-import model.Deck;
-import model.JokerStrategy;
 
 public class FiftyFiftyJokerStrategy implements JokerStrategy {
 	
@@ -11,11 +8,8 @@ public class FiftyFiftyJokerStrategy implements JokerStrategy {
 
 	@Override
 	public void effectOfJoker() {
-		for (int i = 0; i < 4; i++) {
-			if(Deck.getInstance().getQuestions().get(Deck.getIndex()).getChoiceValue(i)) {
-				idTrue = i;
-			} 
-		}
+		Deck.getInstance().jokerUse("FiftyFifty");
+		idTrue = Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoiceTrue();
 	}
 
 	public int[] get2FalseIndex() {

@@ -22,7 +22,7 @@ public class GamePlayStatementAndChoicesVBox extends VBox {
 	
 	public Label getLblStatement() {
 		if(lblStatement == null) {
-			lblStatement = new Label(Deck.getInstance().getQuestions().get(Deck.getIndex()).getStatement());
+			lblStatement = new Label(Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getStatement());
 			lblStatement.getStyleClass().add("lblStatement");
 		}
 		return lblStatement;

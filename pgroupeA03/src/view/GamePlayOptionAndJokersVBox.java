@@ -9,7 +9,12 @@ import javafx.scene.control.Separator;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
+
+import model.AnotherChanceStrategy;
+import model.AudienceOpinionJokerStrategy;
 import model.Deck;
+import model.FiftyFiftyJokerStrategy;
+import model.TimeFreezeJokerStrategy;
 
 public class GamePlayOptionAndJokersVBox extends VBox {
 
@@ -66,6 +71,9 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 				aOJoker.effectOfJoker();
 				double[] tmp = aOJoker.getAudienceChoices();
 				showPourcent(tmp);
+				if(!Deck.getInstance().getJoker(0)) {
+					getBtnJokerAudienceOpinion().setDisable(true);
+				}
 			});
 		}
 		return btnJokerAudienceOpinion;
@@ -77,14 +85,13 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 		}
 		Node nodeTmp = ((GamePlayBorderPane) getParent()).getStatementAndChoices().getChoices();
 		((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerA().setText("A: " + Deck.getInstance().
-				getQuestions().get(Deck.getIndex()).getChoice(0) + " - " + tmp[0] + "%");
+				getQuestions().get(Deck.getInstance().getIndex()).getChoice(0) + " - " + tmp[0] + "%");
 		((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerB().setText("B: " + Deck.getInstance().
-				getQuestions().get(Deck.getIndex()).getChoice(1) + " - " + tmp[1] + "%");
+				getQuestions().get(Deck.getInstance().getIndex()).getChoice(1) + " - " + tmp[1] + "%");
 		((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerC().setText("C: " + Deck.getInstance().
-				getQuestions().get(Deck.getIndex()).getChoice(2) + " - " + tmp[2] + "%");
+				getQuestions().get(Deck.getInstance().getIndex()).getChoice(2) + " - " + tmp[2] + "%");
 		((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerD().setText("D: " + Deck.getInstance().
-				getQuestions().get(Deck.getIndex()).getChoice(3) + " - " + tmp[3] + "%");
-		getBtnJokerAudienceOpinion().setDisable(true);
+				getQuestions().get(Deck.getInstance().getIndex()).getChoice(3) + " - " + tmp[3] + "%");
 	}
 
 	public Button getBtnJokerFiftyFifty() {
@@ -98,7 +105,9 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 			btnJokerFiftyFifty.setOnAction(e->{
 				FiftyFiftyJokerStrategy fFJoker = new FiftyFiftyJokerStrategy();
 				fFJoker.effectOfJoker();
-				disable2False(fFJoker.get2FalseIndex());
+				if(!Deck.getInstance().getJoker(1)) {
+					disable2False(fFJoker.get2FalseIndex());
+				}
 			});
 		}
 		return btnJokerFiftyFifty;
@@ -130,9 +139,11 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 			
 			btnJokerTimeFreezer.setOnAction(e->{
 					TimeFreezeJokerStrategy tFJoker = new TimeFreezeJokerStrategy();
-					tFJoker.setNode(((GamePlayBorderPane) getParent()).getTimer());
 					tFJoker.effectOfJoker();
-					btnJokerTimeFreezer.setDisable(true);
+					if(!Deck.getInstance().getJoker(2)) {
+						((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getTimer().freezeTimer();
+						btnJokerTimeFreezer.setDisable(true);
+					}
 				});
 			}
 		return btnJokerTimeFreezer;
@@ -148,9 +159,11 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 		
 			btnJokerAnotherChance.setOnAction(e->{
 				AnotherChanceStrategy aCJoker= new AnotherChanceStrategy();
-				aCJoker.setNodeChoices(((GamePlayBorderPane) getParent()).getStatementAndChoices().getChoices());
 				aCJoker.effectOfJoker();
-				btnJokerAnotherChance.setDisable(true);
+				if(!Deck.getInstance().getJoker(3)) {
+					((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getStatementAndChoices().getChoices().setAChance(true);
+					btnJokerAnotherChance.setDisable(true);
+				}
 			});		
 		}
 		return btnJokerAnotherChance;

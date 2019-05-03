@@ -17,6 +17,7 @@ public class Deck {
 	private static final int NBQUESTION = 15;
 	private static Deck instance;
 	private List<Question> questions;
+	private List<Boolean> jokers;
 	
 	private static List<Question> round1 = new ArrayList<Question>();
 	private static List<Question> round2 = new ArrayList<Question>();
@@ -35,9 +36,13 @@ public class Deck {
 
 	public Deck() {
 		questions = new ArrayList<>();
+		jokers = new ArrayList<>(4);
+		for(int i = 0; i<4; i++) {
+			jokers.add(true);
+		}
 	}
 	
-	public static int getIndex() {
+	public int getIndex() {
 		return index%NBQUESTION;
 	}
 
@@ -175,6 +180,31 @@ public class Deck {
 	public static void setInstance(Deck instance) {
 		Deck.instance = instance;
 	}
-	
-	
+
+	public void jokerUse(String string) {
+		switch (string) {
+		case "AudienceOpinion": 
+			jokers.set(0, false);
+			break;
+		case "FiftyFifty": 
+			jokers.set(1, false);
+			break;
+		case "TimeFreeze": 
+			jokers.set(2, false);
+			break;
+		case "AnotherChance" : 
+			jokers.set(3, false);
+			break;
+		default : ;
+		}
+		
+	}
+
+	public boolean getJoker(int i) {
+		return jokers.get(i);
+	}
+
+	public List<Boolean> getJokers() {
+		return jokers;
+	}
 }

@@ -1,6 +1,5 @@
 package model;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
@@ -29,7 +28,6 @@ public class Game {
 		
 	}
 
-
 	@Override
 	public String toString() {
 		return "Game [index=" + index + ", timerLeft=" + timerLeft + ", JokerUsed=" + JokerUsed + ", deck=" + deck
@@ -49,7 +47,6 @@ public class Game {
 		Game savedGame= fromJSon(Serializable.readSavedGame());
 		return savedGame;
 	}
-
 	
 	public int getIndex() {
 		return index;
@@ -66,9 +63,4 @@ public class Game {
 	public Deck getDeck() {
 		return deck;
 	}
-	
-	
-	
-	
-
 }
