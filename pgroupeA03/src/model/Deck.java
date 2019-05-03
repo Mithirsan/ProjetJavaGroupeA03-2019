@@ -207,4 +207,17 @@ public class Deck {
 	public List<Boolean> getJokers() {
 		return jokers;
 	}
+
+	public void setJokers(List<Boolean> jokers) {
+		this.jokers = jokers;
+	}
+	public void jokerReset(){
+		 for(int i =0 ; i <jokers.size();i++) { 
+			jokers.set(i, true);
+		
+		}
+		
+	}
+	
+	
 }

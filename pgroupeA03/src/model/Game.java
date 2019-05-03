@@ -12,7 +12,7 @@ import util.Serializable;
 public class Game {
 	private int index;
 	private int timerLeft;
-	private List<Boolean>JokerUsed;
+	private List<Boolean>jokerUsed;
 	private Deck deck;
 	
 	
@@ -20,7 +20,7 @@ public class Game {
 		super();
 		this.index = index;
 		this.timerLeft = timerLeft;
-		JokerUsed = jokerUsed;
+		this.jokerUsed = jokerUsed;
 		this.deck = deck;
 	}
 	
@@ -30,7 +30,7 @@ public class Game {
 
 	@Override
 	public String toString() {
-		return "Game [index=" + index + ", timerLeft=" + timerLeft + ", JokerUsed=" + JokerUsed + ", deck=" + deck
+		return "Game [index=" + index + ", timerLeft=" + timerLeft + ", JokerUsed=" + jokerUsed + ", deck=" + deck
 				+ "]";
 	}
 	
@@ -57,7 +57,7 @@ public class Game {
 	}
 
 	public List<Boolean> getJokerUsed() {
-		return JokerUsed;
+		return jokerUsed;
 	}
 
 	public Deck getDeck() {

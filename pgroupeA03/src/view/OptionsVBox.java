@@ -67,10 +67,12 @@ public class OptionsVBox extends VBox{
 				int tmpIndex = Deck.getInstance().getIndex();
 				int tmpTimeLeft =((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getTimer().getSeconds();
 				List<Boolean>tmpList = Deck.getInstance().getJokers();
+				System.out.println(tmpList);
 				Deck tmpDeck = Deck.getInstance();
 				Game saveGame = new Game(tmpIndex, tmpTimeLeft, tmpList, tmpDeck);
 				Serializable.writeSaveGame(saveGame.toJSon());
 				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().reset();
+				Deck.getInstance().jokerReset();
 						});
 		}
 		return btnQuit;

@@ -167,4 +167,10 @@ public class GamePlayChoicesGridPane extends GridPane  {
 		this.aChance = bool;
 	}
 	
+	public void refreshForContinueGame() {
+		Deck.increaseIndex();
+		resetTxt();
+		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getLevels().nextStage();
+	}
+	
 }
