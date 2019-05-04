@@ -55,5 +55,27 @@ public class Serializable {
 			e.printStackTrace();
 		}
 	}
+
+	public static String readSavedStats() {
+		String tmp = "";
+		try(Scanner scan = new Scanner(new BufferedInputStream(new FileInputStream("statsSaved.json")))){
+			while(scan.hasNext()) {
+				tmp += scan.nextLine();
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return tmp;
+	}
+	
+	public static void writeSaveStats(String jsonObject) {
+		try(PrintWriter json = new PrintWriter(new BufferedOutputStream(new FileOutputStream("statsSaved.json")))) {
+			json.write(jsonObject);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 }

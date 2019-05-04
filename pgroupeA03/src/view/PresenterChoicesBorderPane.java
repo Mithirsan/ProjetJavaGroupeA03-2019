@@ -33,7 +33,7 @@ public class PresenterChoicesBorderPane extends BorderPane{
 		VBox vboxSelect = new VBox(getCbPresenter(),getBtnValidate());
 		vboxSelect.setSpacing(10.);
 		HBox hboxbtn = new HBox (vboxSelect,getImagePreview());
-		setCenter(hboxbtn);
+	
 		hboxbtn.setSpacing(10.);
 		hboxbtn.setPadding(new Insets(250.));
 

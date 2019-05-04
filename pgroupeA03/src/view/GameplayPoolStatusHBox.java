@@ -2,6 +2,7 @@ package view;
 
 
 import java.io.File;
+import java.io.IOException;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -11,6 +12,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import model.Deck;
+import model.Stats;
+import util.Serializable;
 
 public class GameplayPoolStatusHBox extends BorderPane {
 	private Button btnLeaveWithPool;
@@ -51,6 +55,21 @@ public class GameplayPoolStatusHBox extends BorderPane {
 				((FinalViewStackPane) getParent() .getParent()).getLeavingHBox().setGain(getLblViewPool().getText());
 				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().setVisible(false);
 				((FinalViewStackPane) getParent() .getParent()).getLeavingHBox().setVisible(true);
+				Stats stats;
+				try {
+					stats = new Stats().downloadData();
+					stats.setPartyWin();
+					int tmpStage = ((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getLevels().getStage();
+					if((tmpStage>=0)&&(tmpStage<14) ) {
+						stats.setTotalDays(14-(tmpStage+1));
+					}
+					Serializable.writeSaveStats(stats.toJSon());
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().reset();
+				Deck.getInstance().jokerReset();
 			});
 			
 		}

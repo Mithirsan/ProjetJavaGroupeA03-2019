@@ -15,11 +15,12 @@ public class FinalViewStackPane extends StackPane{
 	private LooseScreenBorderPane looseScreenBorderPane;
 	private LeavingHBox leavingHBox ;
 	private PresenterChoicesBorderPane presenterBorderPane;
+	private StatisticBorderPane statsBroderPane;
 	
 	public FinalViewStackPane() {
 		getChildren().addAll(getMenuBorderPane(),getGamePlayBorderPane(),getLoginAdminAnchorPane()
 				,getOptionBorderPane(),getAdminBorderPane(),getAddQuestionBorderPane(),getWinScreen(),getLooseScreenBorderPane()
-				,getUpdateQuestionBorderPane(),getOptionsMenuBorderPane(),getLeavingHBox(),getPresenterBorderPane());
+				,getUpdateQuestionBorderPane(),getOptionsMenuBorderPane(),getLeavingHBox(),getPresenterBorderPane(),getStatsBroderPane());
 	}
 	
 	public MenuBorderPane getMenuBorderPane() {
@@ -129,4 +130,13 @@ public class FinalViewStackPane extends StackPane{
 		}
 		return presenterBorderPane;
 	}
+
+	public StatisticBorderPane getStatsBroderPane() {
+		if(statsBroderPane==null) {
+			statsBroderPane= new StatisticBorderPane();
+			statsBroderPane.setVisible(false);
+		}
+		return statsBroderPane;
+	}
+	
 }

@@ -12,12 +12,13 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import model.Deck;
 import model.Game;
+import model.Stats;
+import util.Serializable;
 
 public class MenuVBox extends VBox{
 	private Button btnPlay;
 	private Button btnLoad;
 	private Button btnOption;
-	private Button btnpresenter;
 	private Button btnQuit;
 	private MediaPlayer musicPlayer;
 			
@@ -38,6 +39,14 @@ public class MenuVBox extends VBox{
 				getParent().setVisible(false);
 				((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().setVisible(true);
 				((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getTimer().startTimer();
+				try {
+					Stats stats = new Stats().downloadData();
+					stats.setPartyPlayed();
+					Serializable.writeSaveStats(stats.toJSon());
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			});
 		}
 		return btnPlay;

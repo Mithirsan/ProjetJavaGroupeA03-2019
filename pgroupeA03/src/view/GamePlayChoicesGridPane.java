@@ -1,5 +1,7 @@
 package view;
 
+import java.io.IOException;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.css.PseudoClass;
@@ -10,6 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 import model.Deck;
+import model.Stats;
+import util.Serializable;
 
 public class GamePlayChoicesGridPane extends GridPane  {
 	private boolean aChance = false;
@@ -78,7 +82,7 @@ public class GamePlayChoicesGridPane extends GridPane  {
 	}
 	
 	private void checkAnswer(Node flashing, boolean bool) {
-		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().pauseTimer(true);;
+		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().pauseTimer(true);
 		PseudoClass flashHighlight;
 		PseudoClass test = PseudoClass.getPseudoClass("Testing");
 		
@@ -129,6 +133,16 @@ public class GamePlayChoicesGridPane extends GridPane  {
 				}
 			}		
 		});
+		Stats stats;
+		try {
+			stats = new Stats().downloadData();
+			stats.setTimePlayed(((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().getSeconds());
+			Serializable.writeSaveStats(stats.toJSon());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
 		
 	}
 	

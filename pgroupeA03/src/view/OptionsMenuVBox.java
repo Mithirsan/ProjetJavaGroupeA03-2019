@@ -1,8 +1,11 @@
 package view;
 
+import java.io.IOException;
+
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import model.Stats;
 
 public class OptionsMenuVBox extends VBox {
 	private Button btnPresenter;
@@ -35,8 +38,19 @@ public class OptionsMenuVBox extends VBox {
 			btnStats=new Button("Statistics");
 			btnStats.getStyleClass().add("mainMenuBtn");
 			btnStats.setOnAction(e->{
-				
-				
+				try {
+					Stats stats = new Stats().downloadData();
+					((FinalViewStackPane) getParent(). getParent()).getStatsBroderPane().setPartyPlayed(stats.getPartyPlayed());
+					((FinalViewStackPane) getParent(). getParent()).getStatsBroderPane().setPartyWin(stats.getPartyWin());
+					((FinalViewStackPane) getParent(). getParent()).getStatsBroderPane().setTotalDays(stats.getTotalDays());
+					((FinalViewStackPane) getParent(). getParent()).getStatsBroderPane().setTimePlayed(stats.getTimePlayed());
+					
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				getParent().setVisible(false);
+				((FinalViewStackPane) getParent(). getParent()).getStatsBroderPane().setVisible(true);
 			});
 		}
 		return btnStats;

@@ -1,5 +1,6 @@
 package view;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,8 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import model.Stage;
+import model.Stats;
+import util.Serializable;
 
 public class GamePlayLevelsVBox extends VBox {
 	
@@ -58,6 +61,17 @@ public class GamePlayLevelsVBox extends VBox {
 			((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getTimer().stopTimer();
 			((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().reset();
 			((FinalViewStackPane) getParent().getParent()).getWinScreen().setVisible(true);
+			Stats stats;
+			try {
+				stats = new Stats().downloadData();
+				stats.setPartyWin();
+				stats.setTotalDays(14);
+				Serializable.writeSaveStats(stats.toJSon());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			
 		} else {
 			lblLevels.get(--stage).getStyleClass().add("stageActual");
