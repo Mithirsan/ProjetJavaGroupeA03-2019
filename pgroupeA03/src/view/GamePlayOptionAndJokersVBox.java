@@ -43,7 +43,7 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 	
 	public Button getBtnOption() {
 		if (btnOption == null) {
-			ImageView ivOption = new ImageView(new Image(new File("ressources/pictures/btnOption.png").toURI().toString()));
+			ImageView ivOption = new ImageView(new Image(new File("resources/pictures/btnOption.png").toURI().toString()));
 			ivOption.setFitHeight(25);
 			ivOption.setFitWidth(25);
 			btnOption = new Button("",ivOption);
@@ -51,6 +51,9 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 			this.setSpacing(5);
 			btnOption.setOnAction(e->{
 				((FinalViewStackPane) getParent().getParent()).getOptionBorderPane().setVisible(true);
+				((GamePlayBorderPane)getParent()).getTimer().getMP45to20().stop();
+				((GamePlayBorderPane)getParent()).getTimer().getMP20to10().stop();
+				((GamePlayBorderPane)getParent()).getTimer().getMP10to0().stop();
 				getParent().setVisible(false);
 				((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getTimer().pauseTimer(true);
 			});
@@ -61,7 +64,7 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 	
 	public Button getBtnJokerAudienceOpinion() {
 		if(btnJokerAudienceOpinion == null) {
-			ImageView ivAudienceOpinion = new ImageView(new Image(new File("ressources/pictures/btnAO.png").toURI().toString()));
+			ImageView ivAudienceOpinion = new ImageView(new Image(new File("resources/pictures/btnAO.png").toURI().toString()));
 			ivAudienceOpinion.setFitHeight(25);
 			ivAudienceOpinion.setFitWidth(25);
 			btnJokerAudienceOpinion = new Button("", ivAudienceOpinion);
@@ -96,7 +99,7 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 
 	public Button getBtnJokerFiftyFifty() {
 		if(btnJokerFiftyFifty == null) {
-			ImageView ivFiftyFifty = new ImageView(new Image(new File("ressources/pictures/btnFF.png").toURI().toString()));
+			ImageView ivFiftyFifty = new ImageView(new Image(new File("resources/pictures/btnFF.png").toURI().toString()));
 			ivFiftyFifty.setFitHeight(25);
 			ivFiftyFifty.setFitWidth(25);
 			btnJokerFiftyFifty = new Button("", ivFiftyFifty);
@@ -131,7 +134,7 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 
 	public Button getBtnJokerTimeFreezer() {
 		if(btnJokerTimeFreezer == null) {
-			ImageView ivTimeFreezer = new ImageView(new Image(new File("ressources/pictures/btnTF.png").toURI().toString()));
+			ImageView ivTimeFreezer = new ImageView(new Image(new File("resources/pictures/btnTF.png").toURI().toString()));
 			ivTimeFreezer.setFitHeight(25);
 			ivTimeFreezer.setFitWidth(25);
 			btnJokerTimeFreezer = new Button("", ivTimeFreezer);
@@ -151,7 +154,7 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 		
 	public Button getBtnJokerAnotherChance() {
 		if(btnJokerAnotherChance == null) {
-			ImageView ivAnotherChance = new ImageView(new Image(new File("ressources/pictures/btnR.png").toURI().toString()));
+			ImageView ivAnotherChance = new ImageView(new Image(new File("resources/pictures/btnR.png").toURI().toString()));
 			ivAnotherChance.setFitHeight(25);
 			ivAnotherChance.setFitWidth(25);
 			btnJokerAnotherChance = new Button("", ivAnotherChance);

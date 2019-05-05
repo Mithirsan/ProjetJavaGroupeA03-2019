@@ -166,10 +166,14 @@ public class GamePlayChoicesGridPane extends GridPane  {
 	
 	public void fail() {
 		resetTxt();
+		((GamePlayBorderPane)getParent().getParent()).getTimer().getMP45to20().stop();
+		((GamePlayBorderPane)getParent().getParent()).getTimer().getMP20to10().stop();
+		((GamePlayBorderPane)getParent().getParent()).getTimer().getMP10to0().stop();
 		
+		((FinalViewStackPane)getParent().getParent().getParent()).getMenuBorderPane().getMenuVBox().getMusic().play();
 		((FinalViewStackPane)getParent().getParent().getParent()).getGamePlayBorderPane().setVisible(false);
 		((GamePlayBorderPane)getParent().getParent()).reset();
-		((FinalViewStackPane) getParent(). getParent().getParent()).getGamePlayBorderPane().getTimer().stopTimer();
+		((FinalViewStackPane)getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().stopTimer();
 		((FinalViewStackPane)getParent().getParent().getParent()).getLooseScreenBorderPane().setVisible(true);
 	}
 

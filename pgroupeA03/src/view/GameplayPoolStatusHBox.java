@@ -19,7 +19,6 @@ import util.Serializable;
 public class GameplayPoolStatusHBox extends BorderPane {
 	private Button btnLeaveWithPool;
 	
-
 	private ImageView imagePresenter;
 	
 	private Label lblViewPool;
@@ -37,7 +36,7 @@ public class GameplayPoolStatusHBox extends BorderPane {
 
 	public ImageView getImagePresenter() {
 		if(imagePresenter==null) {
-			imagePresenter= new ImageView(new Image ( new File("ressources/pictures/JP-Foucault.jpg").toURI().toString() ));
+			imagePresenter= new ImageView(new Image ( new File("resources/pictures/JP-Foucault.jpg").toURI().toString() ));
 		}
 		return imagePresenter;
 	}
@@ -55,6 +54,8 @@ public class GameplayPoolStatusHBox extends BorderPane {
 				((FinalViewStackPane) getParent() .getParent()).getLeavingHBox().setGain(getLblViewPool().getText());
 				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().setVisible(false);
 				((FinalViewStackPane) getParent() .getParent()).getLeavingHBox().setVisible(true);
+				((FinalViewStackPane)getParent().getParent().getParent()).getMenuBorderPane().getMenuVBox().getMusic().play();
+				
 				Stats stats;
 				try {
 					stats = new Stats().downloadData();

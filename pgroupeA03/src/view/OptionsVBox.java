@@ -64,6 +64,8 @@ public class OptionsVBox extends VBox{
 			btnQuit.setOnAction(e->{
 				((FinalViewStackPane) getParent() .getParent()).getOptionBorderPane().setVisible(false);
 				((FinalViewStackPane) getParent() .getParent()).getMenuBorderPane().setVisible(true);
+				((FinalViewStackPane)getParent().getParent()).getMenuBorderPane().getMenuVBox().getMusic().play();
+				
 				int tmpIndex = Deck.getInstance().getIndex();
 				int tmpTimeLeft =((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getTimer().getSeconds();
 				List<Boolean>tmpList = Deck.getInstance().getJokers();

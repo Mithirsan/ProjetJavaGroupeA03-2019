@@ -69,13 +69,13 @@ public class PresenterChoicesBorderPane extends BorderPane{
 		return 	btnValidate;
 	}
 	public Image getpresenterImage() {
-			presenterImage = new Image(new File("ressources/pictures/"+getCbPresenter().getValue().getPresenter()+".jpg").toURI().toString());	
+			presenterImage = new Image(new File("resources/pictures/"+getCbPresenter().getValue().getPresenter()+".jpg").toURI().toString());	
 			return presenterImage;
 	}
 	
 	public ImageView getImagePreview() {
 		if(imagePreview==null) {
-			imagePreview= new ImageView(new Image ( new File("ressources/pictures/JP-Foucault.jpg").toURI().toString() ));
+			imagePreview= new ImageView(new Image ( new File("resources/pictures/JP-Foucault.jpg").toURI().toString() ));
 		}
 		return imagePreview;
 	}
