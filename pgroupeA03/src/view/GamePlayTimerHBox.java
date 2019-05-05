@@ -55,6 +55,7 @@ public class GamePlayTimerHBox extends HBox {
 		if(timer != null) {
 			stopTimer();
 		}
+		speechStatement();
 		getMP45to20().play();
 		//mise à jour du text
 		getLblCountDown().setText(seconds + " seconds remaining");
@@ -81,6 +82,18 @@ public class GamePlayTimerHBox extends HBox {
 		});
 		timer.getKeyFrames().add(frame);
 		timer.playFromStart();
+	}
+	public void speechStatement() {
+		Timeline speech = new Timeline();
+		speech.setCycleCount(1);
+		KeyFrame frameSpeech = new KeyFrame(Duration.seconds(1),e->{
+			if(((FinalViewStackPane) getParent(). getParent()).getOratorBorderPane().isChecked()) {
+				String firstLbl = ((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getStatementAndChoices().getLblStatement().getText();
+				((FinalViewStackPane) getParent(). getParent()).getOratorBorderPane().getTts().speak(firstLbl,  2.0f, true, true);
+				}
+		});
+		speech.getKeyFrames().add(frameSpeech);
+		speech.playFromStart();
 	}
 	
 	public void freezeTimer() {
@@ -117,6 +130,7 @@ public class GamePlayTimerHBox extends HBox {
 	public void refreshTimer() {
 		stopTimer();
 		timer.play();
+		speechStatement();
 	}
 
 	public void setSeconds(int seconds) {

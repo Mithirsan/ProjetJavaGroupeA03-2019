@@ -5,12 +5,14 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import model.Deck;
+import util.TextToSpeech;
 
 public class GamePlayStatementAndChoicesVBox extends VBox {
 	
 	private Label lblStatement;
 	
 	private GamePlayChoicesGridPane choices;
+
 	
 	public GamePlayStatementAndChoicesVBox() {
 		this.setPadding(new Insets(5));
@@ -34,5 +36,6 @@ public class GamePlayStatementAndChoicesVBox extends VBox {
 		}
 		return choices;
 	}
+
 	
 }

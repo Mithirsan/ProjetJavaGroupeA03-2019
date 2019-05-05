@@ -16,7 +16,7 @@ public class OptionsMenuVBox extends VBox {
 	private Button btnQuit;
 			
 	public OptionsMenuVBox() {
-		getChildren().addAll(getBtnPresenter(),getBtnStats(),getBtnVolumeManagement(),getBtnDisplayManagement(),getBtnQuit());
+		getChildren().addAll(getBtnPresenter(),getBtnOrateur(),getBtnStats(),getBtnVolumeManagement(),getBtnDisplayManagement(),getBtnQuit());
 		setSpacing(10);
 		setAlignment(Pos.CENTER);
 	}
@@ -80,7 +80,8 @@ public class OptionsMenuVBox extends VBox {
 			btnOrator= new Button("Orator");
 			btnOrator.getStyleClass().add("mainMenuBtn");
 			btnOrator.setOnAction(e->{
-			
+				getParent().setVisible(false);
+				((FinalViewStackPane) getParent(). getParent()).getOratorBorderPane().setVisible(true);
 			});
 		}
 		return btnOrator;
