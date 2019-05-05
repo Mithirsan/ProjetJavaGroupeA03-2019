@@ -16,14 +16,14 @@ public class WinScreenBorderPane extends BorderPane {
 	
 	public WinScreenBorderPane() {
 		BackgroundSize backgroundSize = new BackgroundSize( 960, 540, true, true, true, false);
-		BackgroundImage bg = new BackgroundImage(new Image(new File("ressources/pictures/ThePath.png").toURI().toString()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+		BackgroundImage bg = new BackgroundImage(new Image(new File("resources/pictures/ThePath.png").toURI().toString()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
 		setBackground(new Background(bg));
 		setCenter(getPortalImageView());
 	}
 
 	public ImageView getPortalImageView() {
 		if ( portalImageView==null) {
-			Image image =new Image(new File("ressources/pictures/Gate.gif").toURI().toString());
+			Image image =new Image(new File("resources/pictures/Gate.gif").toURI().toString());
 			
 			portalImageView = new ImageView(image);
 			portalImageView.setFitWidth(1000);

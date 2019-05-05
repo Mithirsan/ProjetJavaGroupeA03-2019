@@ -17,7 +17,7 @@ public class LooseScreenBorderPane extends BorderPane {
 	
 	public LooseScreenBorderPane() {
 //		BackgroundSize backgroundSize = new BackgroundSize( 960, 540, true, true, true, false);
-//		BackgroundImage bg = new BackgroundImage(new Image(new File("ressources/pictures/ElectricChair.jpg").toURI().toString()), 
+//		BackgroundImage bg = new BackgroundImage(new Image(new File("resources/pictures/ElectricChair.jpg").toURI().toString()), 
 //				BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
 //		setBackground(new Background(bg));
 		setBottom(getLblMessage());

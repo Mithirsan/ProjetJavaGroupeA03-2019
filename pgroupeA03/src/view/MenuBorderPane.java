@@ -20,7 +20,7 @@ public class MenuBorderPane extends BorderPane{
 
 	public MenuBorderPane() {
 		BackgroundSize backgroundSize = new BackgroundSize( 960, 540, true, true, true, false);
-		BackgroundImage bg = new BackgroundImage(new Image(new File("ressources/pictures/Background.png").toURI().toString()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+		BackgroundImage bg = new BackgroundImage(new Image(new File("resources/pictures/Background.png").toURI().toString()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
 		setBackground(new Background(bg));
 		setCenter(getMenuVBox());
 		

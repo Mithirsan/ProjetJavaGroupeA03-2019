@@ -128,7 +128,7 @@ public class GamePlayTimerHBox extends HBox {
 	
 	public MediaPlayer getMP45to20() {
 		if( mp45to20==null) {
-			Media media = new Media(new File("ressources/sounds/45-20.wav").toURI().toString());
+			Media media = new Media(new File("resources/sounds/45-20.wav").toURI().toString());
 			mp45to20 = new MediaPlayer(media);
 			mp45to20.setCycleCount(Timeline.INDEFINITE);
 			mp45to20.setVolume(0.1);
@@ -138,7 +138,7 @@ public class GamePlayTimerHBox extends HBox {
 	
 	public MediaPlayer getMP20to10() {
 		if( mp20to10==null) {
-			Media media = new Media(new File("ressources/sounds/20-10.wav").toURI().toString());
+			Media media = new Media(new File("resources/sounds/20-10.wav").toURI().toString());
 			mp20to10 = new MediaPlayer(media);
 			mp20to10.setCycleCount(Timeline.INDEFINITE);
 			mp20to10.setVolume(0.1);
@@ -148,7 +148,7 @@ public class GamePlayTimerHBox extends HBox {
 	
 	public MediaPlayer getMP10to0() {
 		if( mp10to0==null) {
-			Media media = new Media(new File("ressources/sounds/10-0.wav").toURI().toString());
+			Media media = new Media(new File("resources/sounds/10-0.wav").toURI().toString());
 			mp10to0 = new MediaPlayer(media);
 			mp10to0.setCycleCount(Timeline.INDEFINITE);
 			mp10to0.setVolume(0.1);
