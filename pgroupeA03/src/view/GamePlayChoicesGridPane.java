@@ -149,10 +149,10 @@ public class GamePlayChoicesGridPane extends GridPane  {
 	private void refresh() {
 		Deck.increaseIndex();
 		resetTxt();
-
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().refreshTimer();
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getLevels().nextStage();
 		aChance=false;
+		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().speechStatement().playFromStart();
 	}
 	
 	public void resetTxt() {

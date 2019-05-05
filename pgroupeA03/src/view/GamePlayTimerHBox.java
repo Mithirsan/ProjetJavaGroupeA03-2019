@@ -46,7 +46,6 @@ public class GamePlayTimerHBox extends HBox {
 		return seconds;
 	}
 	
-
 	public void startTimer() {
 		//creation d'une TimeLine cyclique infinie
 		timer = new Timeline();
@@ -55,7 +54,6 @@ public class GamePlayTimerHBox extends HBox {
 		if(timer != null) {
 			stopTimer();
 		}
-		speechStatement();
 		getMP45to20().play();
 		//mise à jour du text
 		getLblCountDown().setText(seconds + " seconds remaining");
@@ -81,9 +79,9 @@ public class GamePlayTimerHBox extends HBox {
 			}
 		});
 		timer.getKeyFrames().add(frame);
-		timer.playFromStart();
 	}
-	public void speechStatement() {
+	
+	public Timeline speechStatement() {
 		Timeline speech = new Timeline();
 		speech.setCycleCount(1);
 		KeyFrame frameSpeech = new KeyFrame(Duration.seconds(1),e->{
@@ -93,7 +91,12 @@ public class GamePlayTimerHBox extends HBox {
 				}
 		});
 		speech.getKeyFrames().add(frameSpeech);
-		speech.playFromStart();
+		
+		speech.setOnFinished(e->{
+			timer.playFromStart();
+		});
+		
+		return speech;
 	}
 	
 	public void freezeTimer() {

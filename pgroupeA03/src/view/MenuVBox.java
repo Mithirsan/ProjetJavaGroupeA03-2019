@@ -39,6 +39,7 @@ public class MenuVBox extends VBox{
 				getParent().setVisible(false);
 				((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().setVisible(true);
 				((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getTimer().startTimer();
+				((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getTimer().speechStatement().playFromStart();
 				getMusic().stop();
 				try {
 					Stats stats = new Stats().downloadData();
