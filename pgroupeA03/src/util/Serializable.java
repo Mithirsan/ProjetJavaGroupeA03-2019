@@ -35,7 +35,7 @@ public class Serializable {
 	
 	public static String readSavedGame() {
 		String tmp = "";
-		try(Scanner scan = new Scanner(new BufferedInputStream(new FileInputStream("ressources/gameSaved.json")))){
+		try(Scanner scan = new Scanner(new BufferedInputStream(new FileInputStream("resources/gameSaved.json")))){
 			while(scan.hasNext()) {
 				tmp += scan.nextLine();
 			}
@@ -48,7 +48,7 @@ public class Serializable {
 	
 	
 	public static void writeSaveGame(String jsonObject) {
-		try(PrintWriter json = new PrintWriter(new BufferedOutputStream(new FileOutputStream("ressources/gameSaved.json")))) {
+		try(PrintWriter json = new PrintWriter(new BufferedOutputStream(new FileOutputStream("resources/gameSaved.json")))) {
 			json.write(jsonObject);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -58,7 +58,7 @@ public class Serializable {
 
 	public static String readSavedStats() {
 		String tmp = "";
-		try(Scanner scan = new Scanner(new BufferedInputStream(new FileInputStream("ressources/statsSaved.json")))){
+		try(Scanner scan = new Scanner(new BufferedInputStream(new FileInputStream("resources/statsSaved.json")))){
 			while(scan.hasNext()) {
 				tmp += scan.nextLine();
 			}
@@ -70,7 +70,7 @@ public class Serializable {
 	}
 	
 	public static void writeSaveStats(String jsonObject) {
-		try(PrintWriter json = new PrintWriter(new BufferedOutputStream(new FileOutputStream("ressources/statsSaved.json")))) {
+		try(PrintWriter json = new PrintWriter(new BufferedOutputStream(new FileOutputStream("resources/statsSaved.json")))) {
 			json.write(jsonObject);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
