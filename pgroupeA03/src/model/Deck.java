@@ -1,4 +1,5 @@
 package model;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -110,9 +111,9 @@ public class Deck {
 	
 	public void loadDeck(File file) throws FileNotFoundException, IOException {
 		Deck fileDeck = fromJSon(Serializable.readDeck(file.getAbsolutePath()));
-		getInstance().round1.clear();
-		getInstance().round2.clear();
-		getInstance().round3.clear();
+		round1.clear();
+		round2.clear();
+		round3.clear();
 		
 		for(Question x : fileDeck.getQuestions()) {
 			switch (x.getRound()) {
@@ -172,11 +173,6 @@ public class Deck {
 		});
 	}
 
-	public static void saveGame() {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public static void setInstance(Deck instance) {
 		Deck.instance = instance;
 	}
@@ -211,13 +207,10 @@ public class Deck {
 	public void setJokers(List<Boolean> jokers) {
 		this.jokers = jokers;
 	}
+	
 	public void jokerReset(){
 		 for(int i =0 ; i <jokers.size();i++) { 
 			jokers.set(i, true);
-		
 		}
-		
-	}
-	
-	
+	}	
 }

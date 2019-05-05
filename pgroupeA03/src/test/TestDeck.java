@@ -55,7 +55,7 @@ public class TestDeck {
 	
 	@Test
 	public void testGetInstance() {
-		assertNotNull(deck.getInstance());
+		assertNotNull(deck);
 	}
 
 	@Test
@@ -117,29 +117,33 @@ public class TestDeck {
 
 	@Test
 	public void testToJSon() {
-		assertEquals("{\"questions\":[]}", deck.toJSon());
+		System.out.println(deck.toJSon());
+		assertEquals("{\"questions\":[],\"jokers\":[true,true,true,true]}", deck.toJSon());
 	}
 
 	@Test
 	public void testFromJSon() {
 		File file = new File("Test.json");
-		Deck fileDeck = deck.fromJSon(Serializable.readDeck(file.getAbsolutePath()));
+		Deck fileDeck = Deck.fromJSon(Serializable.readDeck(file.getAbsolutePath()));
 		assertNotNull(fileDeck);
 	}
 
 	@Test
 	public void testDownloadData() throws FileNotFoundException, IOException {
+		String test = questions.toString();
 		File file = new File("Test.json");
 		deck.downloadData(file);
-		assertTrue(questions.size() > 0);
+		assertNotNull(questions);
+		assertFalse(questions.toString().equals(test));
 	}
 
 	@Test
 	public void testLoadDeck() throws FileNotFoundException, IOException{
+		String test = questions.toString();
 		File file = new File("Test.json");
 		deck.loadDeck(file);
 		assertNotNull(questions);
-		assertTrue(questions.size() < 0);
+		assertFalse(questions.toString().equals(test));
 	}
 
 	@Test
@@ -147,8 +151,10 @@ public class TestDeck {
 		File file = new File("Test.json");
 		deck.loadDeck(file);
 		int nb = questions.size();
+		String test = questions.toString();
 		deck.addQuestions();
-		assertTrue(nb == questions.size());
+		assertEquals(nb, questions.size());
+		assertFalse(questions.toString().equals(test));
 	}
 
 	@Test
@@ -157,10 +163,44 @@ public class TestDeck {
 		deck.loadState(qs);
 		assertEquals(qs, questions);
 	}
-
+	
 	@Test
-	public void testSaveGame() {
-		fail("Not yet implemented");
+	public void testSetInstance() {
+		Deck d = new Deck();
+		Deck.setInstance(d);
+		assertNotNull(Deck.getInstance());
+		assertEquals(d, Deck.getInstance());
 	}
-
+	
+	@Test
+	public void testJokerUse() {
+		deck.jokerUse("FiftyFifty");
+		assertEquals(false, deck.getJoker(1));
+	}
+	
+	@Test
+	public void testGetJoker() {
+		assertEquals(true, deck.getJoker(3));
+	}
+	
+	@Test
+	public void testGetJokers() {
+		assertNotNull(deck.getJokers());
+	}
+	
+	@Test
+	public void testSetJokers() {
+		List<Boolean> test = new ArrayList<>();
+		test.add(true);
+		deck.setJokers(test);
+		assertNotNull(deck.getJokers());
+	}
+	
+	@Test
+	public void testJokerReset() {
+		List<Boolean> test = deck.getJokers();
+		deck.jokerUse("FiftyFifty");
+		deck.jokerReset();
+		assertEquals(test, deck.getJokers());
+	}
 }
