@@ -1,10 +1,7 @@
 package view;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
 import javafx.scene.layout.BorderPane;
+
 import model.Deck;
 
 public class GamePlayBorderPane extends BorderPane {

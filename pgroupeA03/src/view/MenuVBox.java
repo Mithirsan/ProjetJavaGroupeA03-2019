@@ -39,6 +39,7 @@ public class MenuVBox extends VBox{
 				getParent().setVisible(false);
 				((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().setVisible(true);
 				((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getTimer().startTimer();
+				getMusic().stop();
 				try {
 					Stats stats = new Stats().downloadData();
 					stats.setPartyPlayed();
@@ -115,7 +116,7 @@ public class MenuVBox extends VBox{
 
 	public MediaPlayer getMusic() {
 		if( musicPlayer==null) {
-			Media media = new Media(new File("ressources/sounds/MusiqueTest.mp3").toURI().toString());
+			Media media = new Media(new File("ressources/sounds/Main music.wav").toURI().toString());
 			musicPlayer = new MediaPlayer(media);
 			musicPlayer.setCycleCount(Timeline.INDEFINITE);
 		}

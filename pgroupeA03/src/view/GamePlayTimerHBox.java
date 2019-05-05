@@ -1,5 +1,7 @@
 package view;
 
+import java.io.File;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -8,6 +10,8 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
 public class GamePlayTimerHBox extends HBox {
@@ -18,6 +22,10 @@ public class GamePlayTimerHBox extends HBox {
 	
 	private Label lblCountDown;
 	
+	private MediaPlayer mp45to20;
+	private MediaPlayer mp20to10;
+	private MediaPlayer mp10to0;
+	
 	public GamePlayTimerHBox() {
 		this.setPadding(new Insets(10));
 		this.setSpacing(5);
@@ -25,7 +33,6 @@ public class GamePlayTimerHBox extends HBox {
 		this.getChildren().add(getLblCountDown());
 		
 		this.setAlignment(Pos.BASELINE_CENTER);
-		
 	}
 	
 	public Label getLblCountDown() {
@@ -48,6 +55,7 @@ public class GamePlayTimerHBox extends HBox {
 		if(timer != null) {
 			stopTimer();
 		}
+		getMP45to20().play();
 		//mise à jour du text
 		getLblCountDown().setText(seconds + " seconds remaining");
 		//creation d'une keyframe qui s'excecute toutes les seconds
@@ -57,12 +65,18 @@ public class GamePlayTimerHBox extends HBox {
 			public void handle(ActionEvent event) {
 				seconds--;
 				getLblCountDown().setText(seconds + " seconds remaining");
-				//si le temps atteind 0, la partie est fini (utilisation de la methode fail() pour eviter le code redondant).
+				
 				if(seconds <= 0) {
+					getMP10to0().stop();
 					stopTimer();
 					((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getStatementAndChoices().getChoices().fail();
-				}
-				
+				} else if(seconds < 10) {
+					getMP20to10().stop();
+					getMP10to0().play();
+				} else if(seconds < 20) {
+					getMP45to20().stop();
+					getMP20to10().play();
+				} 	
 			}
 		});
 		timer.getKeyFrames().add(frame);
@@ -72,6 +86,9 @@ public class GamePlayTimerHBox extends HBox {
 	public void freezeTimer() {
 		//utilisation du joker Time Frezer
 		this.stopTimer();
+		getMP45to20().stop();
+		getMP20to10().stop();
+		getMP10to0().stop();
 		getLblCountDown().setText("Time freezed !");
 	}
 	
@@ -109,6 +126,33 @@ public class GamePlayTimerHBox extends HBox {
 		timer.play();
 	}
 	
+	public MediaPlayer getMP45to20() {
+		if( mp45to20==null) {
+			Media media = new Media(new File("ressources/sounds/45-20.wav").toURI().toString());
+			mp45to20 = new MediaPlayer(media);
+			mp45to20.setCycleCount(Timeline.INDEFINITE);
+			mp45to20.setVolume(0.1);
+		}
+		return mp45to20;
+	}
 	
+	public MediaPlayer getMP20to10() {
+		if( mp20to10==null) {
+			Media media = new Media(new File("ressources/sounds/20-10.wav").toURI().toString());
+			mp20to10 = new MediaPlayer(media);
+			mp20to10.setCycleCount(Timeline.INDEFINITE);
+			mp20to10.setVolume(0.1);
+		}
+		return mp20to10;
+	}
 	
+	public MediaPlayer getMP10to0() {
+		if( mp10to0==null) {
+			Media media = new Media(new File("ressources/sounds/10-0.wav").toURI().toString());
+			mp10to0 = new MediaPlayer(media);
+			mp10to0.setCycleCount(Timeline.INDEFINITE);
+			mp10to0.setVolume(0.1);
+		}
+		return mp10to0;
+	}
 }

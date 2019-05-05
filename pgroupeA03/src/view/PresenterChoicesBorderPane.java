@@ -58,7 +58,7 @@ public class PresenterChoicesBorderPane extends BorderPane{
 		if(btnValidate==null){
 			btnValidate=new Button ("Validate");
 			btnValidate.setOnAction(e->{
-				((FinalViewStackPane) getParent()).getMenuBorderPane().getMenuVBox().setVisible(true);
+				((FinalViewStackPane) getParent()).getOptionsMenuBorderPane().setVisible(true);
 				((FinalViewStackPane) getParent()).getPresenterBorderPane().setVisible(false);
 				getpresenterImage();
 				((FinalViewStackPane) getParent()).getGamePlayBorderPane().getPoolStatus().setImagePresenter(presenterImage);

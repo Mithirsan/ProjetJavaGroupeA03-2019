@@ -25,8 +25,6 @@ public class StatisticBorderPane extends BorderPane {
 	private int totalDays =0;
 	private int timePlayed =0;
 	
-	
-
 	public StatisticBorderPane() {
 		HBox hbPlayed = new HBox(getLblGamePlayed(),getLblNbGamePlayed());
 		HBox hbWin = new HBox(getLblGameWin(),getLblNbGameWin());		
@@ -38,19 +36,16 @@ public class StatisticBorderPane extends BorderPane {
 		setCenter(vbResult);
 	}
 	
-	
-
 	public Button getBtnRetrun() {
 		if(btnRetrun==null) {
 			btnRetrun = new Button("Return to menu");
 			btnRetrun.setOnAction(e->{
-
-		
+				((FinalViewStackPane) getParent()).getOptionsMenuBorderPane().setVisible(true);
+				((FinalViewStackPane) getParent()).getStatsBroderPane().setVisible(false);	
 			});
 		}
 		return btnRetrun;
 	}
-
 
 	public Label getLblGamePlayed() {
 		if(lblGamePlayed==null) {
@@ -58,6 +53,7 @@ public class StatisticBorderPane extends BorderPane {
 		}
 		return lblGamePlayed;
 	}
+	
 	public Label getLblNbGamePlayed() {
 		if(lblNbGamePlayed==null) {
 			lblNbGamePlayed = new Label();
@@ -71,6 +67,7 @@ public class StatisticBorderPane extends BorderPane {
 		}
 		return lblGameWin;
 	}
+	
 	public Label getLblNbGameWin() {
 		if( lblNbGameWin==null) {
 			 lblNbGameWin = new Label();
@@ -84,6 +81,7 @@ public class StatisticBorderPane extends BorderPane {
 		}
 		return lblDays;
 	}
+	
 	public Label getLblNbDays() {
 		if(lblNbDays==null) {
 			lblNbDays = new Label();
@@ -97,6 +95,7 @@ public class StatisticBorderPane extends BorderPane {
 		}
 		return lblTimePlayed;
 	}
+	
 	public Label getLblNbTimePlayed() {
 		if(lblNbTimePlayed==null) {
 			lblNbTimePlayed= new Label(timePlayed + " seconds");
@@ -109,24 +108,20 @@ public class StatisticBorderPane extends BorderPane {
 		getLblNbGamePlayed().setText(partyPlayed+" played");
 		
 	}
+	
 	public void setPartyWin(int partyWin) {
 		this.partyWin = partyWin;
 		getLblNbGameWin().setText(partyWin+" win");
 		
 	}
+	
 	public void setTotalDays(int totalDays) {
 		this.totalDays = totalDays;
 		getLblNbDays().setText(totalDays+ " days");
 	}
+	
 	public void setTimePlayed(int timePlayed) {
 		this.timePlayed = timePlayed;
 		getLblNbTimePlayed().setText(timePlayed + " seconds");
 	}
-	
-	
-	
-	
-
-
-
 }
