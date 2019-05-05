@@ -86,8 +86,16 @@ public class GamePlayTimerHBox extends HBox {
 		speech.setCycleCount(1);
 		KeyFrame frameSpeech = new KeyFrame(Duration.seconds(1),e->{
 			if(((FinalViewStackPane) getParent(). getParent()).getOratorBorderPane().isChecked()) {
-				String firstLbl = ((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getStatementAndChoices().getLblStatement().getText();
-				((FinalViewStackPane) getParent(). getParent()).getOratorBorderPane().getTts().speak(firstLbl,  2.0f, true, true);
+				String textLbl = ((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getStatementAndChoices().getLblStatement().getText();
+				((FinalViewStackPane) getParent(). getParent()).getOratorBorderPane().getTts().speak(textLbl,  2.0f, true, true);
+				String choicesA = ((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getStatementAndChoices().getChoices().getBtnAnswerA().getText();
+				((FinalViewStackPane) getParent(). getParent()).getOratorBorderPane().getTts().speak(choicesA,  2.0f, true, true);
+				String choicesB = ((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getStatementAndChoices().getChoices().getBtnAnswerB().getText();
+				((FinalViewStackPane) getParent(). getParent()).getOratorBorderPane().getTts().speak(choicesB,  2.0f, true, true);
+				String choicesC = ((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getStatementAndChoices().getChoices().getBtnAnswerC().getText();
+				((FinalViewStackPane) getParent(). getParent()).getOratorBorderPane().getTts().speak(choicesC,  2.0f, true, true);
+				String choicesD = ((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getStatementAndChoices().getChoices().getBtnAnswerD().getText();
+				((FinalViewStackPane) getParent(). getParent()).getOratorBorderPane().getTts().speak(choicesD,  2.0f, true, true);
 				}
 		});
 		speech.getKeyFrames().add(frameSpeech);
