@@ -61,6 +61,7 @@ public class MenuVBox extends VBox{
 			btnLoad=new Button("Load");
 			btnLoad.getStyleClass().add("mainMenuBtn");
 			btnLoad.setOnAction(e->{
+				getMusic().stop();
 				try {
 					Game game = new Game().downloadData();
 					List<Boolean>tmpList =game.getJokerUsed();

@@ -25,13 +25,13 @@ public class GamePlayLevelsVBox extends VBox {
 	public GamePlayLevelsVBox() {
 		PerspectiveTransform e = new PerspectiveTransform();
 		//left top
-		e.setUlx(-40);   e.setUly(20);
+		e.setUlx(-40);   e.setUly(40);
 		//right top
-        e.setUrx(90);  e.setUry(-40);
+        e.setUrx(90);  e.setUry(-20);
         //left bottom
-        e.setLlx(-40);  e.setLly(410); 
+        e.setLlx(-40);  e.setLly(370); 
         //right bottom
-        e.setLrx(90);  e.setLry(470);
+        e.setLrx(90);  e.setLry(430);
         
 		this.setPadding(new Insets(10));
 		this.setSpacing(5);    

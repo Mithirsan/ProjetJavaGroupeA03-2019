@@ -1,6 +1,5 @@
 package view;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javafx.geometry.Pos;
@@ -13,11 +12,12 @@ import util.Serializable;
 public class OptionsVBox extends VBox{
 	private Button btnContinue;
 	private Button btnQuit;
+	private Button btnQuitAndSave;
 	private Button btnVolumeManagement;
 	private Button btnDisplayManagement;
 			
 	public OptionsVBox() {
-		getChildren().addAll(getBtnContinue(),getBtnVolumeManagement(),getBtnDisplayManagement(),getBtnQuit());
+		getChildren().addAll(getBtnContinue(),getBtnVolumeManagement(),getBtnDisplayManagement(),getBtnQuitAndSave(),getBtnQuit());
 		setSpacing(10);
 		setAlignment(Pos.CENTER);
 	}
@@ -60,11 +60,11 @@ public class OptionsVBox extends VBox{
 		return btnDisplayManagement;
 	}
 	
-	public Button getBtnQuit() {
-		if(btnQuit==null) {
-			btnQuit= new Button("Quit");
-			btnQuit.getStyleClass().add("mainMenuBtn");
-			btnQuit.setOnAction(e->{
+	public Button getBtnQuitAndSave() {
+		if(btnQuitAndSave == null) {
+			btnQuitAndSave = new Button("Save & Quit");
+			btnQuitAndSave.getStyleClass().add("mainMenuBtn");
+			btnQuitAndSave.setOnAction(e->{
 				((FinalViewStackPane) getParent() .getParent()).getOptionBorderPane().setVisible(false);
 				((FinalViewStackPane) getParent() .getParent()).getMenuBorderPane().setVisible(true);
 				((FinalViewStackPane)getParent().getParent()).getMenuBorderPane().getMenuVBox().getMusic().play();
@@ -77,7 +77,20 @@ public class OptionsVBox extends VBox{
 				Serializable.writeSaveGame(saveGame.toJSon());
 				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().reset();
 				Deck.getInstance().jokerReset();
-						});
+			});
+		}
+		return btnQuitAndSave;
+	}
+
+	public Button getBtnQuit() {
+		if(btnQuit==null) {
+			btnQuit= new Button("Quit");
+			btnQuit.getStyleClass().add("mainMenuBtn");
+			btnQuit.setOnAction(e->{
+				((FinalViewStackPane) getParent() .getParent()).getOptionBorderPane().setVisible(false);
+				((FinalViewStackPane) getParent() .getParent()).getMenuBorderPane().setVisible(true);
+				((FinalViewStackPane)getParent().getParent()).getMenuBorderPane().getMenuVBox().getMusic().play();
+			});
 		}
 		return btnQuit;
 	}	

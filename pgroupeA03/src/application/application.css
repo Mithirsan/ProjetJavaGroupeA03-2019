@@ -9,23 +9,23 @@
 	-fx-text-fill: rgb(230,230,230);
 }
 
-/* Stage viex style */
+/* Stage view style */
 .stageActual{
 	-fx-font-smoothing-type: lcd;
 	-fx-font-size: 11pt;
-	-fx-text-fill: rgb(100,111,75);
+	-fx-text-fill: rgb(0,123,105);
 }
 
 .stageWon{
 	-fx-font-smoothing-type: lcd;
-	-fx-font-size: 9pt;
-	-fx-text-fill: rgb(68,99,63);
+	-fx-font-size: 10pt;
+	-fx-text-fill: rgb(166,119,13);
 }
 
 .stageWonSaved{
 	-fx-font-smoothing-type: lcd;
-	-fx-font-size: 10pt;
-	-fx-text-fill: rgb(62,106,65);
+	-fx-font-size: 12pt;
+	-fx-text-fill: rgb(76,129,44);
 }
 
 /* button style */
