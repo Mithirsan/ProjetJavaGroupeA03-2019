@@ -1,5 +1,13 @@
 package view;
 
+import java.io.File;
+
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.StackPane;
 
 public class FinalViewStackPane extends StackPane{
@@ -19,6 +27,9 @@ public class FinalViewStackPane extends StackPane{
 	private OratorChoicesBorderPane oratorBorderPane;
 	
 	public FinalViewStackPane() {
+		BackgroundSize backgroundSize = new BackgroundSize( 960, 540, true, true, true, false);
+		BackgroundImage bg = new BackgroundImage(new Image(new File("resources/pictures/Background.png").toURI().toString()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
+		setBackground(new Background(bg));
 		getChildren().addAll(getMenuBorderPane(),getGamePlayBorderPane(),getLoginAdminAnchorPane()
 				,getOptionBorderPane(),getAdminBorderPane(),getAddQuestionBorderPane(),getWinScreen(),getLooseScreenBorderPane()
 				,getUpdateQuestionBorderPane(),getOptionsMenuBorderPane(),getLeavingHBox(),getPresenterBorderPane(),getStatsBroderPane(),

@@ -38,6 +38,7 @@ public class GamePlayTimerHBox extends HBox {
 	public Label getLblCountDown() {
 		if(lblCountDown == null) {
 			lblCountDown = new Label(START_TIME + " seconds remaining");
+			lblCountDown.getStyleClass().add("txtTimer");
 		}
 		return lblCountDown;
 	}

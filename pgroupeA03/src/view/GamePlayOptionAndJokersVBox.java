@@ -3,6 +3,7 @@ package view;
 import java.io.File;
 
 import javafx.geometry.Insets;
+import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Separator;
@@ -175,6 +176,7 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 	public Separator getSeparator() {
 		if(separator == null) {
 			separator = new Separator();
+			separator.setValignment(VPos.CENTER);
 			separator.getStyleClass().add("sep");
 		}
 		return separator;

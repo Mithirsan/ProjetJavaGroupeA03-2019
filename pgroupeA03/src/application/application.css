@@ -2,9 +2,10 @@
 .lblStatement{
 	-fx-font-smoothing-type: lcd;
 	-fx-font-size: 16pt;
+	-fx-text-fill: rgb(221,248,232);
 }
 
-.withe{
+.txtWhite{
 	-fx-text-fill: rgb(230,230,230);
 }
 
@@ -12,19 +13,19 @@
 .stageActual{
 	-fx-font-smoothing-type: lcd;
 	-fx-font-size: 11pt;
-	-fx-text-fill: rgb(0,230,183);
+	-fx-text-fill: rgb(100,111,75);
 }
 
 .stageWon{
 	-fx-font-smoothing-type: lcd;
 	-fx-font-size: 9pt;
-	-fx-text-fill: rgb(134,210,64);
+	-fx-text-fill: rgb(68,99,63);
 }
 
 .stageWonSaved{
 	-fx-font-smoothing-type: lcd;
 	-fx-font-size: 10pt;
-	-fx-text-fill: rgb(0,210,34);
+	-fx-text-fill: rgb(62,106,65);
 }
 
 /* button style */
@@ -132,11 +133,12 @@
 	-fx-pref-width: 100px;
 	-fx-font-size: 13pt;
 	-fx-font-weight: bold;	
+	-fx-text-fill: rgb(254,255,234);
 }
 
 /* separator invisible */
 .sep{
-	-fx-background-color: #FFFFFF;
+	-fx-background-color: transparent;
 }
 
 /* Main menu button */
@@ -151,7 +153,7 @@
     -fx-pref-height: 30px;
     -fx-border-insets: 5px;
 }
-/*btn réponse correct */
+/*btn rï¿½ponse correct */
 .btnAnswerColor{
 	-fx-background-color: green;
 	-fx-border-color: grey;
@@ -263,14 +265,14 @@
 	-fx-font-size: 10pt;
     -fx-pref-width: 180px;
     -fx-pref-height: 25px;
-} /*
+} 
 .btnLeaveWPool:hover {
     -fx-background-color: 
         linear-gradient(from 0% 93% to 0% 100%, #a39343 0%, #90923b 100%),
         #9dA440,
         #d8Ca6e,
         radial-gradient(center 50% 50%, radius 100%, #eaDb7f, #c5Bc4e);
-} */
+} 
 .lblViewPool {
 	-fx-font-smoothing-type: lcd;
 	-fx-alignment: CENTER_RIGHT;
@@ -279,7 +281,7 @@
 	-fx-font-weight: bold;	
 }
 
-/* separator invisible */
+/* separator */
 .sep{
 	-fx-background-color: #FFFFFF;
 }
@@ -296,8 +298,12 @@
     -fx-pref-height: 30px;
     -fx-border-insets: 5px;
 }
-/*btn réponse correct */
+/*btn rï¿½ponse correct */
 .btnAnswerColor{
 	-fx-background-color: green;
 	-fx-border-color: grey;
+}
+
+.txtTimer{
+	-fx-text-fill: rgb(90,188,185);
 }

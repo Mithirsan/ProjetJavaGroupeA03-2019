@@ -1,6 +1,8 @@
 package view;
 
 import util.TextToSpeech;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.BorderPane;
@@ -16,12 +18,13 @@ public class OratorChoicesBorderPane extends BorderPane{
 	private boolean checked=false;
 	
 	public OratorChoicesBorderPane() {
-		VBox vboxBtnVoice = new VBox(getChkActivate(),getBtnVoice1(),getBtnVoice2(),getBtnVoice3(),getBtnRetrun());
-		setCenter(vboxBtnVoice);
-		
+		VBox vboxVoice = new VBox(getChkActivate(),getBtnVoice1(),getBtnVoice2(),getBtnVoice3(),getBtnRetrun());
+		vboxVoice.setPadding(new Insets(10));
+		vboxVoice.setSpacing(5);
+		vboxVoice.setAlignment(Pos.CENTER);
+		setCenter(vboxVoice);
 	}
 	
-
 	public CheckBox getChkActivate() {
 		if(chkActivate==null) {
 			chkActivate =new CheckBox("Activate");
@@ -32,10 +35,10 @@ public class OratorChoicesBorderPane extends BorderPane{
 		return chkActivate;
 	}
 
-
 	public Button getBtnVoice1() {
 		if(btnVoice1==null) {
 			btnVoice1 = new Button("Male voice");
+			btnVoice1.getStyleClass().add("mainMenuBtn");
 			btnVoice1.setOnAction(e->{
 			tts.setVoice("cmu-rms-hsmm");	
 			tts.speak("This is a test", 2.0f, false, true);
@@ -44,10 +47,10 @@ public class OratorChoicesBorderPane extends BorderPane{
 		return btnVoice1;
 	}
 
-
 	public Button getBtnVoice2() {
 		if(btnVoice2==null) {
 			btnVoice2 = new Button("Female voice 1");
+			btnVoice2.getStyleClass().add("mainMenuBtn");
 			btnVoice2.setOnAction(e->{
 			tts.setVoice("dfki-poppy-hsmm");
 			tts.speak("This is a test", 2.0f, false, true);
@@ -56,10 +59,10 @@ public class OratorChoicesBorderPane extends BorderPane{
 		return btnVoice2;
 	}
 
-
 	public Button getBtnVoice3() {
 		if( btnVoice3==null) {
 			btnVoice3 = new Button("Female voice 2");
+			btnVoice3.getStyleClass().add("mainMenuBtn");
 			btnVoice3.setOnAction(e->{
 			tts.setVoice("cmu-slt-hsmm");
 			tts.speak("This is a test", 2.0f, false, true);
@@ -67,9 +70,11 @@ public class OratorChoicesBorderPane extends BorderPane{
 		}
 		return btnVoice3;
 	}
+	
 	public Button getBtnRetrun() {
 		if(btnRetrun==null) {
 			btnRetrun = new Button("Return to menu");
+			btnRetrun.getStyleClass().add("mainMenuBtn");
 			btnRetrun.setOnAction(e->{
 				((FinalViewStackPane) getParent()).getOptionsMenuBorderPane().setVisible(true);
 				((FinalViewStackPane) getParent()).getOratorBorderPane().setVisible(false);	
@@ -78,23 +83,11 @@ public class OratorChoicesBorderPane extends BorderPane{
 		return btnRetrun;
 	}
 
-
-
 	public TextToSpeech getTts() {
 		return tts;
 	}
 
-
 	public boolean isChecked() {
 		return checked;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
