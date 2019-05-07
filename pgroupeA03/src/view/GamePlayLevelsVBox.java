@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.effect.PerspectiveTransform;
 import javafx.scene.layout.VBox;
 import model.Stage;
 import model.Stats;
@@ -21,14 +22,23 @@ public class GamePlayLevelsVBox extends VBox {
 	
 	private int stage;
 	
-	
-	
-
-
 	public GamePlayLevelsVBox() {
+		PerspectiveTransform e = new PerspectiveTransform();
+		//left top
+		e.setUlx(-40);   e.setUly(20);
+		//right top
+        e.setUrx(90);  e.setUry(-40);
+        //left bottom
+        e.setLlx(-40);  e.setLly(410); 
+        //right bottom
+        e.setLrx(90);  e.setLry(470);
+        
 		this.setPadding(new Insets(10));
-		this.setSpacing(5); 
+		this.setSpacing(5);    
+        
 		this.getChildren().addAll(getLblLevels());
+		
+		this.setEffect(e);
 	}
 
 	public List<Label> getLblLevels() {
@@ -37,7 +47,7 @@ public class GamePlayLevelsVBox extends VBox {
 			int tmp = -1;
 			ObservableList<Stage> stages = FXCollections.observableArrayList(Stage.values());
 			for (Stage s : stages) {
-				Label tmpLabel = new Label(s.getStage());		
+				Label tmpLabel = new Label(s.getStage());
 				lblLevels.add(0,tmpLabel);
 				tmp ++;
 			}

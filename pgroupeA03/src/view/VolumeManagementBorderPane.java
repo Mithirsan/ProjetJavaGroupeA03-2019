@@ -24,18 +24,21 @@ public class VolumeManagementBorderPane extends BorderPane {
 	
 		
 	public VolumeManagementBorderPane() {
-		 
 		HBox viewProgresHBox= new HBox();
 		viewProgresHBox.getChildren().addAll(getSliderVolume());
+		viewProgresHBox.setAlignment(Pos.CENTER);
 		VBox soundVBox = new VBox();
 		soundVBox.getChildren().addAll(viewProgresHBox,getSoundLbl(),getBtnBack());
+		soundVBox.setPadding(new Insets(10));
+		soundVBox.setSpacing(5);
+		soundVBox.setAlignment(Pos.CENTER);
 		setCenter(soundVBox );
 			
 		}
 	public Slider getSliderVolume() {
 		if(sliderVolume == null) {
 			sliderVolume = new Slider();
-			sliderVolume.setValue(100.);
+			sliderVolume.setValue(50.);
 			sliderVolume.setMin(0.);
 			sliderVolume.setMax(100.);
 			sliderVolume.setPrefWidth(200.);
@@ -54,10 +57,11 @@ public class VolumeManagementBorderPane extends BorderPane {
 
 	public Label getSoundLbl() {
 		if( soundLbl==null) {
-			 soundLbl =new Label(" ");
+			 soundLbl =new Label("50%");
 		}
 		return soundLbl;
 	}
+	
 	public Button getBtnBack() {
 			if(btnBack==null) {
 				btnBack = new Button("Return to menu");
@@ -67,6 +71,5 @@ public class VolumeManagementBorderPane extends BorderPane {
 				});		
 			}
 			return btnBack;
-	}
-		
+	}	
 }
