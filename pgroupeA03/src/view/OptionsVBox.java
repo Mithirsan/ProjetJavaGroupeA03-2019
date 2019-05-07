@@ -90,6 +90,8 @@ public class OptionsVBox extends VBox{
 				((FinalViewStackPane) getParent() .getParent()).getOptionBorderPane().setVisible(false);
 				((FinalViewStackPane) getParent() .getParent()).getMenuBorderPane().setVisible(true);
 				((FinalViewStackPane)getParent().getParent()).getMenuBorderPane().getMenuVBox().getMusic().play();
+				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().reset();
+				Deck.getInstance().jokerReset();
 			});
 		}
 		return btnQuit;

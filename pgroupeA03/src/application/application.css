@@ -1,7 +1,7 @@
 /* Statement view style */
 .lblStatement{
 	-fx-font-smoothing-type: lcd;
-	-fx-font-size: 16pt;
+	-fx-font-size: 14pt;
 	-fx-text-fill: rgb(221,248,232);
 }
 
