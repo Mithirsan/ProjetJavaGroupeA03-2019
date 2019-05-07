@@ -42,7 +42,10 @@ public class OptionsVBox extends VBox{
 			btnVolumeManagement=new Button("Volume Management");
 			btnVolumeManagement.getStyleClass().add("mainMenuBtn");
 			
-			btnVolumeManagement.setDisable(true);
+			btnVolumeManagement.setOnAction(e->{
+				getParent().setVisible(false);
+				((FinalViewStackPane) getParent(). getParent()).getVolumeManagementBorderPane().setVisible(true);
+			});
 		}
 		return btnVolumeManagement;
 	}

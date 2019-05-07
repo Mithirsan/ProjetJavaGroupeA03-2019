@@ -25,6 +25,7 @@ public class FinalViewStackPane extends StackPane{
 	private PresenterChoicesBorderPane presenterBorderPane;
 	private StatisticBorderPane statsBroderPane;
 	private OratorChoicesBorderPane oratorBorderPane;
+	private VolumeManagementBorderPane volumeManagementBorderPane;
 	
 	public FinalViewStackPane() {
 		BackgroundSize backgroundSize = new BackgroundSize( 960, 540, true, true, true, false);
@@ -33,7 +34,7 @@ public class FinalViewStackPane extends StackPane{
 		getChildren().addAll(getMenuBorderPane(),getGamePlayBorderPane(),getLoginAdminAnchorPane()
 				,getOptionBorderPane(),getAdminBorderPane(),getAddQuestionBorderPane(),getWinScreen(),getLooseScreenBorderPane()
 				,getUpdateQuestionBorderPane(),getOptionsMenuBorderPane(),getLeavingHBox(),getPresenterBorderPane(),getStatsBroderPane(),
-				getOratorBorderPane());
+				getOratorBorderPane(),getVolumeManagementBorderPane());
 	}
 	
 	public MenuBorderPane getMenuBorderPane() {
@@ -158,6 +159,14 @@ public class FinalViewStackPane extends StackPane{
 			oratorBorderPane.setVisible(false);
 		}
 		return oratorBorderPane;
+	}
+
+	public VolumeManagementBorderPane getVolumeManagementBorderPane() {
+		if(volumeManagementBorderPane==null) {
+			volumeManagementBorderPane = new VolumeManagementBorderPane();
+			volumeManagementBorderPane.setVisible(false);
+		}
+		return volumeManagementBorderPane;
 	}
 	
 	
