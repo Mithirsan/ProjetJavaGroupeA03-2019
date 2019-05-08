@@ -37,7 +37,7 @@ public class Main extends Application {
 	}
 	
 	public static void main(String[] args) {
-		File file = new File("Test.json");
+		File file = new File("questions.json");
 		try {
 			Deck.getInstance().loadDeck(file);
 		} catch (FileNotFoundException e) {

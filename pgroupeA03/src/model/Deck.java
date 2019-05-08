@@ -212,5 +212,24 @@ public class Deck {
 		 for(int i =0 ; i <jokers.size();i++) { 
 			jokers.set(i, true);
 		}
-	}	
+	}
+
+	public static List<Question> getRound1() {
+		return round1;
+	}
+
+	public static List<Question> getRound2() {
+		return round2;
+	}
+
+	public static List<Question> getRound3() {
+		return round3;
+	}
+	public static  List<Question> getAllQuestion(){
+		List<Question>allQ= new ArrayList<>();
+		allQ.addAll(round1);
+		allQ.addAll(round2);
+		allQ.addAll(round3);
+		return allQ;
+	}
 }
