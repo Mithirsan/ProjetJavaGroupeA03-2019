@@ -116,7 +116,7 @@ public class UpdateQuestionBorderPane extends BorderPane {
 					((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().setTotalManip(tmpManip);
 					OriginMemento tmpOrigin = ((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().getOriginMemento();
 					
-					tmpOrigin.setState(Deck.getInstance().getQuestions());
+					tmpOrigin.setState(Deck.getInstance().getAllQuestion());
 					((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().getcTakerMemento().add(tmpOrigin.saveToMemento());
 					this.setVisible(false);
 					((FinalViewStackPane) getParent()).getAdminBorderPane().setVisible(true);
