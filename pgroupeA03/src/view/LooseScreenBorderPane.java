@@ -21,18 +21,18 @@ public class LooseScreenBorderPane extends BorderPane {
 	private HBox contents;
 	
 	public LooseScreenBorderPane() {
-//		setCenter(getContents());
+		setCenter(getContents());
 		HBox txt = new HBox();
 		txt.getChildren().add(getLblMessage());
 		txt.setAlignment(Pos.CENTER);
-		setBottom(txt);
+		setTop(txt);
 	}
 
 	public Label getLblMessage() {
 		if(lblMessage == null) {
 			lblMessage = new Label("You've losed the game, click to continue");
 			lblMessage.getStyleClass().add("withe");
-//			lblMessage.setVisible(false);
+			lblMessage.setVisible(false);
 			lblMessage.setAlignment(Pos.CENTER);
 		}
 		return lblMessage;
@@ -41,8 +41,8 @@ public class LooseScreenBorderPane extends BorderPane {
 	public PathTransition getPathTransition() {
 		if(pathTransition == null) {
 			Path path = new Path();
-			path.getElements().add(new MoveTo(480., 0.));
-		    path.getElements().add(new VLineTo(470.));
+			path.getElements().add(new MoveTo(480., 0.));//480 0
+		    path.getElements().add(new VLineTo(280.));//470
 		    
 		    getContents().getChildren().add(path);
 		    getContents().getChildren().add(getLoseImage());
@@ -61,7 +61,9 @@ public class LooseScreenBorderPane extends BorderPane {
 
 	public ImageView getLoseImage() {
 		if(loseImage == null) {
-			loseImage = new ImageView(new Image(new File("resources/pictures/TheReaper.jpg").toURI().toString()));
+			loseImage = new ImageView(new Image(new File("resources/pictures/bars.png").toURI().toString()));
+			loseImage.setFitHeight(540);
+			loseImage.setFitWidth(960);
 		}
 		return loseImage;
 	}

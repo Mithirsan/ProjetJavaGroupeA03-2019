@@ -37,6 +37,7 @@ public class MenuVBox extends VBox{
 			btnPlay.getStyleClass().add("mainMenuBtn");
 			btnPlay.setOnAction(e->{
 				getParent().setVisible(false);
+				((FinalViewStackPane) getParent(). getParent()).getOptionBorderPane().getOptionsVBox().getBtnQuitAndSave().setDisable(false);
 				((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().setVisible(true);
 				((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getTimer().startTimer();
 				((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getTimer().speechStatement().playFromStart();
@@ -69,6 +70,7 @@ public class MenuVBox extends VBox{
 					for(int i=0;i<game.getIndex();i++) {
 						((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getStatementAndChoices().getChoices().refreshForContinueGame();
 					}
+					((FinalViewStackPane) getParent(). getParent()).getOptionBorderPane().getOptionsVBox().getBtnQuitAndSave().setDisable(true);
 					((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getTimer().setSeconds(game.getTimerLeft());
 					Deck.getInstance().setJokers(tmpList);
 					((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getOptionAndJokers().getBtnJokerAudienceOpinion().setDisable(!tmpList.get(0));

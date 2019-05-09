@@ -32,9 +32,9 @@ public class VolumeManagementBorderPane extends BorderPane {
 		soundVBox.setPadding(new Insets(10));
 		soundVBox.setSpacing(5);
 		soundVBox.setAlignment(Pos.CENTER);
-		setCenter(soundVBox );
-			
-		}
+		setCenter(soundVBox );		
+	}
+	
 	public Slider getSliderVolume() {
 		if(sliderVolume == null) {
 			sliderVolume = new Slider();

@@ -1,6 +1,7 @@
 package view;
 
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
@@ -26,13 +27,17 @@ public class StatisticBorderPane extends BorderPane {
 	private int timePlayed =0;
 	
 	public StatisticBorderPane() {
-		HBox hbPlayed = new HBox(getLblGamePlayed(),getLblNbGamePlayed());
-		HBox hbWin = new HBox(getLblGameWin(),getLblNbGameWin());		
-		HBox hbDays = new HBox(getLblDays(),getLblNbDays());
-		HBox hbTime = new HBox(getLblTimePlayed(),getLblNbTimePlayed());
-		VBox vbResult = new VBox(hbPlayed,hbWin,hbDays,hbTime,getBtnRetrun());
+		
+		VBox vbLabels = new VBox(getLblGamePlayed(), getLblGameWin(), getLblDays(), getLblTimePlayed());
+		VBox vbStats = new VBox(getLblNbGamePlayed(), getLblNbGameWin(), getLblNbDays(), getLblNbTimePlayed());
+		HBox hbResult = new HBox(vbLabels, vbStats);
+		hbResult.setSpacing(10.);
+		hbResult.setPadding(new Insets(5.));
+		
+		VBox vbResult = new VBox(hbResult,getBtnRetrun());
 		vbResult.setSpacing(10.);
-		vbResult.setPadding(new Insets(400.));
+		vbResult.setPadding(new Insets(380.));
+		vbResult.setAlignment(Pos.CENTER);
 		setCenter(vbResult);
 	}
 	
@@ -49,7 +54,7 @@ public class StatisticBorderPane extends BorderPane {
 
 	public Label getLblGamePlayed() {
 		if(lblGamePlayed==null) {
-			lblGamePlayed =new Label("Total of games played :");
+			lblGamePlayed =new Label("Total of games played:");
 		}
 		return lblGamePlayed;
 	}
@@ -63,7 +68,7 @@ public class StatisticBorderPane extends BorderPane {
 	
 	public Label getLblGameWin() {
 		if(lblGameWin==null) {
-			lblGameWin =new Label("Total of games win :");
+			lblGameWin =new Label("Total of games win:");
 		}
 		return lblGameWin;
 	}
@@ -77,7 +82,7 @@ public class StatisticBorderPane extends BorderPane {
 	
 	public Label getLblDays() {
 		if(lblDays==null) {
-			lblDays =new Label("Total of days win :");
+			lblDays =new Label("Total of days win:");
 		}
 		return lblDays;
 	}

@@ -175,7 +175,7 @@ public class GamePlayChoicesGridPane extends GridPane  {
 		((GamePlayBorderPane)getParent().getParent()).reset();
 		((FinalViewStackPane)getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().stopTimer();
 		((FinalViewStackPane)getParent().getParent().getParent()).getLooseScreenBorderPane().setVisible(true);
-//		((FinalViewStackPane)getParent().getParent().getParent()).getLooseScreenBorderPane().getPathTransition().playFromStart();
+		((FinalViewStackPane)getParent().getParent().getParent()).getLooseScreenBorderPane().getPathTransition().playFromStart();
 	}
 
 	public boolean isAChance() {

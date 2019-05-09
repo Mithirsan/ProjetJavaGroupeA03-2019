@@ -63,8 +63,7 @@ public class OptionsMenuVBox extends VBox {
 			btnVolumeManagement.getStyleClass().add("mainMenuBtn");
 			btnVolumeManagement.setOnAction(e->{
 				getParent().setVisible(false);
-				((FinalViewStackPane) getParent(). getParent()).getVolumeManagementBorderPane().setVisible(true);
-				
+				((FinalViewStackPane) getParent(). getParent()).getVolumeManagementBorderPane().setVisible(true);	
 			});
 			
 		}
@@ -75,7 +74,7 @@ public class OptionsMenuVBox extends VBox {
 		if(btnDisplayManagement==null) {
 			btnDisplayManagement= new Button("Display Management");
 			btnDisplayManagement.getStyleClass().add("mainMenuBtn");
-			
+			btnDisplayManagement.setDisable(true);
 		}
 		return btnDisplayManagement;
 	}
@@ -93,7 +92,7 @@ public class OptionsMenuVBox extends VBox {
 	}
 	public Button getBtnQuit() {
 		if(btnQuit==null) {
-			btnQuit= new Button("Quit");
+			btnQuit= new Button("Back to menu");
 			btnQuit.getStyleClass().add("mainMenuBtn");
 			btnQuit.setOnAction(e->{
 				((FinalViewStackPane) getParent() .getParent()).getOptionsMenuBorderPane().setVisible(false);

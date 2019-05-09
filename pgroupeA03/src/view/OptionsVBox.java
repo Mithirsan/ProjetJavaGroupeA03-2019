@@ -29,8 +29,7 @@ public class OptionsVBox extends VBox{
 			btnContinue.setOnAction(e->{
 				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().setVisible(true);
 				((FinalViewStackPane) getParent() .getParent()).getOptionBorderPane().setVisible(false);
-				((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getTimer().pauseTimer(false);
-				
+				((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getTimer().pauseTimer(false);			
 			});
 		}
 		return btnContinue;
@@ -44,8 +43,8 @@ public class OptionsVBox extends VBox{
 			
 			btnVolumeManagement.setOnAction(e->{
 				getParent().setVisible(false);
-				((FinalViewStackPane) getParent(). getParent()).getVolumeManagementBorderPane().setVisible(true);
 			});
+			btnVolumeManagement.setDisable(true);
 		}
 		return btnVolumeManagement;
 	}
@@ -84,7 +83,7 @@ public class OptionsVBox extends VBox{
 
 	public Button getBtnQuit() {
 		if(btnQuit==null) {
-			btnQuit= new Button("Quit");
+			btnQuit= new Button("Back to menu");
 			btnQuit.getStyleClass().add("mainMenuBtn");
 			btnQuit.setOnAction(e->{
 				((FinalViewStackPane) getParent() .getParent()).getOptionBorderPane().setVisible(false);

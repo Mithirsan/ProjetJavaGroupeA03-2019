@@ -54,6 +54,7 @@ public class GameplayPoolStatusHBox extends BorderPane {
 				((FinalViewStackPane) getParent() .getParent()).getLeavingHBox().setGain(getLblViewPool().getText());
 				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().setVisible(false);
 				((FinalViewStackPane) getParent() .getParent()).getLeavingHBox().setVisible(true);
+				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().getTimer().stopTimer();
 				((FinalViewStackPane)getParent().getParent().getParent()).getMenuBorderPane().getMenuVBox().getMusic().play();
 				
 				Stats stats;
@@ -66,7 +67,6 @@ public class GameplayPoolStatusHBox extends BorderPane {
 					}
 					Serializable.writeSaveStats(stats.toJSon());
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().reset();
