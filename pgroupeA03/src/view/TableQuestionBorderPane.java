@@ -42,7 +42,7 @@ public class TableQuestionBorderPane extends BorderPane {
 	
 	public TableQuestionBorderPane() {
 		originMemento = new OriginMemento();
-		originMemento.setState(Deck.getInstance().getQuestions());
+		originMemento.setState(Deck.getInstance().getAllQuestion());
 		getcTakerMemento().add(originMemento.saveToMemento());
 		setCenter(getTableQuestion());
 		getTableQuestion().getColumns().add(getColAuthor());
@@ -140,7 +140,7 @@ public class TableQuestionBorderPane extends BorderPane {
 					getListQuestion().removeAll(tmpList);
 					nbManip++;
 					totalManip= nbManip;
-					originMemento.setState(Deck.getInstance().getQuestions());
+					originMemento.setState(Deck.getInstance().getAllQuestion());
 					getcTakerMemento().add(originMemento.saveToMemento());
 				}
 			});
@@ -173,7 +173,7 @@ public class TableQuestionBorderPane extends BorderPane {
 	}
 	public void updateObservableList() {
 		getListQuestion().clear();
-        getListQuestion().addAll(Deck.getInstance().getQuestions());
+        getListQuestion().addAll(Deck.getInstance().getAllQuestion());
 	}
 
 	public CareTMemento getcTakerMemento() {
@@ -207,7 +207,7 @@ public class TableQuestionBorderPane extends BorderPane {
 	public void emptyCareTaker() {
 		cTakerMemento = new CareTMemento();
 		OriginMemento origiMemento = new OriginMemento();
-		origiMemento.setState(Deck.getInstance().getQuestions());
+		origiMemento.setState(Deck.getInstance().getAllQuestion());
 		cTakerMemento.add(origiMemento.saveToMemento());
 		nbManip = 0;
 		totalManip = 0;

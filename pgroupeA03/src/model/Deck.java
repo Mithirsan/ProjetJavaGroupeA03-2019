@@ -17,10 +17,10 @@ public class Deck {
 	private static int index = 0;
 	private static final int NBQUESTION = 15;
 	private static Deck instance;
-	private List<Question> questions;
+	private List<Question> gameQuestion;
 	private List<Boolean> jokers;
 	
-	private List<Question> allQuestions;
+	private List<Question> questions;
 	
 	public static Deck getInstance() {
 		if(instance == null) {
@@ -34,9 +34,9 @@ public class Deck {
 	}
 
 	public Deck() {
-		questions = new ArrayList<>(15);
+		gameQuestion = new ArrayList<>(15);
 		jokers = new ArrayList<>(4);
-		allQuestions = new ArrayList<>();
+		questions = new ArrayList<>();
 		for(int i = 0; i<4; i++) {
 			jokers.add(true);
 		}
@@ -53,7 +53,7 @@ public class Deck {
 	}
 	
 	public List<Question> getQuestions() {
-		return questions;
+		return gameQuestion;
 	}
 
 	public void setDeck(List<Question> questions){
@@ -63,40 +63,42 @@ public class Deck {
 	}
 	
 	public boolean addAllQuestions(Question q) {
-		if(!allQuestions.contains(q)) {
-			allQuestions.add(q);
+		if(!questions.contains(q)) {
+			questions.add(q);
 			return true;
 		}
 		return false;
 	}
 	
 	public boolean addQuestion(Question x){
-		if(!questions.contains(x)) {
-			questions.add(x);
+		if(!gameQuestion.contains(x)) {
+			gameQuestion.add(x);
 			return true;
 		}
 		return false;
 	}
 	
 	public boolean deleteAllDeck(List<Question> x){
-		return allQuestions.removeAll(x);
+		return questions.removeAll(x);
 	}
 	
 	public boolean deleteSingleQuestion(Question x) {
-		return allQuestions.remove(x);
+		return questions.remove(x);
 	}
 	
+	
+	
 	public boolean update(Question x) {
-		int ind = getInstance().allQuestions.indexOf(x);
+		int ind = getInstance().questions.indexOf(x);
 		if(ind == -1) {
 			return false;
 		} 
-		allQuestions.set(ind, x);
+		questions.set(ind, x);
 		return true;
 	}
 	
 	public String toString() {
-		return "Deck : " + questions;
+		return "Deck : " + gameQuestion;
 	}
 
 	public String toJSon() {
@@ -122,8 +124,8 @@ public class Deck {
 		List<Question> round1 = new ArrayList<Question>();
 		List<Question> round2 = new ArrayList<Question>();
 		List<Question> round3 = new ArrayList<Question>();
-		
-		for(Question x : fileDeck.getQuestions()) {
+		getInstance().getAllQuestion().clear();
+		for(Question x : fileDeck.getAllQuestion()) {
 			switch (x.getRound()) {
 				case FIRST_ROUND: 
 					round1.add(x);
@@ -142,7 +144,7 @@ public class Deck {
 	private void addQuestions(List<Question> round1, List<Question> round2, List<Question> round3) {
 		int nb1 = 0, nb2 = 0, nb3 = 0;
 		index = 0;
-		getInstance().questions.clear();
+		getInstance().gameQuestion.clear();
 		Collections.shuffle(round1);
 		Collections.shuffle(round2);
 		Collections.shuffle(round3);
@@ -180,9 +182,9 @@ public class Deck {
 		List<Question> round2 = new ArrayList<Question>();
 		List<Question> round3 = new ArrayList<Question>();
 		index = 0;
-		getInstance().questions.clear();
-		Collections.shuffle(allQuestions);
-		for(Question q : allQuestions) {
+		getInstance().gameQuestion.clear();
+		Collections.shuffle(questions);
+		for(Question q : questions) {
 			switch (q.getRound()) {
 				case FIRST_ROUND: 
 					round1.add(q);
@@ -246,6 +248,6 @@ public class Deck {
 	}
 
 	public List<Question> getAllQuestion(){
-		return allQuestions;
+		return questions;
 	}
 }

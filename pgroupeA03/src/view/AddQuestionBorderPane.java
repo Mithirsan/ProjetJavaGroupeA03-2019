@@ -108,7 +108,7 @@ public class AddQuestionBorderPane extends BorderPane{
 				}
 				if (allFieldComplete) {
 					Question tmpQuestion = new Question(tmpAuthor, tmpRound, tmpStatement,tmpChoices);
-					Deck.getInstance().addQuestion(tmpQuestion.clone());
+					Deck.getInstance().addAllQuestions(tmpQuestion);
 					((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().getListQuestion().add(tmpQuestion.clone());	
 					int tmpManip=((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().getNbManip();
 					tmpManip++;
@@ -116,7 +116,7 @@ public class AddQuestionBorderPane extends BorderPane{
 					((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().setTotalManip(tmpManip);
 					OriginMemento tmpOrigin = ((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().getOriginMemento();
 					
-					tmpOrigin.setState(Deck.getInstance().getQuestions());
+					tmpOrigin.setState(Deck.getInstance().getAllQuestion());
 					((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().getcTakerMemento().add(tmpOrigin.saveToMemento());
 					this.setVisible(false);
 					((FinalViewStackPane) getParent()).getAdminBorderPane().setVisible(true);
