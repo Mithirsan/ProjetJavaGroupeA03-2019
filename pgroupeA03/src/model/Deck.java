@@ -20,9 +20,7 @@ public class Deck {
 	private List<Question> questions;
 	private List<Boolean> jokers;
 	
-	private static List<Question> round1 = new ArrayList<Question>();
-	private static List<Question> round2 = new ArrayList<Question>();
-	private static List<Question> round3 = new ArrayList<Question>();
+	private List<Question> allQuestions;
 	
 	public static Deck getInstance() {
 		if(instance == null) {
@@ -36,8 +34,9 @@ public class Deck {
 	}
 
 	public Deck() {
-		questions = new ArrayList<>();
+		questions = new ArrayList<>(15);
 		jokers = new ArrayList<>(4);
+		allQuestions = new ArrayList<>();
 		for(int i = 0; i<4; i++) {
 			jokers.add(true);
 		}
@@ -63,6 +62,14 @@ public class Deck {
 		}
 	}
 	
+	public boolean addAllQuestions(Question q) {
+		if(!allQuestions.contains(q)) {
+			allQuestions.add(q);
+			return true;
+		}
+		return false;
+	}
+	
 	public boolean addQuestion(Question x){
 		if(!questions.contains(x)) {
 			questions.add(x);
@@ -72,19 +79,19 @@ public class Deck {
 	}
 	
 	public boolean deleteAllDeck(List<Question> x){
-		return questions.removeAll(x);
+		return allQuestions.removeAll(x);
 	}
 	
 	public boolean deleteSingleQuestion(Question x) {
-		return questions.remove(x);
+		return allQuestions.remove(x);
 	}
 	
 	public boolean update(Question x) {
-		int ind = getInstance().questions.indexOf(x);
+		int ind = getInstance().allQuestions.indexOf(x);
 		if(ind == -1) {
 			return false;
 		} 
-		questions.set(ind, x);
+		allQuestions.set(ind, x);
 		return true;
 	}
 	
@@ -111,9 +118,10 @@ public class Deck {
 	
 	public void loadDeck(File file) throws FileNotFoundException, IOException {
 		Deck fileDeck = fromJSon(Serializable.readDeck(file.getAbsolutePath()));
-		round1.clear();
-		round2.clear();
-		round3.clear();
+		
+		List<Question> round1 = new ArrayList<Question>();
+		List<Question> round2 = new ArrayList<Question>();
+		List<Question> round3 = new ArrayList<Question>();
 		
 		for(Question x : fileDeck.getQuestions()) {
 			switch (x.getRound()) {
@@ -126,11 +134,12 @@ public class Deck {
 				default : 
 					round3.add(x);
 			}
+			addAllQuestions(x);
 		}
-		getInstance().addQuestions();
+		getInstance().addQuestions(round1, round2, round3);
 	}
 	
-	public void addQuestions() {
+	private void addQuestions(List<Question> round1, List<Question> round2, List<Question> round3) {
 		int nb1 = 0, nb2 = 0, nb3 = 0;
 		index = 0;
 		getInstance().questions.clear();
@@ -164,6 +173,28 @@ public class Deck {
 				break;
 			}
 		}
+	}
+
+	public void addQuestions() {
+		List<Question> round1 = new ArrayList<Question>();
+		List<Question> round2 = new ArrayList<Question>();
+		List<Question> round3 = new ArrayList<Question>();
+		index = 0;
+		getInstance().questions.clear();
+		Collections.shuffle(allQuestions);
+		for(Question q : allQuestions) {
+			switch (q.getRound()) {
+				case FIRST_ROUND: 
+					round1.add(q);
+					break;
+				case SECOND_ROUND: 
+					round2.add(q);
+					break;
+				default : 
+					round3.add(q);
+			}
+		}
+		getInstance().addQuestions(round1, round2, round3);
 	}
 
 	public void loadState(List<Question> state) {
@@ -214,22 +245,7 @@ public class Deck {
 		}
 	}
 
-	public static List<Question> getRound1() {
-		return round1;
-	}
-
-	public static List<Question> getRound2() {
-		return round2;
-	}
-
-	public static List<Question> getRound3() {
-		return round3;
-	}
-	public static  List<Question> getAllQuestion(){
-		List<Question>allQ= new ArrayList<>();
-		allQ.addAll(round1);
-		allQ.addAll(round2);
-		allQ.addAll(round3);
-		return allQ;
+	public List<Question> getAllQuestion(){
+		return allQuestions;
 	}
 }

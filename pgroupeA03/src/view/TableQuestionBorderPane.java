@@ -92,7 +92,7 @@ public class TableQuestionBorderPane extends BorderPane {
 	public ObservableList<Question> getListQuestion() {
 		if(listQuestion== null) {
 		
-			listQuestion = FXCollections.observableArrayList(Deck.getAllQuestion());
+			listQuestion = FXCollections.observableArrayList(Deck.getInstance().getAllQuestion());
 		}
 		return listQuestion;
 	}
