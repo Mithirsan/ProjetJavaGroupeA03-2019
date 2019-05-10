@@ -16,15 +16,15 @@ public class AudienceOpinionJokerStrategy implements JokerStrategy {
 			vals.add(Deck.getInstance().getGameQuestions().get(Deck.getInstance().getIndex()).getChoiceValue(i)); 
 		}
 		switch (Deck.getInstance().getGameQuestions().get(Deck.getInstance().getIndex()).getRound()) {
-			case FIRST_ROUND : FirstRoundQuestions();
+			case FIRST_ROUND : firstRoundQuestions();
 				break;
-			case SECOND_ROUND : SecondRoundQuestion();
+			case SECOND_ROUND : secondRoundQuestion();
 				break;
-			default : LastRoundQuestion();
+			default : lastRoundQuestion();
 		}	
 	}
 	
-	public void FirstRoundQuestions() {
+	private void firstRoundQuestions() {
 		double rand;
 		for(int i = 0; i < 1000; i++) {
 			rand = Math.random() + 0.45;
@@ -72,7 +72,7 @@ public class AudienceOpinionJokerStrategy implements JokerStrategy {
 		}
 	}
 	
-	public void SecondRoundQuestion() {
+	private void secondRoundQuestion() {
 		double rand;
 		for(int i = 0; i < 1000; i++) {
 			rand = Math.random() + 0.20;
@@ -120,7 +120,7 @@ public class AudienceOpinionJokerStrategy implements JokerStrategy {
 		}
 	}
 	
-	public void LastRoundQuestion() {
+	private void lastRoundQuestion() {
 		double rand;
 		for(int i = 0; i < 1000; i++) {
 			rand = Math.random();
@@ -180,5 +180,4 @@ public class AudienceOpinionJokerStrategy implements JokerStrategy {
 		}
 		return percent;
 	}
-
 }
