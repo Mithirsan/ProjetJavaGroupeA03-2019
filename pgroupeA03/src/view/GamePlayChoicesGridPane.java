@@ -37,9 +37,9 @@ public class GamePlayChoicesGridPane extends GridPane  {
 	
 	public Button getBtnAnswerA() {
 		if (btnAnswerA == null) {
-			btnAnswerA = new Button("A: " + Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoice(0));
+			btnAnswerA = new Button("A: " + Deck.getInstance().getGameQuestions().get(Deck.getInstance().getIndex()).getChoice(0));
 			btnAnswerA.setOnAction(e->{
-			checkAnswer(btnAnswerA, Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoiceValue(0));
+			checkAnswer(btnAnswerA, Deck.getInstance().getGameQuestions().get(Deck.getInstance().getIndex()).getChoiceValue(0));
 			});
 			btnAnswerA.getStyleClass().add("btnAnswer");
 		}
@@ -48,9 +48,9 @@ public class GamePlayChoicesGridPane extends GridPane  {
 
 	public Button getBtnAnswerB() {
 		if(btnAnswerB == null) {
-			btnAnswerB = new Button("B: " + Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoice(1));
+			btnAnswerB = new Button("B: " + Deck.getInstance().getGameQuestions().get(Deck.getInstance().getIndex()).getChoice(1));
 			btnAnswerB.setOnAction(e->{
-				checkAnswer(btnAnswerB, Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoiceValue(1));
+				checkAnswer(btnAnswerB, Deck.getInstance().getGameQuestions().get(Deck.getInstance().getIndex()).getChoiceValue(1));
 			});
 			btnAnswerB.getStyleClass().add("btnAnswer");
 		}
@@ -59,10 +59,10 @@ public class GamePlayChoicesGridPane extends GridPane  {
 
 	public Button getBtnAnswerC() {
 		if(btnAnswerC == null) {
-			btnAnswerC = new Button("C: " + Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoice(2));
+			btnAnswerC = new Button("C: " + Deck.getInstance().getGameQuestions().get(Deck.getInstance().getIndex()).getChoice(2));
 
 			btnAnswerC.setOnAction(e->{
-			checkAnswer(btnAnswerC, Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoiceValue(2));
+			checkAnswer(btnAnswerC, Deck.getInstance().getGameQuestions().get(Deck.getInstance().getIndex()).getChoiceValue(2));
 			});
 			btnAnswerC.getStyleClass().add("btnAnswer");
 		}
@@ -71,9 +71,9 @@ public class GamePlayChoicesGridPane extends GridPane  {
 
 	public Button getBtnAnswerD() {
 		if(btnAnswerD == null) {
-			btnAnswerD = new Button("D: " + Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoice(3));
+			btnAnswerD = new Button("D: " + Deck.getInstance().getGameQuestions().get(Deck.getInstance().getIndex()).getChoice(3));
 			btnAnswerD.setOnAction(e->{
-						checkAnswer(btnAnswerD, Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoiceValue(3));
+						checkAnswer(btnAnswerD, Deck.getInstance().getGameQuestions().get(Deck.getInstance().getIndex()).getChoiceValue(3));
 			});
 			btnAnswerD.getStyleClass().add("btnAnswer");
 		}
@@ -123,7 +123,7 @@ public class GamePlayChoicesGridPane extends GridPane  {
 			flashing.pseudoClassStateChanged(flashHighlight, false);
 			((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().pauseTimer(false);
 			if(bool) {
-				refresh();
+				success();
 			}else {
 				if(aChance){
 					flashing.setDisable(true);
@@ -139,14 +139,11 @@ public class GamePlayChoicesGridPane extends GridPane  {
 			stats.setTimePlayed(((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().getSeconds());
 			Serializable.writeSaveStats(stats.toJSon());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-	
-		
+		}	
 	}
 	
-	private void refresh() {
+	private void success() {
 		Deck.increaseIndex();
 		resetTxt();
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().refreshTimer();
@@ -156,11 +153,11 @@ public class GamePlayChoicesGridPane extends GridPane  {
 	}
 	
 	public void resetTxt() {
-		((GamePlayStatementAndChoicesVBox) getParent()).getLblStatement().setText(Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getStatement());
-		getBtnAnswerA().setText("A: " + Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoice(0));
-		getBtnAnswerB().setText("B: " + Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoice(1));
-		getBtnAnswerC().setText("C: " + Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoice(2));
-		getBtnAnswerD().setText("D: " + Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoice(3));
+		((GamePlayStatementAndChoicesVBox) getParent()).getLblStatement().setText(Deck.getInstance().getGameQuestions().get(Deck.getInstance().getIndex()).getStatement());
+		getBtnAnswerA().setText("A: " + Deck.getInstance().getGameQuestions().get(Deck.getInstance().getIndex()).getChoice(0));
+		getBtnAnswerB().setText("B: " + Deck.getInstance().getGameQuestions().get(Deck.getInstance().getIndex()).getChoice(1));
+		getBtnAnswerC().setText("C: " + Deck.getInstance().getGameQuestions().get(Deck.getInstance().getIndex()).getChoice(2));
+		getBtnAnswerD().setText("D: " + Deck.getInstance().getGameQuestions().get(Deck.getInstance().getIndex()).getChoice(3));
 		getBtnAnswerA().setDisable(false);getBtnAnswerB().setDisable(false);getBtnAnswerC().setDisable(false);getBtnAnswerD().setDisable(false);
 	}
 	
@@ -172,7 +169,7 @@ public class GamePlayChoicesGridPane extends GridPane  {
 		
 		((FinalViewStackPane)getParent().getParent().getParent()).getMenuBorderPane().getMenuVBox().getMusic().play();
 		((FinalViewStackPane)getParent().getParent().getParent()).getGamePlayBorderPane().setVisible(false);
-		((GamePlayBorderPane)getParent().getParent()).reset();
+		((GamePlayBorderPane)getParent().getParent()).resetForNewGame();
 		((FinalViewStackPane)getParent().getParent().getParent()).getGamePlayBorderPane().getTimer().stopTimer();
 		((FinalViewStackPane)getParent().getParent().getParent()).getLooseScreenBorderPane().setVisible(true);
 		((FinalViewStackPane)getParent().getParent().getParent()).getLooseScreenBorderPane().getPathTransition().playFromStart();
@@ -186,7 +183,7 @@ public class GamePlayChoicesGridPane extends GridPane  {
 		this.aChance = bool;
 	}
 	
-	public void refreshForContinueGame() {
+	public void loadGame() {
 		Deck.increaseIndex();
 		resetTxt();
 		((FinalViewStackPane) getParent().getParent().getParent()).getGamePlayBorderPane().getLevels().nextStage();

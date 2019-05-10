@@ -6,9 +6,11 @@ public enum Presenter {
 	CAMILLE_COMBAL ("CamilleCombal");
 	
 	String presenter;
+	
 	Presenter (String presenter){
 		this.presenter=presenter;
 	}
+	
 	public String getPresenter() {
 		return presenter;
 	}

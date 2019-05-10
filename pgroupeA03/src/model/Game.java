@@ -30,14 +30,14 @@ public class Game {
 
 	@Override
 	public String toString() {
-		return "Game [index=" + index + ", timerLeft=" + timerLeft + ", JokerUsed=" + jokerUsed + ", deck=" + deck
-				+ "]";
+		return "Game [index=" + index + ", timerLeft=" + timerLeft + ", JokerUsed=" + jokerUsed + ", deck=" + deck + "]";
 	}
 	
 	public String toJSon() {
 		Gson gson = new Gson();
 		return gson.toJson(this);
 	}
+	
 	public static Game fromJSon(String json) {
 		Gson gson = new GsonBuilder().disableHtmlEscaping().create();
 		return gson.fromJson(json, Game.class);

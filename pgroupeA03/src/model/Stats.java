@@ -20,7 +20,8 @@ public class Stats {
 		private int totalDays =0;
 		private int timePlayed =0;
 		
-		public Stats() {
+		public Stats() { 
+			
 		}
 		
 		public String toJSon() {
@@ -84,8 +85,5 @@ public class Stats {
 		public void setTimePlayed(int timeLeft) {
 			int tmp = 45 - timeLeft;
 			this.timePlayed +=tmp; ;
-		}	
-		
-		
-		
+		}		
 }

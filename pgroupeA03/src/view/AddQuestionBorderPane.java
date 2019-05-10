@@ -25,8 +25,6 @@ public class AddQuestionBorderPane extends BorderPane{
 	private Button btnOK;
 	private Button btnCancel;
 
-
-
 	public AddQuestionBorderPane() {
 		this.setPadding(new Insets(10));
 		setTop(getTitleAnchorPane());
@@ -39,7 +37,6 @@ public class AddQuestionBorderPane extends BorderPane{
 		setBottom(hboxbtn);
 	}
 
-	
 	public TitleAnchorPane getTitleAnchorPane() {
 		if(titleAnchorPane==null) {
 			 titleAnchorPane = new TitleAnchorPane();
@@ -108,7 +105,7 @@ public class AddQuestionBorderPane extends BorderPane{
 				}
 				if (allFieldComplete) {
 					Question tmpQuestion = new Question(tmpAuthor, tmpRound, tmpStatement,tmpChoices);
-					Deck.getInstance().addAllQuestions(tmpQuestion);
+					Deck.getInstance().addQuestions(tmpQuestion);
 					((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().getListQuestion().add(tmpQuestion.clone());	
 					int tmpManip=((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().getNbManip();
 					tmpManip++;
@@ -116,15 +113,12 @@ public class AddQuestionBorderPane extends BorderPane{
 					((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().setTotalManip(tmpManip);
 					OriginMemento tmpOrigin = ((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().getOriginMemento();
 					
-					tmpOrigin.setState(Deck.getInstance().getAllQuestion());
+					tmpOrigin.setState(Deck.getInstance().getQuestions());
 					((FinalViewStackPane) getParent()).getAdminBorderPane().getTableQuestion().getcTakerMemento().add(tmpOrigin.saveToMemento());
 					this.setVisible(false);
-					((FinalViewStackPane) getParent()).getAdminBorderPane().setVisible(true);
-					
-					
+					((FinalViewStackPane) getParent()).getAdminBorderPane().setVisible(true);				
 				}
-				else {
-				
+				else {		
 					errorFieldPopup.getContent().add(lblError);
 					errorFieldPopup.show(getScene().getWindow()); 
 				}
@@ -133,6 +127,7 @@ public class AddQuestionBorderPane extends BorderPane{
 		}
 		return btnOK;
 	}
+	
 	public Button getBtnCancel() {
 		if(btnCancel == null) {
 			btnCancel = new Button("Cancel");
@@ -143,7 +138,4 @@ public class AddQuestionBorderPane extends BorderPane{
 		}
 		return btnCancel;
 	}
-	
-
-
 }

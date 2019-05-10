@@ -5,7 +5,6 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import model.Deck;
-import util.TextToSpeech;
 
 public class GamePlayStatementAndChoicesVBox extends VBox {
 	
@@ -13,7 +12,6 @@ public class GamePlayStatementAndChoicesVBox extends VBox {
 	
 	private GamePlayChoicesGridPane choices;
 
-	
 	public GamePlayStatementAndChoicesVBox() {
 		this.setPadding(new Insets(5));
 		
@@ -24,7 +22,7 @@ public class GamePlayStatementAndChoicesVBox extends VBox {
 	
 	public Label getLblStatement() {
 		if(lblStatement == null) {
-			lblStatement = new Label(Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getStatement());
+			lblStatement = new Label(Deck.getInstance().getGameQuestions().get(Deck.getInstance().getIndex()).getStatement());
 			lblStatement.getStyleClass().add("lblStatement");
 		}
 		return lblStatement;
@@ -36,6 +34,4 @@ public class GamePlayStatementAndChoicesVBox extends VBox {
 		}
 		return choices;
 	}
-
-	
 }

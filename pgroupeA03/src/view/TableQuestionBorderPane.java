@@ -1,9 +1,5 @@
 package view;
 
-
-import java.util.ArrayList;
-import java.util.List;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.Event;
@@ -24,9 +20,7 @@ import model.OriginMemento;
 import model.Question;
 import model.Round;
 
-
 public class TableQuestionBorderPane extends BorderPane {
-	
 	private TableView<Question> tableQuestion;
 	private ObservableList<Question> listQuestion;
 	private TableColumn<Question, String> colAuthor, colStatement;
@@ -42,7 +36,7 @@ public class TableQuestionBorderPane extends BorderPane {
 	
 	public TableQuestionBorderPane() {
 		originMemento = new OriginMemento();
-		originMemento.setState(Deck.getInstance().getAllQuestion());
+		originMemento.setState(Deck.getInstance().getQuestions());
 		getcTakerMemento().add(originMemento.saveToMemento());
 		setCenter(getTableQuestion());
 		getTableQuestion().getColumns().add(getColAuthor());
@@ -85,14 +79,14 @@ public class TableQuestionBorderPane extends BorderPane {
 			tableQuestion.setPrefHeight(620.);
 			tableQuestion.setEditable(true);
 			tableQuestion.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-			tableQuestion.setColumnResizePolicy(tableQuestion.CONSTRAINED_RESIZE_POLICY);
+			tableQuestion.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 		}
 		return tableQuestion;
 	}
 	public ObservableList<Question> getListQuestion() {
 		if(listQuestion== null) {
 		
-			listQuestion = FXCollections.observableArrayList(Deck.getInstance().getAllQuestion());
+			listQuestion = FXCollections.observableArrayList(Deck.getInstance().getQuestions());
 		}
 		return listQuestion;
 	}
@@ -136,11 +130,11 @@ public class TableQuestionBorderPane extends BorderPane {
 			btnDel = new Button("Delete");
 			btnDel.setOnAction(e->{
 				ObservableList<Question> tmpList = getTableQuestion().getSelectionModel().getSelectedItems();
-				if(Deck.getInstance().deleteAllDeck(tmpList)) {
+				if(Deck.getInstance().deleteQuestionsFromQuestions(tmpList)) {
 					getListQuestion().removeAll(tmpList);
 					nbManip++;
 					totalManip= nbManip;
-					originMemento.setState(Deck.getInstance().getAllQuestion());
+					originMemento.setState(Deck.getInstance().getQuestions());
 					getcTakerMemento().add(originMemento.saveToMemento());
 				}
 			});
@@ -173,7 +167,7 @@ public class TableQuestionBorderPane extends BorderPane {
 	}
 	public void updateObservableList() {
 		getListQuestion().clear();
-        getListQuestion().addAll(Deck.getInstance().getAllQuestion());
+        getListQuestion().addAll(Deck.getInstance().getQuestions());
 	}
 
 	public CareTMemento getcTakerMemento() {
@@ -207,12 +201,9 @@ public class TableQuestionBorderPane extends BorderPane {
 	public void emptyCareTaker() {
 		cTakerMemento = new CareTMemento();
 		OriginMemento origiMemento = new OriginMemento();
-		origiMemento.setState(Deck.getInstance().getAllQuestion());
+		origiMemento.setState(Deck.getInstance().getQuestions());
 		cTakerMemento.add(origiMemento.saveToMemento());
 		nbManip = 0;
 		totalManip = 0;
 	}
-	
-	
-	
 }

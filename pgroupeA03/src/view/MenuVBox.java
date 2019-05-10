@@ -22,7 +22,6 @@ public class MenuVBox extends VBox{
 	private Button btnQuit;
 	private MediaPlayer musicPlayer;
 			
-	
 	public MenuVBox() {
 		getChildren().addAll(getBtnPlay(),getBtnLoad(),getBtnOption(),getBtnQuit());
 		setSpacing(10);
@@ -54,9 +53,11 @@ public class MenuVBox extends VBox{
 		}
 		return btnPlay;
 	}
+	
 	public void setBtnPlay(Button btnPlay) {
 		this.btnPlay = btnPlay;
 	}
+	
 	public Button getBtnLoad() {
 		if(btnLoad==null) {
 			btnLoad=new Button("Load");
@@ -68,7 +69,7 @@ public class MenuVBox extends VBox{
 					List<Boolean>tmpList =game.getJokerUsed();
 					Deck.setInstance(game.getDeck());
 					for(int i=0;i<game.getIndex();i++) {
-						((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getStatementAndChoices().getChoices().refreshForContinueGame();
+						((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getStatementAndChoices().getChoices().loadGame();
 					}
 					((FinalViewStackPane) getParent(). getParent()).getOptionBorderPane().getOptionsVBox().getBtnQuitAndSave().setDisable(true);
 					((FinalViewStackPane) getParent(). getParent()).getGamePlayBorderPane().getTimer().setSeconds(game.getTimerLeft());
@@ -114,6 +115,7 @@ public class MenuVBox extends VBox{
 		}
 		return btnQuit;
 	}
+	
 	public void setBtnQuit(Button btnQuit) {
 		this.btnQuit = btnQuit;
 	}

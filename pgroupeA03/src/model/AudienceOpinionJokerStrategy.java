@@ -10,12 +10,12 @@ public class AudienceOpinionJokerStrategy implements JokerStrategy {
 	
 	@Override
 	public void effectOfJoker() {
-		Deck.getInstance().jokerUse("AudienceOpinion");
+		Deck.getInstance().useJoker("AudienceOpinion");
 		for (int i = 0; i < 4; i++) {
 			audienceChoices[i] = 0;
-			vals.add(Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getChoiceValue(i)); 
+			vals.add(Deck.getInstance().getGameQuestions().get(Deck.getInstance().getIndex()).getChoiceValue(i)); 
 		}
-		switch (Deck.getInstance().getQuestions().get(Deck.getInstance().getIndex()).getRound()) {
+		switch (Deck.getInstance().getGameQuestions().get(Deck.getInstance().getIndex()).getRound()) {
 			case FIRST_ROUND : FirstRoundQuestions();
 				break;
 			case SECOND_ROUND : SecondRoundQuestion();

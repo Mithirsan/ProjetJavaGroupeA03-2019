@@ -1,6 +1,5 @@
 package view;
 
-
 import java.io.File;
 import java.io.IOException;
 
@@ -16,22 +15,20 @@ import model.Deck;
 import model.Stats;
 import util.Serializable;
 
-public class GameplayPoolStatusHBox extends BorderPane {
+public class GameplayPresenterAndPoolStatusHBox extends BorderPane {
 	private Button btnLeaveWithPool;
 	
 	private ImageView imagePresenter;
 	
 	private Label lblViewPool;
 	
-	public GameplayPoolStatusHBox() {
+	public GameplayPresenterAndPoolStatusHBox() {
 		this.setPadding(new Insets(10));
 		setCenter(getImagePresenter());
 		HBox hboxgain = new HBox (getLblViewPool(), getBtnLeaveWithPool());
 		hboxgain.setSpacing(10);
 		hboxgain.setAlignment(Pos.BASELINE_CENTER);
-		setBottom(hboxgain);
-		 
-		
+		setBottom(hboxgain);		
 	}
 
 	public ImageView getImagePresenter() {
@@ -41,7 +38,6 @@ public class GameplayPoolStatusHBox extends BorderPane {
 		return imagePresenter;
 	}
 	
-
 	public void setImagePresenter(Image imagePresenter) {
 		this.getImagePresenter().setImage(imagePresenter);
 	}
@@ -69,7 +65,7 @@ public class GameplayPoolStatusHBox extends BorderPane {
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
-				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().reset();
+				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().resetForNewGame();
 				Deck.getInstance().jokerReset();
 			});
 			

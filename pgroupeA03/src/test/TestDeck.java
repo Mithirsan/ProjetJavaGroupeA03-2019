@@ -76,37 +76,37 @@ public class TestDeck {
 
 	@Test
 	public void testGetQuestions() {
-		deck.addQuestion(question);
-		assertTrue(questions.containsAll(deck.getQuestions()));
+		deck.addGameQuestions(question);
+		assertTrue(questions.containsAll(deck.getGameQuestions()));
 	}
 
 	@Test
 	public void testSetDeck() {
-		deck.setDeck(questions);
-		assertNotNull(deck.getQuestions());
+		deck.setPlayingDeck(questions);
+		assertNotNull(deck.getGameQuestions());
 	}
 
 	@Test
 	public void testAddQuestion() {
-		assertTrue(deck.addQuestion(question));
-		assertFalse(deck.addQuestion(question));
+		assertTrue(deck.addGameQuestions(question));
+		assertFalse(deck.addGameQuestions(question));
 	}
 
 	@Test
 	public void testDeleteAllDeck() {
-		assertFalse(deck.deleteAllDeck(questions));
+		assertFalse(deck.deleteQuestionsFromQuestions(questions));
 	}
 
 	@Test
 	public void testDeleteSingleQuestion() {
-		assertFalse(deck.deleteSingleQuestion(question));
+		assertFalse(deck.deleteSingleQuestionFromQuestions(question));
 	}
 
 	@Test
 	public void testUpdate() {
-		deck.addQuestion(question);
+		deck.addGameQuestions(question);
 		Question q = new Question("Mithirsan", Round.SECOND_ROUND, "On which building is Big Ben?");
-		deck.update(q);
+		deck.updateQuestions(q);
 		assertTrue(questions.contains(q));
 	}
 
@@ -152,7 +152,7 @@ public class TestDeck {
 		deck.loadDeck(file);
 		int nb = questions.size();
 		String test = questions.toString();
-		deck.addQuestions();
+		deck.refreshGameQuestion();
 		assertEquals(nb, questions.size());
 		assertFalse(questions.toString().equals(test));
 	}
@@ -174,7 +174,7 @@ public class TestDeck {
 	
 	@Test
 	public void testJokerUse() {
-		deck.jokerUse("FiftyFifty");
+		deck.useJoker("FiftyFifty");
 		assertEquals(false, deck.getJoker(1));
 	}
 	
@@ -199,7 +199,7 @@ public class TestDeck {
 	@Test
 	public void testJokerReset() {
 		List<Boolean> test = deck.getJokers();
-		deck.jokerUse("FiftyFifty");
+		deck.useJoker("FiftyFifty");
 		deck.jokerReset();
 		assertEquals(test, deck.getJokers());
 	}

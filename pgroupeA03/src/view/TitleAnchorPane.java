@@ -1,7 +1,5 @@
 package view;
 
-
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -61,12 +59,8 @@ public class TitleAnchorPane extends AnchorPane  {
 		if(cbRound==null) {
 			cbRound = new ComboBox<>();
 			ObservableList<Round> round = FXCollections.observableArrayList(Round.values());
-			cbRound = new ComboBox<>(round);
-		
+			cbRound = new ComboBox<>(round);	
 		}
 		return cbRound;
 	}
-	
-	
-
 }

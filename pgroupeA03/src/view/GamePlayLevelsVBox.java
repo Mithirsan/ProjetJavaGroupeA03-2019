@@ -15,8 +15,6 @@ import model.Stats;
 import util.Serializable;
 
 public class GamePlayLevelsVBox extends VBox {
-	
-
 
 	private List<Label> lblLevels;
 	
@@ -69,7 +67,7 @@ public class GamePlayLevelsVBox extends VBox {
 		if (stage == 0) {
 			((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().setVisible(false);
 			((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getTimer().stopTimer();
-			((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().reset();
+			((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().resetForNewGame();
 			((FinalViewStackPane) getParent().getParent()).getWinScreen().setVisible(true);
 			Stats stats;
 			try {
@@ -85,7 +83,7 @@ public class GamePlayLevelsVBox extends VBox {
 			
 		} else {
 			lblLevels.get(--stage).getStyleClass().add("stageActual");
-		    ((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getPoolStatus().getLblViewPool().setText(tmp);
+		    ((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getPresenterAndPoolStatus().getLblViewPool().setText(tmp);
 		}
 	}
 

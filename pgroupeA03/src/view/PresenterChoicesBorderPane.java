@@ -5,7 +5,6 @@ import java.io.File;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
@@ -15,19 +14,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Presenter;
 
-
-
 public class PresenterChoicesBorderPane extends BorderPane{	
 
 	private Image presenterImage;
 	private ImageView imagePreview;
 	
-	
 	private ComboBox<Presenter> cbPresenter;
 	private Button btnValidate;
 
-	
-	
 	public PresenterChoicesBorderPane () {
 		getCbPresenter().getSelectionModel().selectFirst();
 		VBox vboxSelect = new VBox(getCbPresenter(),getBtnValidate());
@@ -37,9 +31,7 @@ public class PresenterChoicesBorderPane extends BorderPane{
 		hboxbtn.setSpacing(10.);
 		hboxbtn.setPadding(new Insets(250.));
 
-		setCenter(hboxbtn);
-
-		
+		setCenter(hboxbtn);	
 	}	
 	
 	public ComboBox<Presenter> getCbPresenter() {
@@ -54,6 +46,7 @@ public class PresenterChoicesBorderPane extends BorderPane{
 		}
 		return cbPresenter;
 	}
+	
 	public Button getBtnValidate() {
 		if(btnValidate==null){
 			btnValidate=new Button ("Validate");
@@ -61,13 +54,14 @@ public class PresenterChoicesBorderPane extends BorderPane{
 				((FinalViewStackPane) getParent()).getOptionsMenuBorderPane().setVisible(true);
 				((FinalViewStackPane) getParent()).getPresenterBorderPane().setVisible(false);
 				getpresenterImage();
-				((FinalViewStackPane) getParent()).getGamePlayBorderPane().getPoolStatus().setImagePresenter(presenterImage);
+				((FinalViewStackPane) getParent()).getGamePlayBorderPane().getPresenterAndPoolStatus().setImagePresenter(presenterImage);
 			
 				
 			});
 		}
 		return 	btnValidate;
 	}
+	
 	public Image getpresenterImage() {
 			presenterImage = new Image(new File("resources/pictures/"+getCbPresenter().getValue().getPresenter()+".jpg").toURI().toString());	
 			return presenterImage;

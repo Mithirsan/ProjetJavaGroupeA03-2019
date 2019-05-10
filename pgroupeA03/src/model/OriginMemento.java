@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OriginMemento {
-private List<Question> stateList;
+	private List<Question> stateList;
 	
-
 	public void setState(List<Question> tmpList) {
 		this.stateList = new ArrayList<>();
 		tmpList.stream().forEach(e -> {

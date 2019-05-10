@@ -34,9 +34,7 @@ public class AdminBorderPane extends BorderPane {
 	         new File(System.getProperty("user.dir"))
 	    );
 		setTop(getMenuBar());
-		setCenter(getTableQuestion());
-		
-		
+		setCenter(getTableQuestion());	
 	}
 
 	public TableQuestionBorderPane getTableQuestion() {
@@ -85,14 +83,12 @@ public class AdminBorderPane extends BorderPane {
 				  if(fileOpen != null) {
 		            	file = fileOpen;
 						try {
-							Deck.getInstance().getAllQuestion().removeAll(Deck.getInstance().getAllQuestion());
+							Deck.getInstance().getQuestions().removeAll(Deck.getInstance().getQuestions());
 							Deck.getInstance().loadDeck(file);
 							getTableQuestion().updateObservableList();
 						} catch (IOException e1) {
-							// TODO Auto-generated catch block
 							e1.printStackTrace();
-						}
-						
+						}			
 		            }
 			});
 		}

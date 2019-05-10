@@ -4,6 +4,6 @@ public class TimeFreezeJokerStrategy implements JokerStrategy {
 
 	@Override
 	public void effectOfJoker() {
-		Deck.getInstance().jokerUse("TimeFreeze");
+		Deck.getInstance().useJoker("TimeFreeze");
 	}
 }

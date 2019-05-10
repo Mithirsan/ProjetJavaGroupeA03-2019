@@ -56,7 +56,6 @@ public class OptionsMenuVBox extends VBox {
 		return btnStats;
 	}
 
-	
 	public Button getBtnVolumeManagement() {
 		if(btnVolumeManagement==null) {
 			btnVolumeManagement=new Button("Volume Management");
@@ -90,6 +89,7 @@ public class OptionsMenuVBox extends VBox {
 		}
 		return btnOrator;
 	}
+	
 	public Button getBtnQuit() {
 		if(btnQuit==null) {
 			btnQuit= new Button("Back to menu");
@@ -102,5 +102,4 @@ public class OptionsMenuVBox extends VBox {
 		}
 		return btnQuit;
 	}	
-
 }

@@ -35,7 +35,6 @@ public class OptionsVBox extends VBox{
 		return btnContinue;
 	}
 
-	
 	public Button getBtnVolumeManagement() {
 		if(btnVolumeManagement==null) {
 			btnVolumeManagement=new Button("Volume Management");
@@ -74,7 +73,7 @@ public class OptionsVBox extends VBox{
 				Deck tmpDeck = Deck.getInstance();
 				Game saveGame = new Game(tmpIndex, tmpTimeLeft, tmpList, tmpDeck);
 				Serializable.writeSaveGame(saveGame.toJSon());
-				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().reset();
+				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().resetForNewGame();
 				Deck.getInstance().jokerReset();
 			});
 		}
@@ -89,7 +88,7 @@ public class OptionsVBox extends VBox{
 				((FinalViewStackPane) getParent() .getParent()).getOptionBorderPane().setVisible(false);
 				((FinalViewStackPane) getParent() .getParent()).getMenuBorderPane().setVisible(true);
 				((FinalViewStackPane)getParent().getParent()).getMenuBorderPane().getMenuVBox().getMusic().play();
-				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().reset();
+				((FinalViewStackPane) getParent() .getParent()).getGamePlayBorderPane().resetForNewGame();
 				Deck.getInstance().jokerReset();
 			});
 		}

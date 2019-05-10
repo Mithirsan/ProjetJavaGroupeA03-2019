@@ -10,12 +10,12 @@ public class GamePlayBorderPane extends BorderPane {
 	private GamePlayOptionAndJokersVBox optionAndJokers;
 	private GamePlayLevelsVBox levels;
 	private GamePlayTimerHBox timer ;
-	private GameplayPoolStatusHBox poolStatus;
+	private GameplayPresenterAndPoolStatusHBox presenterAndPoolStatus;
 	
 	public GamePlayBorderPane() {
 		setTop(getTimer());
 		setLeft(getOptionAndJokers());
-		setCenter(getPoolStatus());
+		setCenter(getPresenterAndPoolStatus());
 		setRight(getLevels());
 		setBottom(getStatementAndChoices()); 
 	}
@@ -48,18 +48,18 @@ public class GamePlayBorderPane extends BorderPane {
 		return timer;
 	}
 
-	public GameplayPoolStatusHBox getPoolStatus() {
-		if(poolStatus==null) {
-			poolStatus=new GameplayPoolStatusHBox();
+	public GameplayPresenterAndPoolStatusHBox getPresenterAndPoolStatus() {
+		if(presenterAndPoolStatus==null) {
+			presenterAndPoolStatus=new GameplayPresenterAndPoolStatusHBox();
 		}
-		return poolStatus;
+		return presenterAndPoolStatus;
 	}
-	public void reset() {
-		Deck.getInstance().addQuestions();
-		
+	
+	public void resetForNewGame() {
+		Deck.getInstance().refreshGameQuestion();
 		getLevels().restart();
 		getStatementAndChoices().getChoices().resetTxt();
-		getPoolStatus().getLblViewPool().setText("none");
+		getPresenterAndPoolStatus().getLblViewPool().setText("none");
 		getOptionAndJokers().getBtnJokerAnotherChance().setDisable(false);
 		getOptionAndJokers().getBtnJokerAudienceOpinion().setDisable(false);
 		getOptionAndJokers().getBtnJokerFiftyFifty().setDisable(false);

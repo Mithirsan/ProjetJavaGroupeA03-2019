@@ -10,7 +10,6 @@ private List<Memento> mementos;
 		mementos = new ArrayList<Memento>();
 	}
 	
-	
 	public void add(Memento m) {
 		mementos.add(m);
 	}

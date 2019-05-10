@@ -1,6 +1,5 @@
 package view;
 
-import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 
@@ -10,11 +9,8 @@ public class OptionsBorderPane extends BorderPane {
 	private OptionsVBox optionsVBox;
 	
 	public OptionsBorderPane() {
-//		setTop(getLblTitle());
-//		setAlignment(getLblTitle(), Pos.CENTER);
 		setCenter(getOptionsVBox());
 	}
-	
 	
 	public Label getLblTitle() {
 		if(lblTitle==null) {

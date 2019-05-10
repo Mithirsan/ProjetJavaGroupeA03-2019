@@ -1,9 +1,7 @@
 package view;
 
-import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class TrueVBox extends VBox {
@@ -30,12 +28,14 @@ public class TrueVBox extends VBox {
 		}
 		return rdbTrue;
 	}
+	
 	public ToggleGroup getToggle() {
 		if(toggle==null) {
 			toggle = new ToggleGroup();
 		}
 		return toggle;
 	}
+	
 	public void setRdbTrue(int ind) {
 		rdbTrue[ind].setSelected(true);
 	}

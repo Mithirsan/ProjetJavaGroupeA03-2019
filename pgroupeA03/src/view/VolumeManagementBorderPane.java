@@ -4,25 +4,18 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 
 public class VolumeManagementBorderPane extends BorderPane {
 	private Slider sliderVolume;
 	
-	private ProgressBar soundProgressBar;
-	private StackPane soundBarStackPane;
 	private Label soundLbl ;
 	private Button btnBack;
 	private double soundVolume = 100.;
-	private double previousValue = 100.;
 	
-	
-		
 	public VolumeManagementBorderPane() {
 		HBox viewProgresHBox= new HBox();
 		viewProgresHBox.getChildren().addAll(getSliderVolume());
@@ -45,7 +38,7 @@ public class VolumeManagementBorderPane extends BorderPane {
 			sliderVolume.setPadding(new Insets(10.));
 			sliderVolume.valueProperty().addListener((observable, oldValue, newValue) -> {
 				soundVolume = newValue.doubleValue();
-				previousValue = oldValue.doubleValue();
+				oldValue.doubleValue();
 				sliderVolume.setValue(newValue.doubleValue());
 				int tmpSoundValue = (int) soundVolume;
 				getSoundLbl().setText(tmpSoundValue +"%");

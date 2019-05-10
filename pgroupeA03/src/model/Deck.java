@@ -52,17 +52,17 @@ public class Deck {
 		} 
 	}
 	
-	public List<Question> getQuestions() {
+	public List<Question> getGameQuestions() {
 		return gameQuestion;
 	}
 
-	public void setDeck(List<Question> questions){
+	public void setPlayingDeck(List<Question> questions){
 		for(Question q : questions) {
-			this.addQuestion(q);
+			this.addGameQuestions(q);
 		}
 	}
 	
-	public boolean addAllQuestions(Question q) {
+	public boolean addQuestions(Question q) {
 		if(!questions.contains(q)) {
 			questions.add(q);
 			return true;
@@ -70,7 +70,7 @@ public class Deck {
 		return false;
 	}
 	
-	public boolean addQuestion(Question x){
+	public boolean addGameQuestions(Question x){
 		if(!gameQuestion.contains(x)) {
 			gameQuestion.add(x);
 			return true;
@@ -78,17 +78,15 @@ public class Deck {
 		return false;
 	}
 	
-	public boolean deleteAllDeck(List<Question> x){
+	public boolean deleteQuestionsFromQuestions(List<Question> x){
 		return questions.removeAll(x);
 	}
 	
-	public boolean deleteSingleQuestion(Question x) {
+	public boolean deleteSingleQuestionFromQuestions(Question x) {
 		return questions.remove(x);
 	}
 	
-	
-	
-	public boolean update(Question x) {
+	public boolean updateQuestions(Question x) {
 		int ind = getInstance().questions.indexOf(x);
 		if(ind == -1) {
 			return false;
@@ -113,8 +111,8 @@ public class Deck {
 	
 	public void downloadData(File file) throws FileNotFoundException, IOException {
 		Deck fileDeck = fromJSon(Serializable.readDeck(file.getAbsolutePath()));
-		for(Question x : fileDeck.getQuestions()) {
-			getInstance().addQuestion(x);
+		for(Question x : fileDeck.getGameQuestions()) {
+			getInstance().addGameQuestions(x);
 		}
 	}
 	
@@ -124,8 +122,8 @@ public class Deck {
 		List<Question> round1 = new ArrayList<Question>();
 		List<Question> round2 = new ArrayList<Question>();
 		List<Question> round3 = new ArrayList<Question>();
-		getInstance().getAllQuestion().clear();
-		for(Question x : fileDeck.getAllQuestion()) {
+		getInstance().getQuestions().clear();
+		for(Question x : fileDeck.getQuestions()) {
 			switch (x.getRound()) {
 				case FIRST_ROUND: 
 					round1.add(x);
@@ -136,12 +134,12 @@ public class Deck {
 				default : 
 					round3.add(x);
 			}
-			addAllQuestions(x);
+			addQuestions(x);
 		}
-		getInstance().addQuestions(round1, round2, round3);
+		getInstance().addGameQuestions(round1, round2, round3);
 	}
 	
-	private void addQuestions(List<Question> round1, List<Question> round2, List<Question> round3) {
+	private void addGameQuestions(List<Question> round1, List<Question> round2, List<Question> round3) {
 		int nb1 = 0, nb2 = 0, nb3 = 0;
 		index = 0;
 		getInstance().gameQuestion.clear();
@@ -150,7 +148,7 @@ public class Deck {
 		Collections.shuffle(round3);
 		for(Question q : round1) {
 			q.shuffleChoices();
-			if(getInstance().addQuestion(q)) {
+			if(getInstance().addGameQuestions(q)) {
 				nb1++;
 			}
 			if (nb1 == 5) {
@@ -159,7 +157,7 @@ public class Deck {
 		}
 		for(Question q : round2) {
 			q.shuffleChoices();
-			if(getInstance().addQuestion(q)) {
+			if(getInstance().addGameQuestions(q)) {
 				nb2++;
 			}
 			if (nb2 == 5) {
@@ -168,7 +166,7 @@ public class Deck {
 		}
 		for(Question q : round3) {
 			q.shuffleChoices();
-			if(getInstance().addQuestion(q)) {
+			if(getInstance().addGameQuestions(q)) {
 				nb3++;
 			}
 			if (nb3 == 5) {
@@ -177,7 +175,7 @@ public class Deck {
 		}
 	}
 
-	public void addQuestions() {
+	public void refreshGameQuestion() {
 		List<Question> round1 = new ArrayList<Question>();
 		List<Question> round2 = new ArrayList<Question>();
 		List<Question> round3 = new ArrayList<Question>();
@@ -196,7 +194,7 @@ public class Deck {
 					round3.add(q);
 			}
 		}
-		getInstance().addQuestions(round1, round2, round3);
+		getInstance().addGameQuestions(round1, round2, round3);
 	}
 
 	public void loadState(List<Question> state) {
@@ -210,7 +208,7 @@ public class Deck {
 		Deck.instance = instance;
 	}
 
-	public void jokerUse(String string) {
+	public void useJoker(String string) {
 		switch (string) {
 		case "AudienceOpinion": 
 			jokers.set(0, false);
@@ -225,8 +223,7 @@ public class Deck {
 			jokers.set(3, false);
 			break;
 		default : ;
-		}
-		
+		}	
 	}
 
 	public boolean getJoker(int i) {
@@ -247,7 +244,7 @@ public class Deck {
 		}
 	}
 
-	public List<Question> getAllQuestion(){
+	public List<Question> getQuestions(){
 		return questions;
 	}
 }

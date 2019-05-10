@@ -11,7 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
-import model.AnotherChanceStrategy;
+import model.AnotherChanceJokerStrategy;
 import model.AudienceOpinionJokerStrategy;
 import model.Deck;
 import model.FiftyFiftyJokerStrategy;
@@ -89,13 +89,13 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 		}
 		Node nodeTmp = ((GamePlayBorderPane) getParent()).getStatementAndChoices().getChoices();
 		((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerA().setText("A: " + Deck.getInstance().
-				getQuestions().get(Deck.getInstance().getIndex()).getChoice(0) + " - " + tmp[0] + "%");
+				getGameQuestions().get(Deck.getInstance().getIndex()).getChoice(0) + " - " + tmp[0] + "%");
 		((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerB().setText("B: " + Deck.getInstance().
-				getQuestions().get(Deck.getInstance().getIndex()).getChoice(1) + " - " + tmp[1] + "%");
+				getGameQuestions().get(Deck.getInstance().getIndex()).getChoice(1) + " - " + tmp[1] + "%");
 		((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerC().setText("C: " + Deck.getInstance().
-				getQuestions().get(Deck.getInstance().getIndex()).getChoice(2) + " - " + tmp[2] + "%");
+				getGameQuestions().get(Deck.getInstance().getIndex()).getChoice(2) + " - " + tmp[2] + "%");
 		((GamePlayChoicesGridPane) nodeTmp).getBtnAnswerD().setText("D: " + Deck.getInstance().
-				getQuestions().get(Deck.getInstance().getIndex()).getChoice(3) + " - " + tmp[3] + "%");
+				getGameQuestions().get(Deck.getInstance().getIndex()).getChoice(3) + " - " + tmp[3] + "%");
 	}
 
 	public Button getBtnJokerFiftyFifty() {
@@ -162,7 +162,7 @@ public class GamePlayOptionAndJokersVBox extends VBox {
 			btnJokerAnotherChance.getStyleClass().add("btnJoker");
 		
 			btnJokerAnotherChance.setOnAction(e->{
-				AnotherChanceStrategy aCJoker= new AnotherChanceStrategy();
+				AnotherChanceJokerStrategy aCJoker= new AnotherChanceJokerStrategy();
 				aCJoker.effectOfJoker();
 				if(!Deck.getInstance().getJoker(3)) {
 					((FinalViewStackPane) getParent().getParent()).getGamePlayBorderPane().getStatementAndChoices().getChoices().setAChance(true);

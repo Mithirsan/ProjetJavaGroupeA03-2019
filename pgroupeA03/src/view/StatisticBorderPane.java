@@ -8,7 +8,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
-
 public class StatisticBorderPane extends BorderPane {
 	
 	private Label lblGamePlayed;
@@ -21,13 +20,9 @@ public class StatisticBorderPane extends BorderPane {
 	private Label lblNbTimePlayed;
 	private Button btnRetrun;
 
-	private int partyPlayed =0;
-	private int partyWin =0;
-	private int totalDays =0;
 	private int timePlayed =0;
 	
 	public StatisticBorderPane() {
-		
 		VBox vbLabels = new VBox(getLblGamePlayed(), getLblGameWin(), getLblDays(), getLblTimePlayed());
 		VBox vbStats = new VBox(getLblNbGamePlayed(), getLblNbGameWin(), getLblNbDays(), getLblNbTimePlayed());
 		HBox hbResult = new HBox(vbLabels, vbStats);
@@ -109,19 +104,16 @@ public class StatisticBorderPane extends BorderPane {
 	}
 	
 	public void setPartyPlayed(int partyPlayed) {
-		this.partyPlayed = partyPlayed;
 		getLblNbGamePlayed().setText(partyPlayed+" played");
 		
 	}
 	
 	public void setPartyWin(int partyWin) {
-		this.partyWin = partyWin;
 		getLblNbGameWin().setText(partyWin+" win");
 		
 	}
 	
 	public void setTotalDays(int totalDays) {
-		this.totalDays = totalDays;
 		getLblNbDays().setText(totalDays+ " days");
 	}
 	

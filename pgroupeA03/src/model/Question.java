@@ -1,6 +1,5 @@
 package model;
 
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -10,7 +9,6 @@ import java.util.Map;
 
 import exception.AlreadyFourChoicesException;
 import exception.AlreadyTrueChoiceException;
-
 
 public class Question {
 	private String author;
@@ -27,10 +25,8 @@ public class Question {
 		try {
 			this.setChoices(choices);
 		} catch (AlreadyTrueChoiceException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (AlreadyFourChoicesException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -165,7 +161,6 @@ public class Question {
 	}
 	
 	public Question clone() {
-		return new Question(author, round, statement, choices);
+		return new Question(getAuthor(), getRound(), getStatement(), getChoices());
 	}
-	
 }
