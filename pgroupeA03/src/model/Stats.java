@@ -75,10 +75,8 @@ public class Stats {
 				listOfDays.add(0,tmpDays);
 			}
 			String tmp =listOfDays.get(14-stage);
-			System.out.println(tmp);
 			String[] tmpDay =tmp.split("\\ ");
 			int days=Integer.parseInt(tmpDay[0]);
-			System.out.println(days);
 			this.totalDays += days;
 		}
 

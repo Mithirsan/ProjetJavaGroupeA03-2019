@@ -90,6 +90,7 @@ public class FinalViewStackPane extends StackPane{
 			WinScreen.setVisible(false);
 			WinScreen.setOnMouseClicked(e->{
 				WinScreen.setVisible(false);
+				getGamePlayBorderPane().getTimer().stopTimer();
 				getMenuBorderPane().setVisible(true);
 			});
 		}

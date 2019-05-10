@@ -18,7 +18,6 @@ public class WinScreenBorderPane extends BorderPane {
 		BackgroundSize backgroundSize = new BackgroundSize( 960, 540, true, true, true, false);
 		BackgroundImage bg = new BackgroundImage(new Image(new File("resources/pictures/ThePath.png").toURI().toString()), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, backgroundSize);
 		setBackground(new Background(bg));
-		setCenter(getPortalImageView());
 	}
 
 	public ImageView getPortalImageView() {
