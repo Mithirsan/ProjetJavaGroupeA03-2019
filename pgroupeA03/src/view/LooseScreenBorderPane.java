@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.VLineTo;
@@ -21,11 +22,10 @@ public class LooseScreenBorderPane extends BorderPane {
 	private HBox contents;
 	
 	public LooseScreenBorderPane() {
-		setCenter(getContents());
-		HBox txt = new HBox();
-		txt.getChildren().add(getLblMessage());
-		txt.setAlignment(Pos.CENTER);
-		setTop(txt);
+		StackPane elements = new StackPane();
+		elements.getChildren().addAll(getContents(), getLblMessage());
+		elements.setAlignment(Pos.CENTER);
+		setCenter(elements);
 	}
 
 	public Label getLblMessage() {
@@ -33,7 +33,6 @@ public class LooseScreenBorderPane extends BorderPane {
 			lblMessage = new Label("You've losed the game, click to continue");
 			lblMessage.getStyleClass().add("withe");
 			lblMessage.setVisible(false);
-			lblMessage.setAlignment(Pos.CENTER);
 		}
 		return lblMessage;
 	}
@@ -41,8 +40,8 @@ public class LooseScreenBorderPane extends BorderPane {
 	public PathTransition getPathTransition() {
 		if(pathTransition == null) {
 			Path path = new Path();
-			path.getElements().add(new MoveTo(480., 0.));//480 0
-		    path.getElements().add(new VLineTo(280.));//470
+			path.getElements().add(new MoveTo(480., 0.));
+		    path.getElements().add(new VLineTo(270.));
 		    
 		    getContents().getChildren().add(path);
 		    getContents().getChildren().add(getLoseImage());
