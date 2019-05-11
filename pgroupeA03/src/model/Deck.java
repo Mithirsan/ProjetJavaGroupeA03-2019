@@ -71,6 +71,8 @@ public class Deck {
 	}
 	
 	public boolean addGameQuestions(Question x){
+		if(gameQuestion.size() == NBQUESTION)
+			return false;
 		if(!gameQuestion.contains(x)) {
 			gameQuestion.add(x);
 			return true;
@@ -87,7 +89,7 @@ public class Deck {
 	}
 	
 	public boolean updateQuestions(Question x) {
-		int ind = getInstance().questions.indexOf(x);
+		int ind = getInstance().getQuestions().indexOf(x);
 		if(ind == -1) {
 			return false;
 		} 
@@ -111,8 +113,8 @@ public class Deck {
 	
 	public void downloadData(File file) throws FileNotFoundException, IOException {
 		Deck fileDeck = fromJSon(Serializable.readDeck(file.getAbsolutePath()));
-		for(Question x : fileDeck.getGameQuestions()) {
-			getInstance().addGameQuestions(x);
+		for(Question x : fileDeck.getQuestions()) {
+			getInstance().addQuestions(x);
 		}
 	}
 	

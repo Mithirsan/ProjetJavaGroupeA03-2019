@@ -24,6 +24,7 @@ public class TestDeck {
 	
 	Deck deck;
 	List<Question> questions;
+	List<Question> gameQuestion;
 	Question question;
 
 	@Before
@@ -33,6 +34,11 @@ public class TestDeck {
 		Field questionsField = Deck.class.getDeclaredField("questions");
 		questionsField.setAccessible(true);	
 		questions = (List<Question>) questionsField.get(deck);
+		
+		questionsField = Deck.class.getDeclaredField("gameQuestion");
+		questionsField.setAccessible(true);	
+		gameQuestion = (List<Question>) questionsField.get(deck);
+		
 		
 		Map<String, Boolean> choices = new HashMap<>();
 		choices.put("Elizabeth tower", true);
@@ -48,6 +54,8 @@ public class TestDeck {
 		instance.setAccessible(true);
 		instance.set(null, null);
 		
+		gameQuestion = null;
+		
 		questions = null;
 		
 		question = null;
@@ -60,7 +68,7 @@ public class TestDeck {
 
 	@Test
 	public void testDeck() {
-		assertNotNull(deck);
+		assertNotNull(new Deck());
 	}
 
 	@Test
@@ -70,60 +78,70 @@ public class TestDeck {
 
 	@Test
 	public void testIncreaseIndex() {
-		deck.increaseIndex();
+		Deck.increaseIndex();
 		assertEquals(1, deck.getIndex());
 	}
 
 	@Test
-	public void testGetQuestions() {
+	public void testGetGameQuestions() {
 		deck.addGameQuestions(question);
-		assertTrue(questions.containsAll(deck.getGameQuestions()));
+		assertTrue(gameQuestion.containsAll(deck.getGameQuestions()));
 	}
 
 	@Test
-	public void testSetDeck() {
-		deck.setPlayingDeck(questions);
+	public void testSetPlayingDeck() {
+		deck.setPlayingDeck(gameQuestion);
 		assertNotNull(deck.getGameQuestions());
 	}
 
 	@Test
-	public void testAddQuestion() {
+	public void testAddQuestions() {
+		assertTrue(deck.addQuestions(question));
+		assertFalse(deck.addQuestions(question));
+	}
+	
+	@Test
+	public void testAddGameQuestions() {
 		assertTrue(deck.addGameQuestions(question));
 		assertFalse(deck.addGameQuestions(question));
 	}
 
 	@Test
-	public void testDeleteAllDeck() {
-		assertFalse(deck.deleteQuestionsFromQuestions(questions));
+	public void testDeleteQuestionsFromQuestions() {
+		questions.add(question);
+		assertTrue(deck.deleteQuestionsFromQuestions(questions));
 	}
 
 	@Test
-	public void testDeleteSingleQuestion() {
-		assertFalse(deck.deleteSingleQuestionFromQuestions(question));
+	public void testDeleteSingleQuestionFromQuestions() {
+		questions.add(question);
+		assertTrue(deck.deleteSingleQuestionFromQuestions(question));
 	}
 
 	@Test
-	public void testUpdate() {
-		deck.addGameQuestions(question);
-		Question q = new Question("Mithirsan", Round.SECOND_ROUND, "On which building is Big Ben?");
-		deck.updateQuestions(q);
-		assertTrue(questions.contains(q));
+	public void testUpdateQuestions() {
+		questions.add(question);
+		Question q = question;
+		q.setRound(Round.SECOND_ROUND);
+		assertTrue(deck.updateQuestions(q));
 	}
 
 	@Test
 	public void testToString() {
 		assertEquals("Deck : []", deck.toString());
+		gameQuestion.add(question);
+		assertEquals("Deck : [author=Mithirsan, round=FIRST_ROUND, On which building is Big Ben?:\n" + 
+				"{Big Ben is also the building name=false, Tower Clock=false, Elizabeth tower=true, Augustus Tower=false}]", deck.toString());
 	}
 
 	@Test
 	public void testToJSon() {
-		System.out.println(deck.toJSon());
-		assertEquals("{\"questions\":[],\"jokers\":[true,true,true,true]}", deck.toJSon());
+		assertEquals("{\"gameQuestion\":[],\"jokers\":[true,true,true,true],\"questions\":[]}", deck.toJSon());
 	}
 
 	@Test
 	public void testFromJSon() {
-		File file = new File("Test.json");
+		File file = new File("questions.json");
 		Deck fileDeck = Deck.fromJSon(Serializable.readDeck(file.getAbsolutePath()));
 		assertNotNull(fileDeck);
 	}
@@ -131,30 +149,30 @@ public class TestDeck {
 	@Test
 	public void testDownloadData() throws FileNotFoundException, IOException {
 		String test = questions.toString();
-		File file = new File("Test.json");
+		File file = new File("questions.json");
 		deck.downloadData(file);
-		assertNotNull(questions);
-		assertFalse(questions.toString().equals(test));
+		assertFalse(test.equals(questions.toString()));
 	}
 
 	@Test
 	public void testLoadDeck() throws FileNotFoundException, IOException{
 		String test = questions.toString();
-		File file = new File("Test.json");
+		String test2 = gameQuestion.toString();
+		File file = new File("questions.json");
 		deck.loadDeck(file);
-		assertNotNull(questions);
 		assertFalse(questions.toString().equals(test));
+		assertFalse(test2.equals(gameQuestion.toString()));
 	}
 
 	@Test
-	public void testAddQuestions() throws FileNotFoundException, IOException{
-		File file = new File("Test.json");
+	public void testRefreshGameQuestion() throws FileNotFoundException, IOException{
+		File file = new File("questions.json");
 		deck.loadDeck(file);
-		int nb = questions.size();
-		String test = questions.toString();
+		int nb = gameQuestion.size();
+		String test = gameQuestion.toString();
 		deck.refreshGameQuestion();
-		assertEquals(nb, questions.size());
-		assertFalse(questions.toString().equals(test));
+		assertEquals(nb, gameQuestion.size());
+		assertFalse(gameQuestion.toString().equals(test));
 	}
 
 	@Test
@@ -173,7 +191,7 @@ public class TestDeck {
 	}
 	
 	@Test
-	public void testJokerUse() {
+	public void testUseJoker() {
 		deck.useJoker("FiftyFifty");
 		assertEquals(false, deck.getJoker(1));
 	}
@@ -202,5 +220,11 @@ public class TestDeck {
 		deck.useJoker("FiftyFifty");
 		deck.jokerReset();
 		assertEquals(test, deck.getJokers());
+	}
+	
+	@Test
+	public void testGetQuestions() {
+		List<Question> test = deck.getQuestions();
+		assertEquals(questions, test);
 	}
 }
