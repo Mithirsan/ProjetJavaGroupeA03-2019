@@ -121,7 +121,7 @@ public class TestDeck {
 	@Test
 	public void testUpdateQuestions() {
 		questions.add(question);
-		Question q = question;
+		Question q = question.clone();
 		q.setRound(Round.SECOND_ROUND);
 		assertTrue(deck.updateQuestions(q));
 	}
