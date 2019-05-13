@@ -1,5 +1,9 @@
 package model;
-
+/**This enumeration contains the name of the picture with the presenter
+ * 
+ * @author GROUP_A03
+ *
+ */
 public enum Presenter {
 	JEAN_PIERRE_FOUCAULT ("JP-Foucault"),
 	THE_REAPER ("TheReaper"),

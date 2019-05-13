@@ -1,5 +1,10 @@
 package model;
 
+/**This enumeration contains the stage for the reward level 
+ * 
+ * @author GROUP_A03
+ *
+ */
 public enum Stage {
 	STAGE_01 ("-1 day"),
 	STAGE_02 ("-2 days"),
