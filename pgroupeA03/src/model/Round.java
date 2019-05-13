@@ -1,5 +1,9 @@
 package model;
 
+/**This enumeration contains the rounds of a question
+ * 
+ * @author GROUP_A03
+ */
 public enum Round {
 	FIRST_ROUND ("FIRST_ROUND"),
 	SECOND_ROUND ("SECOND_ROUND"), 
