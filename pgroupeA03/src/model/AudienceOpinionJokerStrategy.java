@@ -3,11 +3,21 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**This class implements JokerStrategy and let us define how AudienceOpinionJokerStrategy work. It contain a list of 4 double 
+ * and a list of 4 boolean according the choices of a question
+ * 
+ * @author GROUP_A03
+ *
+ */
 public class AudienceOpinionJokerStrategy implements JokerStrategy {
 
 	private double[] audienceChoices = {0, 0, 0, 0};
 	private List<Boolean> vals = new ArrayList<Boolean>();
 	
+	/**
+	 * This method call useJoker of Deck, get the value of choices of the actual question and run 
+	 * a method depending on the question round. 
+	 */
 	@Override
 	public void effectOfJoker() {
 		Deck.getInstance().useJoker("AudienceOpinion");
@@ -24,6 +34,9 @@ public class AudienceOpinionJokerStrategy implements JokerStrategy {
 		}	
 	}
 	
+	/**This private method is called by effectOfJoker, it set the list double with a pseudo randomiser 
+	 * 
+	 */
 	private void firstRoundQuestions() {
 		double rand;
 		for(int i = 0; i < 1000; i++) {
@@ -72,6 +85,9 @@ public class AudienceOpinionJokerStrategy implements JokerStrategy {
 		}
 	}
 	
+	/**This private method is called by effectOfJoker, it set the list double with a pseudo randomiser 
+	 * 
+	 */
 	private void secondRoundQuestion() {
 		double rand;
 		for(int i = 0; i < 1000; i++) {
@@ -120,6 +136,9 @@ public class AudienceOpinionJokerStrategy implements JokerStrategy {
 		}
 	}
 	
+	/**This private method is called by effectOfJoker, it set the list double with a pseudo randomiser 
+	 * 
+	 */
 	private void lastRoundQuestion() {
 		double rand;
 		for(int i = 0; i < 1000; i++) {
@@ -168,6 +187,10 @@ public class AudienceOpinionJokerStrategy implements JokerStrategy {
 		}
 	}
 
+	/**This method return a list 4 of double in % according to audienceChoices
+	 * 
+	 * @return list 4 of double
+	 */
 	public double[] getAudienceChoices() {
 		int tmp = 0;
 		for(int i = 0; i < 4; i++) {
